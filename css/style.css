@@ -438,8 +438,48 @@ select.form-control {
    -------------------------------------------------------------------------- */
 .table-responsive {
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+.table-responsive::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: var(--bg-surface-secondary);
+  border-radius: var(--radius-full);
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: var(--radius-full);
+  transition: background var(--transition-fast);
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+.table-responsive > .table,
+.table-responsive > .leaderboard-table {
+  min-width: 580px;
+}
+
+.table-responsive > .table.table-wide,
+.table.table-wide {
+  min-width: 760px;
+}
+
+.table th,
+.leaderboard-table th {
+  white-space: nowrap;
 }
 
 .table {

@@ -21,6 +21,9 @@ html, body {
 
   .main-wrapper {
     margin-left: 0;
+    max-width: 100vw;
+    width: 100%;
+    min-width: 0;
   }
 
   .chat-container {
@@ -47,12 +50,33 @@ html, body {
     height: 64px;
   }
 
+  .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0;
+    flex: 1;
+  }
+
   .topbar-title {
     font-size: 1.15rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+  }
+
+  .topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
   }
 
   .content-container {
     padding: 1.25rem 1rem;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .stats-grid {
@@ -252,6 +276,20 @@ html, body {
   .card {
     padding: 1.15rem;
   }
+
+  .topbar-title {
+    font-size: 1rem;
+  }
+
+  .topbar-right .btn {
+    padding: 0.35rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .lang-toggle-btn,
+  .theme-toggle-btn {
+    padding: 0.3rem 0.5rem;
+  }
 }
 
 /* Small Smartphone (<= 375px) */
@@ -264,6 +302,14 @@ html, body {
 
   .topbar {
     padding: 0 0.75rem;
+  }
+
+  .topbar-title {
+    font-size: 0.95rem;
+  }
+
+  .topbar-right {
+    gap: 0.35rem;
   }
 
   .stat-value {

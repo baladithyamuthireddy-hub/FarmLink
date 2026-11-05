@@ -352,8 +352,10 @@
                 <button class="chart-btn-pill" data-activity-period="12m">12M</button>
               </div>
             </div>
-            <div class="chart-container-fixed">
-              <canvas id="chart-activity-trends"></canvas>
+            <div class="chart-scroll-wrapper">
+              <div class="chart-container-fixed chart-container-min-wide">
+                <canvas id="chart-activity-trends"></canvas>
+              </div>
             </div>
           </div>
         </div>
@@ -466,7 +468,7 @@
               </div>
               
               <!-- Quantity stats mini box -->
-              <div style="background: var(--bg-surface-secondary); padding: 0.65rem 0.85rem; border-radius: var(--radius-md); margin-bottom: 0.85rem; display: flex; justify-content: space-between; font-size: 0.8rem;">
+              <div style="background: var(--bg-surface-secondary); padding: 0.65rem 0.85rem; border-radius: var(--radius-md); margin-bottom: 0.85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; font-size: 0.8rem;">
                 <div>
                   <span class="text-muted">Total Listed:</span>
                   <strong id="crop-total-quantity">0 kg</strong>
@@ -672,7 +674,7 @@
         <!-- ================================================================= -->
 
         <!-- Quick Admin Actions & Mandi Rates Preview -->
-        <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem; margin-bottom: 2rem;">
+        <div class="admin-dual-panel-grid" style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem; margin-bottom: 2rem;">
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Live APMC Mandi Benchmark Prices</h3>
@@ -757,13 +759,13 @@
               <h3 class="card-title" style="margin: 0;">Active Crop Listings Overview</h3>
               <p class="text-sm text-muted" style="margin: 0.25rem 0 0 0;">Comprehensive oversight of agricultural produce lots currently active in marketplace.</p>
             </div>
-            <div style="display: flex; align-items: center; gap: 0.75rem;">
-              <input type="text" id="admin-crop-search" class="form-control form-control-sm" placeholder="Search crop, farmer, or mandi..." oninput="filterAdminCrops()" style="width: 240px;">
+            <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+              <input type="text" id="admin-crop-search" class="form-control form-control-sm" placeholder="Search crop, farmer, or mandi..." oninput="filterAdminCrops()" style="width: 240px; max-width: 100%;">
               <a href="listings.html" class="btn btn-outline btn-sm">Manage All Listings</a>
             </div>
           </div>
           <div class="table-responsive">
-            <table class="table">
+            <table class="table table-wide">
               <thead>
                 <tr>
                   <th>Crop Produce</th>

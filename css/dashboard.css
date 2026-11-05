@@ -208,6 +208,9 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-width: 0;
+  max-width: calc(100vw - 260px);
+  box-sizing: border-box;
 }
 
 .topbar {
@@ -227,17 +230,24 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  min-width: 0;
+  flex: 1;
 }
 
 .topbar-title {
   font-size: 1.35rem;
   font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 .topbar-right {
   display: flex;
   align-items: center;
   gap: 0.85rem;
+  flex-shrink: 0;
 }
 
 .content-container {
@@ -245,7 +255,12 @@
   padding: 2rem;
   max-width: 1350px;
   width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   animation: flFadeIn 0.25s var(--ease-out);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
 }
 
 /* --------------------------------------------------------------------------
