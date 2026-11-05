@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register — FarmLink</title>
+  
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+  <!-- Header -->
+  <header style="padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); background: var(--bg-surface);">
+    <a href="index.html" class="nav-brand">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width: 28px; height: 28px;">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+      </svg>
+      <span data-i18n="brandName">FarmLink</span>
+    </a>
+
+    <div style="display: flex; gap: 0.75rem; align-items: center;">
+      <button class="lang-toggle-btn" onclick="toggleLanguage()" title="Switch Language">
+        <span>🌐</span>
+        <span class="lang-toggle-text">తెలుగు</span>
+      </button>
+      <button class="theme-toggle-btn" onclick="toggleTheme()" title="Switch Theme">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <span class="theme-label">Dark</span>
+      </button>
+      <a href="login.html" class="btn btn-secondary btn-sm" data-i18n="navLogin">Login</a>
+    </div>
+  </header>
+
+  <!-- Register Main Container -->
+  <main style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 2.5rem 1rem;">
+    <div style="width: 100%; max-width: 580px;">
+      <div class="card" style="box-shadow: var(--shadow-lg);">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <h2 style="font-size: 1.6rem; margin-bottom: 0.35rem;" data-i18n="navRegister">Create your FarmLink Account</h2>
+          <p class="text-sm text-muted">Join the direct agricultural trade network in Andhra Pradesh</p>
+        </div>
+
+        <form onsubmit="handleRegister(event)">
+          <!-- Role Selection -->
+          <div class="form-group">
+            <label class="form-label">I want to register as a:</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <label style="border: 2px solid var(--primary-600); background: var(--primary-50); border-radius: var(--radius-md); padding: 1rem; cursor: pointer; display: flex; align-items: center; gap: 0.75rem;">
+                <input type="radio" name="role" value="farmer" checked onchange="toggleRoleFields('farmer')">
+                <div>
+                  <div style="font-weight: 700; color: var(--primary-900);">👨‍🌾 Farmer</div>
+                  <div class="text-xs text-muted">List crops & get fair bids</div>
+                </div>
+              </label>
+
+              <label style="border: 1px solid var(--border-color); background: var(--bg-surface-secondary); border-radius: var(--radius-md); padding: 1rem; cursor: pointer; display: flex; align-items: center; gap: 0.75rem;">
+                <input type="radio" name="role" value="dealer" onchange="toggleRoleFields('dealer')">
+                <div>
+                  <div style="font-weight: 700; color: var(--text-primary);">💼 Dealer / Buyer</div>
+                  <div class="text-xs text-muted">Procure bulk quality produce</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input type="text" id="reg-name" class="form-control" placeholder="Full Name (e.g. Ramesh Kumar)" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Mobile Phone</label>
+              <input type="tel" id="reg-phone" class="form-control" placeholder="9876543210" pattern="[0-9]{10}" required>
+            </div>
+          </div>
+
+          <!-- Farmer Specific Fields -->
+          <div id="farmer-fields">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Farm Land Size (Acres)</label>
+                <input type="number" id="reg-land-size" class="form-control" placeholder="e.g. 5.5" step="0.1" min="0.5">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Primary Crops Cultivated</label>
+                <input type="text" id="reg-farmer-crops" class="form-control" placeholder="e.g. Chilli, Tomato, Cotton">
+              </div>
+            </div>
+          </div>
+
+          <!-- Dealer Specific Fields -->
+          <div id="dealer-fields" style="display: none;">
+            <div class="form-group">
+              <label class="form-label">Business / Firm Name</label>
+              <input type="text" id="reg-business" class="form-control" placeholder="Sri Lakshmi Agri Wholesale Traders">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Business Type</label>
+                <select id="reg-business-type" class="form-control">
+                  <option value="Wholesaler & Exporter">Wholesaler & Exporter</option>
+                  <option value="Commission Agent">Mandi Commission Agent</option>
+                  <option value="Food Processing / Miller">Food Processing / Rice Mill</option>
+                  <option value="Retail Bulk Buyer">Supermarket Bulk Procurement</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">APMC License / GSTIN</label>
+                <input type="text" id="reg-license" class="form-control" placeholder="e.g. APMC-GNT-9821 or GSTIN">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Primary Commodities Procured</label>
+              <input type="text" id="reg-procurement-crops" class="form-control" placeholder="e.g. Chilli, Paddy, Cotton, Tomato">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">District (Andhra Pradesh)</label>
+              <select id="reg-district" class="form-control" required>
+                <option value="Guntur">Guntur</option>
+                <option value="Krishna">Krishna (Vijayawada)</option>
+                <option value="Kurnool">Kurnool</option>
+                <option value="Chittoor">Chittoor (Madanapalle)</option>
+                <option value="West Godavari">West Godavari</option>
+                <option value="East Godavari">East Godavari</option>
+                <option value="Anantapur">Anantapur</option>
+                <option value="Kadapa">YSR Kadapa</option>
+                <option value="Nellore">SPSR Nellore</option>
+                <option value="Prakasam">Prakasam</option>
+                <option value="Visakhapatnam">Visakhapatnam</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Village / Yard / Mandi Location</label>
+              <input type="text" id="reg-location" class="form-control" placeholder="Tadikonda Mandal" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" id="reg-email" class="form-control" placeholder="ramesh@farmlink.in" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Password</label>
+              <input type="password" id="reg-password" class="form-control" placeholder="••••••••" minlength="6" required>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-top: 0.5rem;" data-i18n="navRegister">
+            Complete Registration
+          </button>
+        </form>
+
+        <div style="text-align: center; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-color); font-size: 0.9rem;">
+          <span class="text-muted">Already have an account?</span>
+          <a href="login.html" class="text-brand font-semibold" style="margin-left: 0.35rem;" data-i18n="navLogin">Sign in</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer style="text-align: center; padding: 1.5rem; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid var(--border-color);">
+    &copy; 2026 FarmLink. Direct Farmer & Dealer Connection Platform.
+  </footer>
+
+  <!-- Firebase SDKs (Phase 1 Bridge) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    function toggleRoleFields(role) {
+      const farmerFields = document.getElementById("farmer-fields");
+      const dealerFields = document.getElementById("dealer-fields");
+      if (role === "dealer") {
+        dealerFields.style.display = "block";
+        farmerFields.style.display = "none";
+      } else {
+        dealerFields.style.display = "none";
+        farmerFields.style.display = "block";
+      }
+    }
+
+    async function handleRegister(e) {
+      e.preventDefault();
+      const submitBtn = e.target.querySelector('button[type="submit"]');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Creating Account...";
+      }
+
+      const role = document.querySelector('input[name="role"]:checked').value;
+      const name = document.getElementById("reg-name").value.trim();
+      const phone = document.getElementById("reg-phone").value.trim();
+      const district = document.getElementById("reg-district").value;
+      const location = document.getElementById("reg-location").value.trim() + ", " + district;
+      const email = document.getElementById("reg-email").value.trim();
+      const password = document.getElementById("reg-password").value;
+
+      const userData = {
+        name,
+        email,
+        password,
+        phone,
+        role,
+        district,
+        location
+      };
+
+      if (role === "farmer") {
+        userData.landSize = document.getElementById("reg-land-size").value || "5 Acres";
+        userData.currentCrops = document.getElementById("reg-farmer-crops").value || "Chilli, Tomato";
+        userData.about = `Progressive farmer with ${userData.landSize} in ${district}.`;
+      } else {
+        userData.businessName = document.getElementById("reg-business").value || "Agri Wholesale Traders";
+        userData.businessType = document.getElementById("reg-business-type").value;
+        userData.license = document.getElementById("reg-license").value || "APMC-REGISTERED";
+        userData.commonlyPurchased = document.getElementById("reg-procurement-crops").value || "All regional produce";
+        userData.about = `Verified ${userData.businessType} operating in ${district}.`;
+      }
+
+      try {
+        const res = await window.Auth.register(userData);
+
+        if (res.success) {
+          window.App.showToast("Account created successfully! Welcome to FarmLink.", "success");
+          setTimeout(() => {
+            window.Auth.redirectByRole(role);
+          }, 600);
+        } else {
+          window.App.showToast(res.message, "error");
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Complete Registration";
+          }
+        }
+      } catch (err) {
+        window.App.showToast("An unexpected error occurred during registration.", "error");
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Complete Registration";
+        }
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const roleParam = urlParams.get("role");
+      if (roleParam === "dealer") {
+        document.querySelector('input[name="role"][value="dealer"]').checked = true;
+        toggleRoleFields("dealer");
+      }
+    });
+  </script>
+</body>
+</html>

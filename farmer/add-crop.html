@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add New Crop — FarmLink</title>
+  
+  <link rel="stylesheet" href="../css/themes.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
+</head>
+<body>
+  <div class="app-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+          </svg>
+          <span data-i18n="brandName">FarmLink</span>
+        </a>
+        <span class="sidebar-role-badge" data-i18n="roleFarmer">Farmer</span>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li class="nav-item-header" data-i18n="fNavOverview">Main Menu</li>
+        <li>
+          <a href="dashboard.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span data-i18n="fNavOverview">Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="crops.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span data-i18n="fNavMyCrops">My Listed Crops</span>
+          </a>
+        </li>
+        <li>
+          <a href="add-crop.html" class="sidebar-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <span data-i18n="fNavAddCrop">Add New Crop</span>
+          </a>
+        </li>
+        <li>
+          <a href="offers.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span data-i18n="fNavOffers">Dealer Offers</span>
+            <span id="offers-count-badge" class="sidebar-badge">2</span>
+          </a>
+        </li>
+        <li>
+          <a href="messages.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span data-i18n="fNavMessages">Messages</span>
+          </a>
+        </li>
+        <li>
+          <a href="notifications.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span data-i18n="notificationsTitle">Notifications</span>
+          </a>
+        </li>
+
+        <li class="nav-item-header" data-i18n="whyTitle">Insights & Tools</li>
+        <li>
+          <a href="market-prices.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span data-i18n="fNavMarket">Market Prices</span>
+          </a>
+        </li>
+        <li>
+          <a href="weather.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            <span data-i18n="fNavWeather">Weather & Advisories</span>
+          </a>
+        </li>
+        <li>
+          <a href="profit-calculator.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"/></svg>
+            <span data-i18n="fNavCalculator">Profit Calculator</span>
+          </a>
+        </li>
+        <li>
+          <a href="transactions.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span data-i18n="fNavTransactions">Sales History</span>
+          </a>
+        </li>
+        <li>
+          <a href="profile.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="fNavProfile">Farmer Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="settings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-i18n="fNavSettings">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="logoutUser()" class="sidebar-link" style="color: var(--danger-600);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span data-i18n="logout">Logout</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-profile">
+          <div class="user-avatar user-avatar-display">FL</div>
+          <div class="user-info">
+            <span class="user-name user-name-display">Farmer</span>
+            <span class="user-role user-role-display">FARMER</span>
+          </div>
+        </div>
+        <button class="btn-icon" onclick="logoutUser()" title="Logout">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="topbar-title" id="page-title" data-i18n="fNavAddCrop">Add New Crop Listing</h1>
+        </div>
+        <div class="topbar-right">
+          <button class="lang-toggle-btn" onclick="toggleLanguage()">
+            <span>🌐</span><span class="lang-toggle-text">తెలుగు</span>
+          </button>
+          <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <span class="theme-label">Dark</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="content-container" style="max-width: 900px;">
+        <div class="card" style="box-shadow: var(--shadow-md);">
+          <div style="margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+            <h2 style="font-size: 1.4rem; margin-bottom: 0.25rem;">Produce & Harvest Details</h2>
+            <p class="text-sm text-muted">Transparent quality descriptions help wholesale dealers submit high, fair bids with zero deductions.</p>
+          </div>
+
+          <form id="form-add-crop" onsubmit="handleSaveCrop(event)">
+            <input type="hidden" id="crop-edit-id">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" data-i18n="cropName">Crop Title / Name</label>
+                <input type="text" id="crop-title" class="form-control" placeholder="e.g., Fresh Organic Tomatoes" required oninput="checkFairPriceHint()">
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="category">Category</label>
+                <select id="crop-category" class="form-control" required>
+                  <option value="Vegetables">Vegetables</option>
+                  <option value="Fruits">Fruits</option>
+                  <option value="Grains">Grains</option>
+                  <option value="Pulses">Pulses</option>
+                  <option value="Spices">Spices</option>
+                  <option value="Cash Crops">Cash Crops</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" data-i18n="quantity">Quantity Available</label>
+                <input type="number" id="crop-quantity" class="form-control" placeholder="500" min="1" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Unit of Measurement</label>
+                <select id="crop-unit" class="form-control" required>
+                  <option value="kg">Kilograms (kg)</option>
+                  <option value="quintal">Quintals (100 kg)</option>
+                  <option value="tonne">Metric Tonnes</option>
+                  <option value="crates">Crates</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="expectedPrice">Expected Price (₹ per unit)</label>
+                <input type="number" id="crop-price" class="form-control" placeholder="100" min="1" step="0.5" required oninput="checkFairPriceHint()">
+              </div>
+            </div>
+
+            <!-- Live Fair Price Preview -->
+            <div id="fair-price-preview" style="display: none; margin-bottom: 1.25rem;"></div>
+
+            <!-- Quality Transparency System -->
+            <div class="form-group" style="background: var(--bg-surface-secondary); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+              <label class="form-label" style="font-size: 0.95rem; margin-bottom: 0.75rem;">
+                <span data-i18n="qualityGrade">Quality Grade Certification</span>
+                <span class="text-brand text-xs font-semibold" style="margin-left: 0.5rem;">(Prevents dealer disputes)</span>
+              </label>
+              
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; margin-bottom: 1rem;">
+                <label style="border: 1px solid var(--border-color); background: var(--bg-card); padding: 0.85rem; border-radius: var(--radius-md); cursor: pointer;">
+                  <input type="radio" name="qualityGrade" value="Grade A" checked onchange="updateGradeDetails()">
+                  <div style="margin-top: 0.25rem;">
+                    <span class="badge badge-grade-a">Grade A (Premium)</span>
+                    <p class="text-xs text-muted" style="margin-top: 0.35rem;">Uniform size, freshly picked, zero spots, export ready.</p>
+                  </div>
+                </label>
+
+                <label style="border: 1px solid var(--border-color); background: var(--bg-card); padding: 0.85rem; border-radius: var(--radius-md); cursor: pointer;">
+                  <input type="radio" name="qualityGrade" value="Grade B" onchange="updateGradeDetails()">
+                  <div style="margin-top: 0.25rem;">
+                    <span class="badge badge-grade-b">Grade B (Standard)</span>
+                    <p class="text-xs text-muted" style="margin-top: 0.35rem;">Commercial market quality with standard natural variation.</p>
+                  </div>
+                </label>
+
+                <label style="border: 1px solid var(--border-color); background: var(--bg-card); padding: 0.85rem; border-radius: var(--radius-md); cursor: pointer;">
+                  <input type="radio" name="qualityGrade" value="Grade C" onchange="updateGradeDetails()">
+                  <div style="margin-top: 0.25rem;">
+                    <span class="badge badge-grade-c">Grade C (Processing)</span>
+                    <p class="text-xs text-muted" style="margin-top: 0.35rem;">Best for immediate culinary pulp, juice, or mill processing.</p>
+                  </div>
+                </label>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label text-xs">Quality Note for Dealer</label>
+                <input type="text" id="crop-grade-details" class="form-control" placeholder="Describe size uniformity, moisture percentage, or crate condition.">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" data-i18n="harvestDate">Harvest Date</label>
+                <input type="date" id="crop-harvest-date" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="location">Pickup Village & Mandal / Location</label>
+                <input type="text" id="crop-location" class="form-control" placeholder="Tadikonda Mandal, Guntur Dist" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" data-i18n="description">Crop Description</label>
+              <textarea id="crop-description" class="form-control" rows="3" placeholder="Provide details regarding farming technique (organic, drip-irrigated, IPM) and loading accessibility."></textarea>
+            </div>
+
+            <!-- Crop Image Selection & Live Preview -->
+            <div class="form-group">
+              <label class="form-label">Crop Image (Preset or Custom URL)</label>
+              <div style="display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: center;">
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                  <select id="crop-preset-image" class="form-control" onchange="onPresetImageChange(this.value)">
+                    <option value="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=600&auto=format&fit=crop&q=80">🍅 Fresh Red Tomatoes</option>
+                    <option value="https://images.unsplash.com/photo-1588252303782-cb80119abd6d?w=600&auto=format&fit=crop&q=80">🌶️ Guntur Dry Red Chilli</option>
+                    <option value="https://images.unsplash.com/photo-1606041008023-472dfb5e530f?w=600&auto=format&fit=crop&q=80">☁️ White Cotton Bales</option>
+                    <option value="https://images.unsplash.com/photo-1586201375761-83865001e31c?w=600&auto=format&fit=crop&q=80">🌾 Golden Paddy Rice</option>
+                    <option value="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=600&auto=format&fit=crop&q=80">🍌 Fresh Ripe Bananas</option>
+                    <option value="https://images.unsplash.com/photo-1567375698348-5d9d5ae99de0?w=600&auto=format&fit=crop&q=80">🥜 Bold Groundnut Pods</option>
+                    <option value="https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=600&auto=format&fit=crop&q=80">🌽 Yellow Sweet Corn / Maize</option>
+                    <option value="custom">✏️ Enter Custom Image URL</option>
+                  </select>
+                  <input type="url" id="crop-custom-image" class="form-control" placeholder="https://example.com/crop.jpg" style="display: none;" oninput="previewImage(this.value)">
+                </div>
+                <div style="text-align: center;">
+                  <img id="img-preview" src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=600&auto=format&fit=crop&q=80" style="width: 100px; height: 75px; object-fit: cover; border-radius: var(--radius-md); border: 2px solid var(--border-color); box-shadow: var(--shadow-sm);">
+                  <div class="text-xs text-muted" style="margin-top: 2px;">Image Preview</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 2rem;">
+              <a href="crops.html" class="btn btn-secondary" data-i18n="btnCancel">Cancel</a>
+              <button type="submit" id="btn-submit-crop" class="btn btn-primary" data-i18n="btnSubmit">List Crop</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs (Phase 1 Bridge) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/market.js"></script>
+  <script src="../js/crops.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+    if (window.Auth && !window.Auth.requireAuth("farmer")) {}
+
+    let isSubmitting = false;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Set today's date as default harvest date
+      const dateInput = document.getElementById("crop-harvest-date");
+      if (dateInput && !dateInput.value) {
+        dateInput.value = new Date().toISOString().split("T")[0];
+      }
+
+      // Check edit mode
+      const urlParams = new URLSearchParams(window.location.search);
+      const editParam = urlParams.get("edit");
+      if (editParam) {
+        loadEditCrop(editParam);
+      } else {
+        // Pre-fill location from logged-in farmer profile
+        const currentUser = window.Auth ? window.Auth.getCurrentUser() : null;
+        if (currentUser) {
+          const locInput = document.getElementById("crop-location");
+          if (locInput && !locInput.value) {
+            locInput.value = currentUser.location || currentUser.district || "Guntur, Andhra Pradesh";
+          }
+        }
+      }
+
+      // Update current user display elements
+      if (window.App && window.App.updateUserDisplay) {
+        window.App.updateUserDisplay();
+      }
+    });
+
+    function onPresetImageChange(val) {
+      const customInput = document.getElementById("crop-custom-image");
+      if (val === "custom") {
+        customInput.style.display = "block";
+        customInput.focus();
+        if (customInput.value) previewImage(customInput.value);
+      } else {
+        customInput.style.display = "none";
+        previewImage(val);
+      }
+    }
+
+    function previewImage(url) {
+      const img = document.getElementById("img-preview");
+      if (url && url.trim()) {
+        img.src = url.trim();
+      }
+    }
+
+    function checkFairPriceHint() {
+      const title = document.getElementById("crop-title").value;
+      const price = Number(document.getElementById("crop-price").value);
+      const previewDiv = document.getElementById("fair-price-preview");
+
+      if (title && price > 0 && window.Market) {
+        const evaluation = window.Market.evaluateOffer(title, price);
+        if (evaluation.hasBenchmark) {
+          previewDiv.style.display = "block";
+          previewDiv.innerHTML = window.Market.renderPriceBenchmarkBadge(title, price);
+        } else {
+          previewDiv.style.display = "none";
+        }
+      } else {
+        previewDiv.style.display = "none";
+      }
+    }
+
+    function updateGradeDetails() {
+      const grade = document.querySelector('input[name="qualityGrade"]:checked').value;
+      const input = document.getElementById("crop-grade-details");
+      if (grade === "Grade A") {
+        input.value = "Uniform size, harvested 24 hrs ago, firm skin, nil blemish.";
+      } else if (grade === "Grade B") {
+        input.value = "Standard commercial grade, minor natural size variation.";
+      } else {
+        input.value = "Processing grade, suitable for sauce, pulp, or milling.";
+      }
+    }
+
+    function loadEditCrop(id) {
+      const crop = window.Storage.getCropById(id);
+      if (crop) {
+        const titleEl = document.getElementById("page-title") || document.querySelector(".topbar-title");
+        if (titleEl) titleEl.textContent = "Edit Crop Listing";
+        document.getElementById("crop-edit-id").value = crop.id || crop.cropId;
+        document.getElementById("crop-title").value = crop.cropName || crop.title || "";
+        document.getElementById("crop-category").value = crop.category || "Vegetables";
+        document.getElementById("crop-quantity").value = crop.quantity || "";
+        document.getElementById("crop-unit").value = crop.unit || "kg";
+        document.getElementById("crop-price").value = crop.expectedPrice || "";
+        document.getElementById("crop-harvest-date").value = crop.harvestDate || "";
+        document.getElementById("crop-location").value = crop.location || "";
+        document.getElementById("crop-description").value = crop.description || "";
+        document.getElementById("crop-grade-details").value = crop.gradeDetails || "";
+
+        const gradeRadio = document.querySelector(`input[name="qualityGrade"][value="${crop.qualityGrade}"]`);
+        if (gradeRadio) gradeRadio.checked = true;
+
+        if (crop.image) {
+          previewImage(crop.image);
+        }
+        checkFairPriceHint();
+      }
+    }
+
+    async function handleSaveCrop(e) {
+      e.preventDefault();
+      if (isSubmitting) return;
+
+      const currentUser = window.Auth ? window.Auth.getCurrentUser() : null;
+      if (!currentUser || currentUser.role !== "farmer") {
+        window.App.showToast("Please log in as a farmer to list a crop.", "error");
+        setTimeout(() => {
+          window.location.href = "../login.html?role=farmer";
+        }, 800);
+        return;
+      }
+
+      const editIdInput = document.getElementById("crop-edit-id");
+      const editId = editIdInput ? editIdInput.value.trim() : "";
+
+      const title = (document.getElementById("crop-title").value || "").trim();
+      const category = document.getElementById("crop-category").value;
+      const quantity = Number(document.getElementById("crop-quantity").value);
+      const unit = document.getElementById("crop-unit").value;
+      const expectedPrice = Number(document.getElementById("crop-price").value);
+      const harvestDate = (document.getElementById("crop-harvest-date").value || "").trim();
+      const location = (document.getElementById("crop-location").value || "").trim();
+      
+      const gradeRadio = document.querySelector('input[name="qualityGrade"]:checked');
+      const qualityGrade = gradeRadio ? gradeRadio.value : "Grade A";
+      const gradeDetails = (document.getElementById("crop-grade-details").value || "").trim();
+      const description = (document.getElementById("crop-description").value || "").trim();
+
+      // Image selection logic
+      const presetVal = document.getElementById("crop-preset-image").value;
+      let imageUrl = presetVal;
+      if (presetVal === "custom") {
+        const customUrl = (document.getElementById("crop-custom-image").value || "").trim();
+        imageUrl = customUrl || "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=600&auto=format&fit=crop&q=80";
+      }
+
+      // Validations with clear error messages
+      if (!title) {
+        window.App.showToast("Please enter a crop title.", "warning");
+        document.getElementById("crop-title").focus();
+        return;
+      }
+      if (isNaN(quantity) || quantity <= 0) {
+        window.App.showToast("Please enter a valid quantity greater than 0.", "warning");
+        document.getElementById("crop-quantity").focus();
+        return;
+      }
+      if (isNaN(expectedPrice) || expectedPrice <= 0) {
+        window.App.showToast("Please enter a valid expected price greater than 0.", "warning");
+        document.getElementById("crop-price").focus();
+        return;
+      }
+      if (!harvestDate) {
+        window.App.showToast("Please select a valid harvest date.", "warning");
+        document.getElementById("crop-harvest-date").focus();
+        return;
+      }
+      const harvestDateObj = new Date(harvestDate);
+      if (isNaN(harvestDateObj.getTime())) {
+        window.App.showToast("Invalid harvest date. Please select a valid date.", "warning");
+        document.getElementById("crop-harvest-date").focus();
+        return;
+      }
+      if (!location) {
+        window.App.showToast("Please enter the pickup village/mandal location.", "warning");
+        document.getElementById("crop-location").focus();
+        return;
+      }
+
+      // Resolve authoritative farmer display name with pre-submission verification
+      let resolvedFarmerName = (currentUser.name || currentUser.fullName || currentUser.displayName || "").trim();
+      if (!resolvedFarmerName && window.FarmLinkFirebase && window.FarmLinkFirebase.auth && window.FarmLinkFirebase.auth.currentUser) {
+        resolvedFarmerName = (window.FarmLinkFirebase.auth.currentUser.displayName || "").trim();
+      }
+      if (!resolvedFarmerName && currentUser.email) {
+        const emailPrefix = currentUser.email.split("@")[0].replace(/[._-]/g, " ").trim();
+        if (emailPrefix.length > 0) {
+          resolvedFarmerName = emailPrefix.split(" ").map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(" ");
+        }
+      }
+
+      if (!resolvedFarmerName || resolvedFarmerName.toLowerCase() === "farmer") {
+        window.App.showToast("Please enter your full name in your Profile before listing produce.", "warning");
+        setTimeout(() => {
+          window.location.href = "profile.html";
+        }, 1200);
+        return;
+      }
+
+      // Prevent duplicate creation
+      isSubmitting = true;
+      const submitBtn = document.getElementById("btn-submit-crop");
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = editId ? "Saving..." : "Publishing Listing...";
+      }
+
+      const cropData = {
+        farmerId: currentUser.uid || currentUser.id,
+        farmerUid: currentUser.uid || currentUser.id,
+        farmerName: resolvedFarmerName,
+        farmerPhone: (currentUser.phone || "9876543210").trim(),
+        district: (currentUser.district || "Guntur").trim(),
+        cropName: title,
+        title: title,
+        category: category,
+        quantity: quantity,
+        unit: unit,
+        expectedPrice: expectedPrice,
+        harvestDate: harvestDate,
+        location: location,
+        qualityGrade: qualityGrade,
+        gradeDetails: gradeDetails,
+        description: description,
+        image: imageUrl,
+        status: "Available",
+        isDemo: false,
+        userCreated: true
+      };
+
+      try {
+        if (editId) {
+          const updated = await window.Storage.updateCrop(editId, cropData);
+          if (!updated) throw new Error("Could not find crop to update: " + editId);
+          window.App.showToast("Crop listing updated successfully!", "success");
+        } else {
+          const created = await window.Storage.addCrop(cropData);
+          if (!created) throw new Error("Storage service failed to record crop listing.");
+          window.App.showToast("Crop published! Listing is now active on the Dealer Marketplace.", "success");
+          if (window.Storage.addActivity) {
+            window.Storage.addActivity({
+              targetRole: "farmer",
+              type: "crop",
+              icon: "plus-circle",
+              title: "New Crop Listed",
+              titleTe: "కొత్త పంట జాబితా చేయబడింది",
+              desc: `Listed ${quantity.toLocaleString()} ${unit} of ${title} at ₹${expectedPrice}/${unit}.`,
+              descTe: `₹${expectedPrice}/${unit} చొప్పున ${quantity.toLocaleString()} ${unit} ${title} విజయవంతంగా జాబితా చేశారు.`
+            });
+          }
+        }
+
+        setTimeout(() => {
+          window.location.href = "crops.html";
+        }, 600);
+
+      } catch (err) {
+        console.error("Add/Update Crop failed:", err);
+        window.App.showToast("Failed to save crop: " + (err.message || "Storage write error"), "error");
+        isSubmitting = false;
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = editId ? "Save Changes" : "List Crop";
+        }
+      }
+    }
+  </script>
+</body>
+</html>

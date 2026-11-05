@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports & Trade Analytics — FarmLink Admin</title>
+  
+  <link rel="stylesheet" href="../css/themes.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Admin 10-item Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+          </svg>
+          <span data-i18n="brandName">FarmLink</span>
+        </a>
+        <span class="sidebar-role-badge" style="background: rgba(239, 68, 68, 0.15); color: #dc2626;" data-i18n="roleAdmin">Admin</span>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li class="nav-item-header">Platform Governance</li>
+        <li>
+          <a href="dashboard.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span data-i18n="aNavOverview">Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="farmers.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            <span data-i18n="aNavFarmers">Farmers</span>
+          </a>
+        </li>
+        <li>
+          <a href="dealers.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="aNavDealers">Dealers</span>
+          </a>
+        </li>
+        <li>
+          <a href="listings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span data-i18n="aNavListings">Crop Listings</span>
+          </a>
+        </li>
+        <li>
+          <a href="market-prices.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span data-i18n="aNavPrices">Market Prices</span>
+          </a>
+        </li>
+        <li>
+          <a href="transactions.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <span data-i18n="aNavTransactions">Transactions</span>
+          </a>
+        </li>
+        <li>
+          <a href="notifications.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span data-i18n="notificationsTitle">Notifications</span>
+          </a>
+        </li>
+        <li>
+          <a href="weather-suggestions.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            <span data-i18n="aNavWeatherSuggestions">Weather Suggestions</span>
+          </a>
+        </li>
+        <li>
+          <a href="reports.html" class="sidebar-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            <span data-i18n="aNavReports">Reports</span>
+          </a>
+        </li>
+        <li>
+          <a href="settings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-i18n="aNavSettings">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="logoutUser()" class="sidebar-link" style="color: var(--danger-600);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span data-i18n="logout">Logout</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-profile">
+          <div class="user-avatar user-avatar-display" style="background: linear-gradient(135deg, #dc2626, #ef4444);">AD</div>
+          <div class="user-info">
+            <span class="user-name user-name-display">Admin Officer</span>
+            <span class="user-role user-role-display">APMC ADMIN</span>
+          </div>
+        </div>
+        <button class="btn-icon" onclick="logoutUser()" title="Logout">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="topbar-title" data-i18n="aNavReports">Trade Analytics & APMC Oversight Reports</h1>
+        </div>
+
+        <div class="topbar-right">
+          <button class="lang-toggle-btn" onclick="toggleLanguage()"><span>🌐</span><span class="lang-toggle-text">తెలుగు</span></button>
+          <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span class="theme-label">Dark</span>
+          </button>
+          <button class="btn btn-primary btn-sm" onclick="exportReportCSV()">📥 Export CSV Summary</button>
+        </div>
+      </header>
+
+      <div class="content-container">
+
+        <!-- Top Overview Stats -->
+        <div class="stats-grid" style="margin-bottom: 2rem;">
+          <div class="stat-card">
+            <div class="stat-content">
+              <span class="stat-label">Total Trade Turnover</span>
+              <span class="stat-value text-emerald" id="report-total-turnover">₹14,86,000</span>
+              <span class="stat-trend text-emerald">Settled via Direct Escrow</span>
+            </div>
+            <div class="stat-icon icon-emerald">💰</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-content">
+              <span class="stat-label">Farmer Middleman Savings</span>
+              <span class="stat-value text-brand" id="report-farmer-savings">₹2,22,900</span>
+              <span class="stat-trend text-brand">15% fee retained by farmers</span>
+            </div>
+            <div class="stat-icon icon-blue">📈</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-content">
+              <span class="stat-label">Average Deal Completion Time</span>
+              <span class="stat-value">18.4 <small style="font-size: 0.9rem;">Hrs</small></span>
+              <span class="stat-trend text-muted">From listing to acceptance</span>
+            </div>
+            <div class="stat-icon icon-amber">⏱️</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-content">
+              <span class="stat-label">APMC Price Compliance</span>
+              <span class="stat-value text-emerald">96.8%</span>
+              <span class="stat-trend text-emerald">Within fair price corridors</span>
+            </div>
+            <div class="stat-icon icon-purple">🎯</div>
+          </div>
+        </div>
+
+        <!-- Section 1: District Procurement Breakdown -->
+        <div class="card" style="margin-bottom: 2rem;">
+          <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1rem;">
+            <div>
+              <h2 class="card-title">Andhra Pradesh District-Wise Trade Analytics</h2>
+              <p class="text-xs text-muted">Aggregated volume, top commodities, and active participants per district</p>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>District / Mandi Center</th>
+                  <th>Primary Commodities</th>
+                  <th>Active Farmers</th>
+                  <th>Wholesalers</th>
+                  <th>Executed Volume</th>
+                  <th>Fair Price Adherence</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Guntur</strong> (Mirchi Yard)</td>
+                  <td>Guntur Teja Chilli, Cotton, Tomato</td>
+                  <td>148</td>
+                  <td>42</td>
+                  <td style="font-weight: 700; color: var(--primary-700);">₹6,40,000</td>
+                  <td><span class="badge badge-success">98.2%</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Chittoor</strong> (Madanapalle Mandi)</td>
+                  <td>Hybrid Round Tomato, Mango</td>
+                  <td>112</td>
+                  <td>36</td>
+                  <td style="font-weight: 700; color: var(--primary-700);">₹3,85,000</td>
+                  <td><span class="badge badge-success">96.5%</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Kurnool</strong> (Adoni Yard)</td>
+                  <td>White Cotton, Groundnut, Sunflower</td>
+                  <td>86</td>
+                  <td>28</td>
+                  <td style="font-weight: 700; color: var(--primary-700);">₹2,75,000</td>
+                  <td><span class="badge badge-success">95.1%</span></td>
+                </tr>
+                <tr>
+                  <td><strong>West Godavari</strong> (Bhimavaram)</td>
+                  <td>Sona Masoori Paddy, Banana, Aqua Feed</td>
+                  <td>64</td>
+                  <td>22</td>
+                  <td style="font-weight: 700; color: var(--primary-700);">₹1,86,000</td>
+                  <td><span class="badge badge-success">97.4%</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Section 2: Commodity Fair Price vs Negotiated Rates -->
+        <div class="card">
+          <div class="card-header" style="border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 1rem;">
+            <div>
+              <h2 class="card-title">Commodity Fair Price Corridor Analysis</h2>
+              <p class="text-xs text-muted">Comparison of APMC reference rate vs platform realized transaction prices</p>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Commodity</th>
+                  <th>APMC Reference Price</th>
+                  <th>Recommended Fair Corridor</th>
+                  <th>Avg Realized Farmer Price</th>
+                  <th>Price Benefit to Farmer</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Guntur Teja Red Chilli</strong></td>
+                  <td>₹205 / kg</td>
+                  <td>₹195 – ₹215 / kg</td>
+                  <td style="font-weight: 700; color: var(--emerald-600);">₹208 / kg</td>
+                  <td><span class="badge badge-success">+ ₹13/kg vs middleman rate</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Hybrid Red Tomato</strong></td>
+                  <td>₹32 / kg</td>
+                  <td>₹30 – ₹35 / kg</td>
+                  <td style="font-weight: 700; color: var(--emerald-600);">₹33 / kg</td>
+                  <td><span class="badge badge-success">+ ₹5/kg vs local commission yard</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Premium Long Staple Cotton</strong></td>
+                  <td>₹78 / kg</td>
+                  <td>₹74 – ₹82 / kg</td>
+                  <td style="font-weight: 700; color: var(--emerald-600);">₹79.5 / kg</td>
+                  <td><span class="badge badge-success">+ ₹4.5/kg higher net realization</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Sona Masoori Paddy</strong></td>
+                  <td>₹27 / kg</td>
+                  <td>₹25 – ₹29 / kg</td>
+                  <td style="font-weight: 700; color: var(--emerald-600);">₹28 / kg</td>
+                  <td><span class="badge badge-success">Zero weighing deduction losses</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs (Phase 1 Bridge) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/admin.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+    if (window.Auth && !window.Auth.requireAuth("admin")) {}
+
+    function exportReportCSV() {
+      const csvData = [
+        ["District", "Primary Commodities", "Executed Volume (INR)", "Compliance"],
+        ["Guntur", "Guntur Teja Chilli, Cotton", "640000", "98.2%"],
+        ["Chittoor", "Hybrid Round Tomato", "385000", "96.5%"],
+        ["Kurnool", "White Cotton, Groundnut", "275000", "95.1%"],
+        ["West Godavari", "Sona Masoori Paddy", "186000", "97.4%"]
+      ];
+
+      let csvContent = "data:text/csv;charset=utf-8," + csvData.map(e => e.join(",")).join("\n");
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "farmlink_apmc_analytics_report.csv");
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      window.App.showToast("APMC Analytics CSV Report downloaded successfully!", "success");
+    }
+  </script>
+</body>
+</html>

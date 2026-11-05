@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather & Farming Advisories — FarmLink</title>
+  
+  <link rel="stylesheet" href="../css/themes.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+          </svg>
+          <span data-i18n="brandName">FarmLink</span>
+        </a>
+        <span class="sidebar-role-badge" data-i18n="roleFarmer">Farmer</span>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li class="nav-item-header" data-i18n="fNavOverview">Main Menu</li>
+        <li>
+          <a href="dashboard.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span data-i18n="fNavOverview">Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="crops.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span data-i18n="fNavMyCrops">My Listed Crops</span>
+          </a>
+        </li>
+        <li>
+          <a href="add-crop.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <span data-i18n="fNavAddCrop">Add New Crop</span>
+          </a>
+        </li>
+        <li>
+          <a href="offers.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span data-i18n="fNavOffers">Dealer Offers</span>
+            <span id="offers-count-badge" class="sidebar-badge">2</span>
+          </a>
+        </li>
+        <li>
+          <a href="messages.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span data-i18n="fNavMessages">Messages</span>
+          </a>
+        </li>
+        <li>
+          <a href="notifications.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span data-i18n="notificationsTitle">Notifications</span>
+          </a>
+        </li>
+
+        <li class="nav-item-header" data-i18n="whyTitle">Insights & Tools</li>
+        <li>
+          <a href="market-prices.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span data-i18n="fNavMarket">Market Prices</span>
+          </a>
+        </li>
+        <li>
+          <a href="weather.html" class="sidebar-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            <span data-i18n="fNavWeather">Weather & Advisories</span>
+          </a>
+        </li>
+        <li>
+          <a href="profit-calculator.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"/></svg>
+            <span data-i18n="fNavCalculator">Profit Calculator</span>
+          </a>
+        </li>
+        <li>
+          <a href="transactions.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span data-i18n="fNavTransactions">Sales History</span>
+          </a>
+        </li>
+        <li>
+          <a href="profile.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="fNavProfile">Farmer Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="settings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-i18n="fNavSettings">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="logoutUser()" class="sidebar-link" style="color: var(--danger-600);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span data-i18n="logout">Logout</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-profile">
+          <div class="user-avatar user-avatar-display">FL</div>
+          <div class="user-info">
+            <span class="user-name user-name-display">Farmer</span>
+            <span class="user-role user-role-display">FARMER</span>
+          </div>
+        </div>
+        <button class="btn-icon" onclick="logoutUser()" title="Logout"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></button>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="topbar-title" data-i18n="fNavWeather">Weather & Crop Protection Advisories</h1>
+        </div>
+        <div class="topbar-right">
+          <button class="lang-toggle-btn" onclick="toggleLanguage()"><span>🌐</span><span class="lang-toggle-text">తెలుగు</span></button>
+          <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span class="theme-label">Dark</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="content-container">
+
+        <!-- Simulated Data Notice Banner -->
+        <div class="alert alert-info" style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; border-radius: var(--radius-md);">
+          <span style="font-size: 1.25rem;">ℹ️</span>
+          <span class="text-sm" data-i18n="weatherSimNotice">Simulated Data Notice: Current weather feeds and station readings are simulated for demonstration purposes across Andhra Pradesh agricultural regions.</span>
+        </div>
+
+        <!-- District Selector & Simulator Header -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <label for="weather-city-select" style="font-weight: 700; font-size: 0.95rem;" data-i18n="selectDistrict">Select Agricultural District:</label>
+            <select id="weather-city-select" class="form-control" style="width: 280px;" onchange="updateWeatherView(this.value)">
+              <option value="Guntur">Guntur (Mirchi & Cotton)</option>
+              <option value="Kurnool">Kurnool (Cotton & Groundnut)</option>
+              <option value="Chittoor">Chittoor / Madanapalle (Tomato)</option>
+              <option value="Krishna">Krishna / Vijayawada (Paddy & Pulses)</option>
+              <option value="West Godavari">West Godavari (Paddy & Aqua)</option>
+              <option value="Anantapur">Anantapur (Groundnut & Millets)</option>
+              <option value="Visakhapatnam">Visakhapatnam (Sugarcane & Coffee)</option>
+            </select>
+          </div>
+          <span id="sim-active-indicator" class="badge badge-info" style="display: none; padding: 0.4rem 0.75rem; font-size: 0.8rem;">
+            🧪 Simulation Mode Active
+          </span>
+        </div>
+
+        <!-- Condition Simulator Toolbar -->
+        <div class="card" style="margin-bottom: 1.5rem; padding: 1rem 1.25rem; background: var(--bg-surface-secondary); border-left: 4px solid var(--primary-600);">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <div style="font-weight: 700; font-size: 0.92rem; color: var(--text-primary);" data-i18n="weatherSimTitle">🧪 Weather Condition Simulator (Test Rule Engine)</div>
+              <div class="text-xs text-muted" data-i18n="weatherSimDesc">Simulate specific microclimate conditions to observe automated agronomic rule suggestions.</div>
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button class="btn btn-outline btn-sm" onclick="applyWeatherSimulation('clear')" title="Moderate: <35°C, <60% rain, <20 km/h wind">
+                <span>☀️</span> <span data-i18n="simClear">Clear Sky</span>
+              </button>
+              <button class="btn btn-outline btn-sm" onclick="applyWeatherSimulation('rain')" title="Rain probability >= 60%">
+                <span>🌧️</span> <span data-i18n="simRain">Simulate Heavy Rain</span>
+              </button>
+              <button class="btn btn-outline btn-sm" onclick="applyWeatherSimulation('heatwave')" title="Temperature >= 35°C">
+                <span>🌡️</span> <span data-i18n="simHeat">Simulate Heatwave</span>
+              </button>
+              <button class="btn btn-outline btn-sm" onclick="applyWeatherSimulation('wind')" title="Wind speed >= 20 km/h">
+                <span>💨</span> <span data-i18n="simWind">Simulate Strong Winds</span>
+              </button>
+              <button class="btn btn-secondary btn-sm" onclick="applyWeatherSimulation('reset')" title="Restore District Defaults">
+                <span>🔄</span> <span data-i18n="simReset">Reset</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Weather Widget Container -->
+        <div id="weather-hero-container">
+          <!-- Populated via JS -->
+        </div>
+
+        <!-- 5-Day Forecast -->
+        <div id="forecast-section" style="margin-bottom: 2.5rem;">
+          <h3 style="margin-bottom: 1rem; font-size: 1.25rem;" data-i18n="fiveDayOutlook">5-Day Regional Agricultural Outlook</h3>
+          <div id="forecast-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem;">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <!-- Rule-Based Advisories Section -->
+        <div id="advisories-section">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-size: 1.5rem;">🛡️</span>
+              <div>
+                <h3 style="font-size: 1.25rem;" data-i18n="ruleBasedSuggestions">Rule-Based Farming Suggestions</h3>
+                <p class="text-xs text-muted" data-i18n="ruleBasedDesc">Automated agronomic advisories categorized by Warning, Advisory, and Information.</p>
+              </div>
+            </div>
+          </div>
+
+          <div id="advisories-list">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <!-- Empty State Container (Shown if weather unavailable) -->
+        <div id="weather-empty-state" class="empty-state" style="display: none;">
+          <div style="font-size: 3.5rem; margin-bottom: 0.75rem;">🌦️</div>
+          <div class="empty-state-title" data-i18n="weatherUnavailable">Weather information is currently unavailable.</div>
+          <p class="empty-state-desc" data-i18n="weatherUnavailableDesc">Unable to retrieve regional station telemetry. Please choose another agricultural district.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs (Phase 1 Bridge) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/weather.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+    if (window.Auth && !window.Auth.requireAuth("farmer")) {}
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const user = window.Auth.getCurrentUser();
+      const defaultDistrict = (user && user.district) || "Guntur";
+      const select = document.getElementById("weather-city-select");
+      if (select && select.querySelector(`option[value="${defaultDistrict}"]`)) {
+        select.value = defaultDistrict;
+      }
+      updateWeatherView(select ? select.value : "Guntur");
+    });
+
+    function applyWeatherSimulation(conditionKey) {
+      const select = document.getElementById("weather-city-select");
+      const cityName = select ? select.value : "Guntur";
+      window.Weather.simulateCondition(cityName, conditionKey);
+      updateWeatherView(cityName);
+      const indicator = document.getElementById("sim-active-indicator");
+      if (indicator) {
+        indicator.style.display = conditionKey === "reset" ? "none" : "inline-block";
+        indicator.textContent = `🧪 ${conditionKey.toUpperCase()} Simulated`;
+      }
+    }
+
+    function updateWeatherView(cityName) {
+      const weather = window.Weather.getCityWeather(cityName);
+      const heroContainer = document.getElementById("weather-hero-container");
+      const forecastSection = document.getElementById("forecast-section");
+      const advisoriesSection = document.getElementById("advisories-section");
+      const emptyState = document.getElementById("weather-empty-state");
+
+      if (!weather) {
+        heroContainer.innerHTML = "";
+        forecastSection.style.display = "none";
+        advisoriesSection.style.display = "none";
+        emptyState.style.display = "block";
+        return;
+      }
+
+      emptyState.style.display = "none";
+      forecastSection.style.display = "block";
+      advisoriesSection.style.display = "block";
+
+      const isTe = window.I18n && window.I18n.currentLang === "te";
+
+      // Render Hero Card
+      heroContainer.innerHTML = `
+        <div class="weather-hero-card">
+          <div>
+            <span style="background: rgba(255,255,255,0.22); padding: 0.3rem 0.85rem; border-radius: var(--radius-full); font-size: 0.82rem; font-weight: 700;">
+              📍 ${cityName} Agricultural District Station
+            </span>
+            <div class="weather-temp" style="margin: 0.75rem 0 0.25rem 0;">${weather.temp}°C</div>
+            <div style="font-size: 1.3rem; font-weight: 600;">${isTe && weather.conditionTe ? weather.conditionTe : weather.condition}</div>
+            
+            <div class="weather-stats-pill-grid">
+              <div class="weather-stat-pill">
+                <span>💧</span>
+                <div>
+                  <div class="text-xs" style="opacity: 0.85;">${isTe ? "తేమ (Humidity)" : "Humidity"}</div>
+                  <strong>${weather.humidity}%</strong>
+                </div>
+              </div>
+              <div class="weather-stat-pill">
+                <span>🌧️</span>
+                <div>
+                  <div class="text-xs" style="opacity: 0.85;">${isTe ? "వర్ష సూచన (Rain)" : "Rain Probability"}</div>
+                  <strong>${weather.rainProb}%</strong>
+                </div>
+              </div>
+              <div class="weather-stat-pill">
+                <span>💨</span>
+                <div>
+                  <div class="text-xs" style="opacity: 0.85;">${isTe ? "గాలి వేగం (Wind)" : "Wind Speed"}</div>
+                  <strong>${weather.wind} km/h</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align: right; font-size: 5.5rem;">
+            ${weather.rainProb >= 60 ? '🌧️' : (weather.temp >= 35 ? '☀️' : (weather.wind >= 20 ? '💨' : '⛅'))}
+          </div>
+        </div>
+      `;
+
+      // Render 5-Day Forecast
+      const forecastGrid = document.getElementById("forecast-grid");
+      if (forecastGrid && Array.isArray(weather.forecast)) {
+        forecastGrid.innerHTML = weather.forecast.map(f => `
+          <div class="card" style="text-align: center; padding: 1.25rem; border-top: 3px solid var(--primary-600);">
+            <div style="font-weight: 700; font-size: 1.05rem; margin-bottom: 0.35rem;">${f.day}</div>
+            <div style="font-size: 1.85rem; margin: 0.5rem 0;">
+              ${f.rain >= 60 ? '🌧️' : (f.temp >= 35 ? '☀️' : '⛅')}
+            </div>
+            <div style="font-size: 1.35rem; font-weight: 800; color: var(--primary-700);">${f.temp}°C</div>
+            <div class="text-xs text-muted" style="margin-top: 0.35rem;">
+              <span>🌧️ ${f.rain}%</span>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      // Render Rule-Based Suggestions Categorized by Warning / Advisory / Information
+      const advisories = window.Weather.generateRuleBasedAdvisories(weather);
+      const advisoriesList = document.getElementById("advisories-list");
+      if (advisoriesList) {
+        advisoriesList.innerHTML = advisories.map(adv => {
+          const categoryClass = adv.category === "Warning" ? "badge-warning" : (adv.category === "Advisory" ? "badge-advisory" : "badge-info");
+          const cardClass = adv.category === "Warning" ? "advisory-danger" : (adv.category === "Advisory" ? "advisory-warning" : "advisory-info");
+          const categoryLabel = isTe ? (adv.categoryTe || adv.category) : adv.category;
+
+          return `
+            <div class="advisory-card ${cardClass}" style="margin-bottom: 1rem; padding: 1.25rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                <h4 style="font-size: 1.05rem; font-weight: 700; display: flex; align-items: center; gap: 0.5rem; margin: 0;">
+                  <span>${adv.icon}</span>
+                  <span>${isTe && adv.titleTe ? adv.titleTe : adv.title}</span>
+                </h4>
+                <span class="badge ${categoryClass}" style="font-size: 0.78rem; font-weight: 700; text-transform: uppercase;">
+                  ${categoryLabel}
+                </span>
+              </div>
+              <p class="text-sm" style="line-height: 1.55; color: var(--text-secondary); margin: 0;">
+                ${isTe && adv.textTe ? adv.textTe : adv.text}
+              </p>
+            </div>
+          `;
+        }).join("");
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+# Exclude scratch directory from Vercel deployment
+scratch/
+backups/
+
+# Exclude logs
+*.log
+firebase-debug.log
+
+# Exclude git metadata
+.git/
+.gitignore
+
+# System files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Listed Crops — FarmLink</title>
+  
+  <link rel="stylesheet" href="../css/themes.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+          </svg>
+          <span data-i18n="brandName">FarmLink</span>
+        </a>
+        <span class="sidebar-role-badge" data-i18n="roleFarmer">Farmer</span>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li class="nav-item-header" data-i18n="fNavOverview">Main Menu</li>
+        <li>
+          <a href="dashboard.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span data-i18n="fNavOverview">Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="crops.html" class="sidebar-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span data-i18n="fNavMyCrops">My Listed Crops</span>
+          </a>
+        </li>
+        <li>
+          <a href="add-crop.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <span data-i18n="fNavAddCrop">Add New Crop</span>
+          </a>
+        </li>
+        <li>
+          <a href="offers.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span data-i18n="fNavOffers">Dealer Offers</span>
+            <span id="offers-count-badge" class="sidebar-badge">2</span>
+          </a>
+        </li>
+        <li>
+          <a href="messages.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span data-i18n="fNavMessages">Messages</span>
+          </a>
+        </li>
+        <li>
+          <a href="notifications.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span data-i18n="notificationsTitle">Notifications</span>
+          </a>
+        </li>
+
+        <li class="nav-item-header" data-i18n="whyTitle">Insights & Tools</li>
+        <li>
+          <a href="market-prices.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span data-i18n="fNavMarket">Market Prices</span>
+          </a>
+        </li>
+        <li>
+          <a href="weather.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            <span data-i18n="fNavWeather">Weather & Advisories</span>
+          </a>
+        </li>
+        <li>
+          <a href="profit-calculator.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"/></svg>
+            <span data-i18n="fNavCalculator">Profit Calculator</span>
+          </a>
+        </li>
+        <li>
+          <a href="transactions.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span data-i18n="fNavTransactions">Sales History</span>
+          </a>
+        </li>
+        <li>
+          <a href="profile.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="fNavProfile">Farmer Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="settings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-i18n="fNavSettings">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="logoutUser()" class="sidebar-link" style="color: var(--danger-600);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span data-i18n="logout">Logout</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-profile">
+          <div class="user-avatar user-avatar-display">FL</div>
+          <div class="user-info">
+            <span class="user-name user-name-display">Farmer</span>
+            <span class="user-role user-role-display">FARMER</span>
+          </div>
+        </div>
+        <button class="btn-icon" onclick="logoutUser()" title="Logout">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="topbar-title" data-i18n="fNavMyCrops">My Listed Crops</h1>
+        </div>
+
+        <div class="topbar-right">
+          <button class="lang-toggle-btn" onclick="toggleLanguage()">
+            <span>🌐</span>
+            <span class="lang-toggle-text">తెలుగు</span>
+          </button>
+          <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <span class="theme-label">Dark</span>
+          </button>
+          <a href="add-crop.html" class="btn btn-primary btn-sm">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <span data-i18n="fNavAddCrop">Add New Crop</span>
+          </a>
+        </div>
+      </header>
+
+      <div class="content-container">
+
+        <!-- Search & Filter Controls -->
+        <div class="card" style="margin-bottom: 2rem; padding: 1.25rem;">
+          <div class="form-row" style="align-items: center; gap: 0.75rem; display: flex; flex-wrap: wrap;">
+            <div class="form-group" style="margin-bottom: 0; flex: 1; min-width: 200px;">
+              <input type="text" id="search-crop" class="form-control" placeholder="Search crops by name..." oninput="filterFarmerCrops()">
+            </div>
+            <div class="form-group" style="margin-bottom: 0; min-width: 150px;">
+              <select id="filter-category" class="form-control" onchange="filterFarmerCrops()">
+                <option value="all">All Categories</option>
+                <option value="Vegetables">Vegetables</option>
+                <option value="Spices & Cash Crops">Spices & Cash Crops</option>
+                <option value="Grains">Grains</option>
+                <option value="Fruits">Fruits</option>
+                <option value="Pulses & Oilseeds">Pulses & Oilseeds</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom: 0; min-width: 140px;">
+              <select id="filter-grade" class="form-control" onchange="filterFarmerCrops()">
+                <option value="all">All Quality Grades</option>
+                <option value="Grade A">Grade A (Premium)</option>
+                <option value="Grade B">Grade B (Standard)</option>
+                <option value="Grade C">Grade C (Processing)</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom: 0; min-width: 140px;">
+              <select id="filter-status" class="form-control" onchange="filterFarmerCrops()">
+                <option value="all">All Statuses</option>
+                <option value="Available">Available</option>
+                <option value="Under Negotiation">Under Negotiation</option>
+                <option value="Sold">Sold</option>
+                <option value="Removed">Removed</option>
+              </select>
+            </div>
+            <div>
+              <button class="btn btn-secondary btn-sm" onclick="resetFarmerFilters()" style="white-space: nowrap;">Reset</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Crops Grid -->
+        <div id="crops-container" class="crops-grid">
+          <!-- Rendered dynamically -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- View Crop Details Modal -->
+  <div id="modal-crop-details" class="modal-backdrop">
+    <div class="modal" style="max-width: 600px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="view-crop-title">Crop Specifications</h3>
+        <button class="modal-close" onclick="window.App.closeModal('modal-crop-details')">&times;</button>
+      </div>
+      <div class="modal-body" id="view-crop-body">
+        <!-- Filled dynamically -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="window.App.closeModal('modal-crop-details')">Close</button>
+        <button class="btn btn-primary" id="view-crop-edit-btn">Edit Listing</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs (Phase 1 Bridge) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/market.js"></script>
+  <script src="../js/crops.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+    if (window.Auth && !window.Auth.requireAuth("farmer")) {}
+
+    let userCrops = [];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadFarmerCrops();
+      updateOffersBadge();
+      if (window.Storage && typeof window.Storage.initCropsSync === "function") {
+        window.Storage.initCropsSync(() => {
+          loadFarmerCrops();
+        });
+      }
+      if (window.Storage && typeof window.Storage.initOffersSync === "function") {
+        window.Storage.initOffersSync((syncedOffers) => {
+          updateOffersBadge(syncedOffers);
+        }, "farmer");
+      }
+    });
+
+    function updateOffersBadge(offersList = null) {
+      const user = window.Auth.getCurrentUser();
+      if (!user) return;
+      const allOffers = Array.isArray(offersList) ? offersList : (window.Storage ? window.Storage.getOffers() : []);
+      const myActiveOffers = allOffers.filter(o => 
+        (o.farmerId === user.id || (user.uid && (o.farmerId === user.uid || o.farmerUid === user.uid))) &&
+        (String(o.status || "").toLowerCase() === "pending" || String(o.status || "").toLowerCase() === "countered")
+      );
+      const badgeEl = document.getElementById("offers-count-badge");
+      if (badgeEl) {
+        badgeEl.textContent = myActiveOffers.length;
+        badgeEl.style.display = myActiveOffers.length > 0 ? "inline-block" : "none";
+      }
+    }
+
+    async function loadFarmerCrops() {
+      const user = window.Auth.getCurrentUser();
+      if (!user) return;
+      if (window.App && window.App.updateUserDisplay) window.App.updateUserDisplay();
+
+      if (window.Storage && typeof window.Storage.syncCropsFromFirestore === "function") {
+        await window.Storage.syncCropsFromFirestore();
+      }
+
+      const allCrops = window.Storage.getCrops();
+      userCrops = allCrops.filter(c => c.farmerId === user.id || (user.uid && c.farmerId === user.uid));
+      filterFarmerCrops();
+    }
+
+    function renderCrops(list) {
+      const container = document.getElementById("crops-container");
+      const activeUserCrops = userCrops.filter(c => String(c.status || "").toLowerCase().trim() !== "removed");
+
+      if (activeUserCrops.length === 0 && (!list || list.length === 0)) {
+        container.innerHTML = `
+          <div class="empty-state" style="grid-column: 1 / -1; text-align: center; padding: 3rem 1.5rem; background: var(--bg-surface); border-radius: var(--radius-lg); border: 1px dashed var(--border-color);">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🌾</div>
+            <div class="empty-state-title" style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;" data-i18n="noCropsListedYet">No crops listed yet.</div>
+            <p class="empty-state-desc" style="color: var(--text-muted); max-width: 450px; margin: 0 auto 1.5rem auto;">List your fresh farm harvest directly to connect with verified buyers and receive direct offers.</p>
+            <a href="add-crop.html" class="btn btn-primary" data-i18n="addFirstCrop">Add Your First Crop</a>
+          </div>
+        `;
+      } else if (list.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state" style="grid-column: 1 / -1; text-align: center; padding: 3rem 1.5rem; background: var(--bg-surface); border-radius: var(--radius-lg); border: 1px dashed var(--border-color);">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔍</div>
+            <div class="empty-state-title" style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;" data-i18n="noCropsFound">No crops found matching your filters</div>
+            <p class="empty-state-desc" style="color: var(--text-muted); margin-bottom: 1.5rem;">Try clearing your search query or adjusting your filters.</p>
+            <button class="btn btn-outline btn-sm" onclick="resetFarmerFilters()" data-i18n="clearFilters">Clear Filters</button>
+          </div>
+        `;
+      } else {
+        container.innerHTML = list.map(c => window.Crops.renderCropCard(c, "farmer")).join("");
+      }
+      if (window.I18n && typeof window.I18n.applyTranslations === "function") window.I18n.applyTranslations();
+    }
+
+    function filterFarmerCrops() {
+      const search = document.getElementById("search-crop").value;
+      const category = document.getElementById("filter-category").value;
+      const qualityGrade = document.getElementById("filter-grade").value;
+      const status = document.getElementById("filter-status").value;
+
+      const filtered = window.Crops.filterCrops(userCrops, {
+        search,
+        category,
+        qualityGrade,
+        status
+      });
+      renderCrops(filtered);
+    }
+
+    function resetFarmerFilters() {
+      document.getElementById("search-crop").value = "";
+      document.getElementById("filter-category").value = "all";
+      document.getElementById("filter-grade").value = "all";
+      document.getElementById("filter-status").value = "all";
+      filterFarmerCrops();
+    }
+
+    function viewCropDetails(id) {
+      const crop = userCrops.find(c => c.id === id) || window.Storage.getCrops().find(c => c.id === id);
+      if (!crop) return;
+
+      const cropName = crop.cropName || crop.title || "Agricultural Produce";
+      document.getElementById("view-crop-title").textContent = cropName;
+
+      const benchmarkHtml = window.Market ? window.Market.renderPriceBenchmarkBadge(cropName, crop.expectedPrice) : "";
+      const rawStatus = crop.status || "Available";
+      const displayStatus = (rawStatus === "active" || rawStatus === "Available") ? "Available" : rawStatus;
+      let statusBadgeClass = "badge-success";
+      if (displayStatus === "Under Negotiation") statusBadgeClass = "badge-warning";
+      if (displayStatus === "Sold") statusBadgeClass = "badge-grade-b";
+      if (displayStatus === "Removed") statusBadgeClass = "badge-danger";
+
+      const totalValue = (Number(crop.quantity || 0) * Number(crop.expectedPrice || 0)).toLocaleString();
+
+      const modalBody = document.getElementById("view-crop-body");
+      modalBody.innerHTML = `
+        <div style="display: flex; gap: 1.25rem; flex-direction: column;">
+          <div style="width: 100%; height: 220px; border-radius: var(--radius-md); overflow: hidden; background: #eee;">
+            <img src="${crop.image || 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=600&auto=format&fit=crop&q=80'}" alt="${cropName}" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <span class="badge badge-primary">${crop.qualityGrade || 'Grade A'}</span>
+            <span class="badge badge-success">${crop.category || 'Produce'}</span>
+            <span class="badge ${statusBadgeClass}">${displayStatus}</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; background: var(--bg-surface-2, rgba(0,0,0,0.03)); padding: 1rem; border-radius: var(--radius-md);">
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Expected Price</div>
+              <div style="font-size: 1.2rem; font-weight: 700; color: var(--primary-600);">₹${crop.expectedPrice} / ${crop.unit || 'kg'}</div>
+            </div>
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Available Lot Size</div>
+              <div style="font-size: 1.2rem; font-weight: 700;">${Number(crop.quantity || 0).toLocaleString()} ${crop.unit || 'kg'}</div>
+            </div>
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Est. Total Value</div>
+              <div style="font-size: 1.1rem; font-weight: 600;">₹${totalValue}</div>
+            </div>
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Harvest Date</div>
+              <div style="font-size: 1.1rem; font-weight: 600;">${crop.harvestDate || 'Fresh'}</div>
+            </div>
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Location</div>
+              <div style="font-size: 0.95rem;">${crop.location || 'Andhra Pradesh'}</div>
+            </div>
+            <div>
+              <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">District</div>
+              <div style="font-size: 0.95rem;">${crop.district || 'Guntur'}</div>
+            </div>
+          </div>
+          ${benchmarkHtml ? `<div>${benchmarkHtml}</div>` : ''}
+          ${crop.description ? `
+            <div>
+              <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.25rem;">Produce Description & Quality Notes</div>
+              <p style="font-size: 0.95rem; line-height: 1.5; margin: 0;">${crop.description}</p>
+            </div>
+          ` : ''}
+        </div>
+      `;
+
+      document.getElementById("view-crop-edit-btn").onclick = () => {
+        window.App.closeModal("modal-crop-details");
+        editCrop(crop.id);
+      };
+
+      window.App.openModal("modal-crop-details");
+    }
+
+    async function deleteCropListing(id, buttonEl) {
+      if (!confirm("Are you sure you want to remove this crop listing? It will no longer appear in the marketplace.")) {
+        return;
+      }
+
+      // Prevent double clicks & indicate removal in progress
+      const btn = buttonEl || (typeof event !== 'undefined' ? (event.target || event.currentTarget) : null);
+      let originalHtml = "";
+      if (btn && btn.tagName === 'BUTTON') {
+        originalHtml = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = `<span>Removing...</span>`;
+      }
+
+      try {
+        await window.Storage.deleteCrop(id, true);
+        window.App.showToast("Crop removed successfully.", "info");
+        await loadFarmerCrops();
+      } catch (err) {
+        console.error("Failed to remove crop listing:", err);
+        window.App.showToast("Failed to remove crop: " + (err.message || "Storage write error"), "error");
+        if (btn && btn.tagName === 'BUTTON') {
+          btn.disabled = false;
+          btn.innerHTML = originalHtml;
+        }
+      }
+    }
+
+    function editCrop(id) {
+      window.location.href = `add-crop.html?edit=${id}`;
+    }
+  </script>
+</body>
+</html>

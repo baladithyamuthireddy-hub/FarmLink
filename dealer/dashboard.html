@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dealer Dashboard — FarmLink</title>
+  
+  <link rel="stylesheet" href="../css/themes.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+          </svg>
+          <span data-i18n="brandName">FarmLink</span>
+        </a>
+        <span class="sidebar-role-badge" style="background: rgba(59, 130, 246, 0.15); color: #2563eb;" data-i18n="roleDealer">Dealer</span>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li class="nav-item-header">Procurement</li>
+        <li>
+          <a href="dashboard.html" class="sidebar-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span data-i18n="dNavOverview">Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="marketplace.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <span data-i18n="dNavMarketplace">Browse Marketplace</span>
+          </a>
+        </li>
+        <li>
+          <a href="offers.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span data-i18n="dNavMyOffers">My Offers & Bids</span>
+            <span class="sidebar-badge" id="dealer-offers-badge">1</span>
+          </a>
+        </li>
+        <li>
+          <a href="messages.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span data-i18n="dNavMessages">Messages</span>
+          </a>
+        </li>
+        <li>
+          <a href="notifications.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span data-i18n="notificationsTitle">Notifications</span>
+          </a>
+        </li>
+        <li>
+          <a href="purchases.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span data-i18n="dNavPurchases">Purchase History</span>
+          </a>
+        </li>
+        <li>
+          <a href="saved-crops.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            <span data-i18n="savedCrops">Saved Crops</span>
+          </a>
+        </li>
+        <li>
+          <a href="profile.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="dNavProfile">Business Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="settings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-i18n="dNavSettings">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="logoutUser()" class="sidebar-link" style="color: var(--danger-600);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span data-i18n="logout">Logout</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-profile">
+          <div class="user-avatar user-avatar-display" style="background: linear-gradient(135deg, #2563eb, #3b82f6);">VR</div>
+          <div class="user-info">
+            <span class="user-name user-name-display">Dealer</span>
+            <span class="user-role user-role-display">DEALER • Vijayawada</span>
+          </div>
+        </div>
+        <button class="btn-icon" onclick="logoutUser()" title="Logout"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></button>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="topbar-title" data-i18n="dNavOverview">Dealer Procurement Dashboard</h1>
+        </div>
+        <div class="topbar-right">
+          <button class="lang-toggle-btn" onclick="toggleLanguage()"><span>🌐</span><span class="lang-toggle-text">తెలుగు</span></button>
+          <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span class="theme-label">Dark</span>
+          </button>
+          <a href="marketplace.html" class="btn btn-primary btn-sm" data-i18n="navExplore">Browse Marketplace</a>
+        </div>
+      </header>
+
+      <div class="content-container">
+
+        <!-- Welcome Banner -->
+        <div class="card" style="background: linear-gradient(135deg, #1e3a8a, #1e40af); color: #ffffff; margin-bottom: 2rem; padding: 1.75rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <span id="dealer-banner-business" style="font-size: 0.8rem; background: rgba(255,255,255,0.2); padding: 0.2rem 0.6rem; border-radius: var(--radius-full); font-weight: 600;">💼 Sri Lakshmi Wholesale Agri Traders</span>
+              <h2 style="color: #ffffff; margin: 0.5rem 0; font-size: 1.6rem;">Welcome back, <span class="user-name-display" id="dealer-welcome-name">Dealer</span> garu!</h2>
+              <p style="color: rgba(255,255,255,0.85); font-size: 0.95rem; max-width: 600px;">
+                Directly procure verified Grade A & B crops from regional farmers in Guntur, Kurnool, and Chittoor with zero intermediaries.
+              </p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+              <div style="background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(6px); padding: 0.85rem 1.25rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.2); text-align: right;">
+                <div style="font-size: 0.78rem; opacity: 0.9;" data-i18n="dealerTrustRating">Dealer Trust Rating</div>
+                <div style="font-size: 1.45rem; font-weight: 800;" id="dealer-rating-banner">4.8 <small style="font-size: 1rem; color: #fbbf24;">★</small></div>
+                <div style="font-size: 0.72rem; color: #bfdbfe;" id="dealer-reviews-count-banner">Verified by AP Farmers</div>
+              </div>
+              <a href="marketplace.html" class="btn btn-accent" style="background: #ffffff; color: #1e3a8a;">Find Fresh Produce</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notification Summary Card -->
+        <div class="card" style="margin-bottom: 1.5rem; padding: 0.9rem 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; border-left: 4px solid var(--blue-600); background: var(--bg-surface);">
+          <div style="display: flex; align-items: center; gap: 0.85rem;">
+            <div style="font-size: 1.35rem; width: 38px; height: 38px; border-radius: var(--radius-full); background: rgba(37, 99, 235, 0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">🔔</div>
+            <div>
+              <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary);" data-i18n="notificationsTitle">Notifications</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);" id="dashboard-notif-summary-text">Loading notifications...</div>
+            </div>
+          </div>
+          <a href="notifications.html" class="btn btn-outline btn-sm" data-i18n="viewNotifications">View Notifications</a>
+        </div>
+
+        <!-- Metric Stat Cards (Exact 4 cards requested: Available Crops, Active Offers, Pending Negotiations, Completed Purchases) -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-content">
+              <span class="stat-label" data-i18n="availableCrops">Available Crops</span>
+              <span class="stat-value" id="dealer-stat-available-crops">6</span>
+              <span class="stat-trend text-emerald">Ready for procurement</span>
+            </div>
+            <div class="stat-icon icon-emerald">🌱</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-content">
+              <span class="stat-label">Active Offers</span>
+              <span class="stat-value text-blue" id="dealer-stat-active-offers">1</span>
+              <span class="stat-trend text-blue">Direct bids submitted</span>
+            </div>
+            <div class="stat-icon icon-blue">🏷️</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-content">
+              <span class="stat-label" data-i18n="pendingNegotiations">Pending Negotiations</span>
+              <span class="stat-value text-amber" id="dealer-stat-pending-negotiations">1</span>
+              <span class="stat-trend text-amber">Counter-offers received</span>
+            </div>
+            <div class="stat-icon icon-amber">💬</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-content">
+              <span class="stat-label">Completed Purchases</span>
+              <span class="stat-value text-purple" id="dealer-stat-purchases">0</span>
+              <span class="stat-trend text-purple">Verified contracts</span>
+            </div>
+            <div class="stat-icon icon-purple">📦</div>
+          </div>
+        </div>
+
+        <!-- Section: Active Offers -->
+        <div style="margin-bottom: 2.5rem;">
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Live Procurement Bids & Negotiations</h2>
+              <p class="text-xs text-muted">Your active negotiations with regional farmers</p>
+            </div>
+            <a href="offers.html" class="btn btn-outline btn-sm">View All Bids</a>
+          </div>
+
+          <div id="dealer-offers-container">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <!-- Section: Recommended Fresh Produce -->
+        <div>
+          <div class="card-header">
+            <div>
+              <h2 class="card-title">Featured Fresh Produce for Wholesale</h2>
+              <p class="text-xs text-muted">Certified quality grade & harvest timestamp</p>
+            </div>
+            <a href="marketplace.html" class="btn btn-outline btn-sm">View All in Marketplace</a>
+          </div>
+
+          <div id="dealer-featured-crops" class="crops-grid">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <!-- 2-Column Grid: Market Price Highlights & Recent Activity Feed -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.5rem; margin-top: 2.5rem;">
+          
+          <!-- Column 1: Market Price Highlights -->
+          <div class="card">
+            <div class="card-header" style="padding-bottom: 0.75rem; margin-bottom: 1rem;">
+              <div>
+                <h3 class="card-title" style="font-size: 1.15rem;" data-i18n="marketHighlights">Market Price Highlights</h3>
+                <p class="text-xs text-muted">Daily Mandi modal rates & fair procurement corridor</p>
+              </div>
+            </div>
+            <div id="dealer-market-highlights" style="display: flex; flex-direction: column; gap: 0.75rem;">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+
+          <!-- Column 2: Recent Activity Feed -->
+          <div class="card">
+            <div class="card-header" style="padding-bottom: 0.75rem; margin-bottom: 1rem;">
+              <div>
+                <h3 class="card-title" style="font-size: 1.15rem;" data-i18n="recentActivity">Recent Activity</h3>
+                <p class="text-xs text-muted">Bids, responses & procurement contract logs</p>
+              </div>
+            </div>
+            <div id="dealer-recent-activity" style="display: flex; flex-direction: column; gap: 0.75rem;">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Dealer Raise Offer Modal -->
+  <div id="modal-raise-offer" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Increase Offer Price</h3>
+        <button class="modal-close" onclick="window.App.closeModal('modal-raise-offer')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="modal-raise-offer-id">
+        <div class="form-group">
+          <label class="form-label">New Bid Price (₹ per unit)</label>
+          <input type="number" id="modal-raise-price" class="form-control" step="0.5" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Logistics / Payment Note for Farmer</label>
+          <textarea id="modal-raise-note" class="form-control" rows="3" placeholder="e.g. Can provide immediate bank RTGS upon on-farm truck loading."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="window.App.closeModal('modal-raise-offer')">Cancel</button>
+        <button class="btn btn-primary" onclick="submitDealerRaiseAction()">Submit Revised Bid</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs (Phase 1 Bridge) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/market.js"></script>
+  <script src="../js/crops.js"></script>
+  <script src="../js/offers.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+    if (window.Auth && !window.Auth.requireAuth("dealer")) {}
+
+    function updateDealerNotificationBanner() {
+      const notifSummaryEl = document.getElementById("dashboard-notif-summary-text");
+      if (!notifSummaryEl || !window.Storage || !window.Auth) return;
+
+      const currentUser = window.Auth.getCurrentUser();
+      if (!currentUser) return;
+
+      const uid = currentUser.uid || currentUser.id;
+      const isTe = window.I18n && window.I18n.currentLang === "te";
+
+      const notifs = window.Storage.getNotifications(uid, "dealer") || [];
+      const unreadCount = notifs.filter(n => !(n.isRead || n.read)).length;
+
+      const newText = unreadCount > 0
+        ? (isTe 
+            ? `మీకు ${unreadCount} కొత్త / చదవని నోటిఫికేషన్${unreadCount > 1 ? 'లు' : ''} ఉన్నాయి.`
+            : `You have ${unreadCount} unread notification${unreadCount > 1 ? 's' : ''} awaiting your review.`)
+        : (isTe
+            ? "అన్ని నోటిఫికేషన్లు చదవబడ్డాయి. కొత్త అప్‌డేట్‌లు లేవు."
+            : "You are all caught up! No unread notifications.");
+
+      if (notifSummaryEl.textContent !== newText) {
+        notifSummaryEl.textContent = newText;
+      }
+    }
+
+    window.updateDashboardNotificationSummary = updateDealerNotificationBanner;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      updateDealerNotificationBanner();
+      loadDealerDashboard();
+      if (window.Storage && typeof window.Storage.initCropsSync === "function") {
+        window.Storage.initCropsSync(() => {
+          loadDealerDashboard();
+        });
+      }
+      if (window.Storage && typeof window.Storage.initOffersSync === "function") {
+        window.Storage.initOffersSync(() => {
+          loadDealerDashboard();
+        }, "dealer");
+      }
+      if (window.Storage && typeof window.Storage.initTransactionsSync === "function") {
+        window.Storage.initTransactionsSync(() => {
+          loadDealerDashboard();
+        }, "dealer");
+      }
+      if (window.Storage && typeof window.Storage.initNotificationsSync === "function") {
+        window.Storage.initNotificationsSync(() => {
+          updateDealerNotificationBanner();
+        }, "dealer");
+      }
+      window.addEventListener("farmlink:notifications-updated", () => {
+        updateDealerNotificationBanner();
+      });
+      window.addEventListener("languageChanged", () => {
+        updateDealerNotificationBanner();
+      });
+      window.addEventListener("beforeunload", () => {
+        if (window.Storage && typeof window.Storage.clearAllDashboardSync === "function") {
+          window.Storage.clearAllDashboardSync();
+        }
+      });
+    });
+
+    async function loadDealerDashboard() {
+      const user = window.Auth.getCurrentUser();
+      if (!user) return;
+
+      const uid = user.uid || user.id;
+      const isTe = window.I18n && window.I18n.currentLang === "te";
+
+      const welcomeName = document.getElementById("dealer-welcome-name");
+      if (welcomeName) welcomeName.textContent = user.name;
+      const bizBanner = document.getElementById("dealer-banner-business");
+      if (bizBanner && user.businessName) bizBanner.textContent = "💼 " + user.businessName;
+      if (window.App && window.App.updateUserDisplay) window.App.updateUserDisplay();
+
+      // Cloud Firestore background synchronization (safe handling)
+      try {
+        if (window.Storage && typeof window.Storage.syncCropsFromFirestore === "function") {
+          await window.Storage.syncCropsFromFirestore();
+        }
+        if (window.Storage && typeof window.Storage.syncOffersFromFirestore === "function") {
+          await window.Storage.syncOffersFromFirestore("dealer");
+        }
+        if (window.Storage && typeof window.Storage.syncTransactionsFromFirestore === "function") {
+          await window.Storage.syncTransactionsFromFirestore("dealer");
+        }
+        if (window.Storage && typeof window.Storage.syncNotificationsFromFirestore === "function") {
+          if (!window.Storage.hasActiveNotificationsSync || !window.Storage.hasActiveNotificationsSync()) {
+            await window.Storage.syncNotificationsFromFirestore("dealer");
+          }
+        }
+        if (window.Storage && typeof window.Storage.syncReviewsFromFirestore === "function") {
+          await window.Storage.syncReviewsFromFirestore(uid);
+        }
+      } catch (syncErr) {
+        console.warn("[FarmLink Dealer Dashboard] Firestore sync note:", syncErr.message);
+      }
+
+      const allOffers = window.Storage.getOffers() || [];
+      const dealerOffers = allOffers.filter(o => o.dealerId === user.id || (user.uid && (o.dealerId === user.uid || o.dealerUid === user.uid)));
+      const pendingOffers = dealerOffers.filter(o => String(o.status || '').toLowerCase() === "pending");
+      const counteredOffers = dealerOffers.filter(o => String(o.status || '').toLowerCase() === "countered");
+
+      const allCrops = window.Storage.getCrops() || [];
+      const activeCrops = allCrops.filter(c => (c.status === "active" || c.status === "Available") && c.status !== "Removed");
+
+      // 1. Update stat cards: Available Crops, Active Bids, Pending Negotiations (without artificial || 1 fallback)
+      document.getElementById("dealer-stat-available-crops").textContent = activeCrops.length;
+      document.getElementById("dealer-stat-active-offers").textContent = dealerOffers.length;
+      document.getElementById("dealer-stat-pending-negotiations").textContent = counteredOffers.length;
+      document.getElementById("dealer-offers-badge").textContent = (pendingOffers.length + counteredOffers.length);
+
+      // 2. Update stat card: Completed Purchases (Actual Firestore Transactions)
+      const allTx = window.Storage.getTransactions() || [];
+      const dealerPurchases = allTx.filter(t => 
+        (t.dealerId === uid || (user.id && t.dealerId === user.id))
+      );
+      const uniqueTxMap = new Map();
+      dealerPurchases.forEach(t => {
+        const txKey = t.id || t.transactionId || (t.offerId ? `tx_${t.offerId}` : null);
+        if (txKey && !uniqueTxMap.has(txKey)) {
+          uniqueTxMap.set(txKey, t);
+        }
+      });
+      const completedPurchasesCount = Array.from(uniqueTxMap.values()).filter(t => {
+        const s = window.Storage && typeof window.Storage.getTransactionStatusDisplay === "function"
+          ? window.Storage.getTransactionStatusDisplay(t)
+          : { isFullyCompleted: t.status === "Completed" };
+        return s.isFullyCompleted;
+      }).length;
+      const purchasesStatEl = document.getElementById("dealer-stat-purchases");
+      if (purchasesStatEl) purchasesStatEl.textContent = completedPurchasesCount;
+
+      // 3. Dynamic Notification Summary Bar
+      updateDealerNotificationBanner();
+
+      // Dynamic Dealer Trust Rating
+      const ratingSummary = window.Storage.getUserRatingSummary(user.uid || user.id);
+      const ratingBannerEl = document.getElementById("dealer-rating-banner");
+      const reviewsCountBannerEl = document.getElementById("dealer-reviews-count-banner");
+      if (ratingBannerEl) {
+        ratingBannerEl.innerHTML = `${ratingSummary.average.toFixed(1)} <small style="font-size: 1rem; color: #fbbf24;">★</small>`;
+      }
+      if (reviewsCountBannerEl) {
+        reviewsCountBannerEl.textContent = isTe ? `${ratingSummary.count} రైతు సమీక్షల ద్వారా ధృవీకరించబడింది` : `From ${ratingSummary.count} verified farmer reviews`;
+      }
+
+      // Render Offers
+      const activeNegotiations = dealerOffers.filter(o => {
+        const s = String(o.status || '').toLowerCase();
+        return s === "pending" || s === "countered";
+      });
+      const offersBox = document.getElementById("dealer-offers-container");
+      if (activeNegotiations.length === 0) {
+        offersBox.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-title">No active negotiations</div>
+            <p class="empty-state-desc">Explore regional crop listings in the marketplace and submit your first offer.</p>
+            <a href="marketplace.html" class="btn btn-primary btn-sm">Explore Marketplace</a>
+          </div>
+        `;
+      } else {
+        offersBox.innerHTML = activeNegotiations.map(o => window.Offers.renderOfferCard(o, "dealer")).join("");
+      }
+
+      // Render Recommended Crops
+      document.getElementById("dealer-featured-crops").innerHTML = activeCrops.slice(0, 3).map(c => window.Crops.renderCropCard(c, "dealer")).join("");
+
+      // Render Market Highlights
+      // isTe already declared above (line 352)
+      const marketPrices = window.Storage.getMarketPrices().slice(0, 4);
+      const marketContainer = document.getElementById("dealer-market-highlights");
+      if (marketContainer) {
+        marketContainer.innerHTML = marketPrices.map(mp => `
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; background: var(--bg-surface-secondary); border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+            <div>
+              <div style="font-weight: 700; color: var(--text-primary); font-size: 0.95rem;">${isTe && mp.cropTe ? mp.cropTe : mp.crop}</div>
+              <div class="text-xs text-muted">📍 ${mp.mandi}</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 1.1rem; font-weight: 800; color: var(--primary-700);">₹${mp.marketPrice}<small style="font-size: 0.75rem; font-weight: normal; color: var(--text-muted);">/${mp.unit}</small></div>
+              <div style="font-size: 0.72rem; color: var(--emerald-600); font-weight: 600;">Fair: ₹${mp.minFairPrice} – ₹${mp.maxFairPrice}</div>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      // Render Recent Activities
+      const activities = window.Storage.getActivities("dealer", user).slice(0, 4);
+      const activityContainer = document.getElementById("dealer-recent-activity");
+      if (activityContainer) {
+        if (activities.length === 0) {
+          activityContainer.innerHTML = `<div class="text-xs text-muted" style="padding: 1.5rem 1rem; text-align: center;">${isTe ? "ఇటీవలి కార్యకలాపాలు ఏవీ లేవు." : "No recent activities yet."}</div>`;
+        } else {
+          activityContainer.innerHTML = activities.map(act => `
+            <div style="display: flex; gap: 0.85rem; align-items: flex-start; padding: 0.75rem; background: var(--bg-surface-secondary); border-radius: var(--radius-md); border-left: 3px solid #2563eb;">
+              <div style="font-size: 1.1rem; line-height: 1;">${act.icon || "💼"}</div>
+              <div style="flex: 1;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-weight: 600; font-size: 0.88rem; color: var(--text-primary);">${isTe && act.titleTe ? act.titleTe : act.title}</span>
+                  <span style="font-size: 0.72rem; color: var(--text-muted);">${isTe && act.timeTe ? act.timeTe : act.time}</span>
+                </div>
+                <p class="text-xs text-muted" style="margin-top: 0.2rem; line-height: 1.4;">${isTe && act.descTe ? act.descTe : act.desc}</p>
+              </div>
+            </div>
+          `).join("");
+        }
+      }
+    }
+
+    function openDealerRaiseModal(offerId, currentPrice) {
+      document.getElementById("modal-raise-offer-id").value = offerId;
+      document.getElementById("modal-raise-price").value = currentPrice + 1;
+      window.App.openModal("modal-raise-offer");
+    }
+
+    async function submitDealerRaiseAction() {
+      const offerId = document.getElementById("modal-raise-offer-id").value;
+      const newPrice = Number(document.getElementById("modal-raise-price").value);
+      const note = document.getElementById("modal-raise-note").value;
+
+      if (!newPrice || newPrice <= 0) {
+        window.App.showToast("Please enter a valid positive revised bid price.", "warning");
+        return;
+      }
+
+      try {
+        const res = await window.Offers.counterOffer(offerId, newPrice, note, "dealer");
+        if (res.success) {
+          window.App.closeModal("modal-raise-offer");
+          window.App.showToast("Revised bid submitted to farmer!", "success");
+          await loadDealerDashboard();
+        } else {
+          window.App.showToast(res.message || "Failed to submit revised bid.", "error");
+        }
+      } catch (err) {
+        window.App.showToast(err.message || "Failed to submit revised bid.", "error");
+      }
+    }
+
+    async function handleDealerAcceptOffer(offerId) {
+      if (confirm("Accept the farmer's price and close this procurement purchase?")) {
+        try {
+          const res = await window.Offers.acceptOffer(offerId, "dealer");
+          if (res.success) {
+            window.App.showToast("Deal closed! Offer accepted.", "success");
+            await loadDealerDashboard();
+          } else {
+            window.App.showToast(res.message || "Failed to accept offer.", "error");
+          }
+        } catch (err) {
+          window.App.showToast(err.message || "Failed to accept offer.", "error");
+        }
+      }
+    }
+
+    async function handleCancelOffer(offerId) {
+      if (confirm("Cancel this procurement offer? This will withdraw your bid.")) {
+        try {
+          const res = await window.Offers.cancelOffer(offerId);
+          if (res.success) {
+            window.App.showToast("Offer withdrawn and cancelled.", "info");
+            await loadDealerDashboard();
+          } else {
+            window.App.showToast(res.message || "Failed to cancel offer.", "error");
+          }
+        } catch (err) {
+          window.App.showToast(err.message || "Failed to cancel offer.", "error");
+        }
+      }
+    }
+
+    function openOfferModal(cropId) {
+      window.location.href = `crop-details.html?id=${cropId}`;
+    }
+  </script>
+</body>
+</html>

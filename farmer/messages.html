@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messages — FarmLink</title>
+  
+  <link rel="stylesheet" href="../css/themes.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
+</head>
+<body class="messages-page-body">
+
+  <div class="app-wrapper messages-app-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+          </svg>
+          <span data-i18n="brandName">FarmLink</span>
+        </a>
+        <span class="sidebar-role-badge" data-i18n="roleFarmer">Farmer</span>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li class="nav-item-header" data-i18n="fNavOverview">Main Menu</li>
+        <li>
+          <a href="dashboard.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span data-i18n="fNavOverview">Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="crops.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span data-i18n="fNavMyCrops">My Listed Crops</span>
+          </a>
+        </li>
+        <li>
+          <a href="add-crop.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <span data-i18n="fNavAddCrop">Add New Crop</span>
+          </a>
+        </li>
+        <li>
+          <a href="offers.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span data-i18n="fNavOffers">Dealer Offers</span>
+            <span id="offers-count-badge" class="sidebar-badge">2</span>
+          </a>
+        </li>
+        <li>
+          <a href="messages.html" class="sidebar-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span data-i18n="fNavMessages">Messages</span>
+          </a>
+        </li>
+        <li>
+          <a href="notifications.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span data-i18n="notificationsTitle">Notifications</span>
+          </a>
+        </li>
+
+        <li class="nav-item-header" data-i18n="whyTitle">Insights & Tools</li>
+        <li>
+          <a href="market-prices.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span data-i18n="fNavMarket">Market Prices</span>
+          </a>
+        </li>
+        <li>
+          <a href="weather.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            <span data-i18n="fNavWeather">Weather & Advisories</span>
+          </a>
+        </li>
+        <li>
+          <a href="profit-calculator.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"/></svg>
+            <span data-i18n="fNavCalculator">Profit Calculator</span>
+          </a>
+        </li>
+        <li>
+          <a href="transactions.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span data-i18n="fNavTransactions">Sales History</span>
+          </a>
+        </li>
+        <li>
+          <a href="profile.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="fNavProfile">Farmer Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="settings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-i18n="fNavSettings">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="logoutUser()" class="sidebar-link" style="color: var(--danger-600);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span data-i18n="logout">Logout</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-profile">
+          <div class="user-avatar user-avatar-display">FL</div>
+          <div class="user-info">
+            <span class="user-name user-name-display">Farmer</span>
+            <span class="user-role user-role-display">FARMER</span>
+          </div>
+        </div>
+        <button class="btn-icon" onclick="logoutUser()" title="Logout"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></button>
+      </div>
+    </aside>
+
+    <div class="main-wrapper messages-main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="topbar-title" data-i18n="fNavMessages">Direct Messages</h1>
+        </div>
+        <div class="topbar-right">
+          <button class="lang-toggle-btn" onclick="toggleLanguage()"><span>🌐</span><span class="lang-toggle-text">తెలుగు</span></button>
+          <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span class="theme-label">Dark</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="content-container chat-page-container">
+        <div class="chat-container">
+          
+          <!-- Chat Threads Sidebar -->
+          <div class="chat-sidebar">
+            <div class="chat-search-box">
+              <input type="text" class="form-control" placeholder="Search conversations...">
+            </div>
+            <ul id="chat-thread-list" class="chat-thread-list">
+              <!-- Populated via JS -->
+            </ul>
+          </div>
+
+          <!-- Chat Window -->
+          <div class="chat-window">
+            <div class="chat-window-header">
+              <div style="display: flex; align-items: center; gap: 0.5rem; min-width: 0;">
+                <button type="button" class="chat-mobile-back-btn" onclick="handleMobileBackToThreads()" title="Back to conversations" aria-label="Back">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <div class="user-avatar" id="chat-header-avatar" style="width: 38px; height: 38px; flex-shrink: 0;">VR</div>
+                <div style="min-width: 0; overflow: hidden;">
+                  <div id="chat-header-name" style="font-weight: 700; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Venkat Rao</div>
+                  <div id="chat-header-subtitle" class="text-xs text-muted" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Sri Lakshmi Wholesale Agri Traders • Online</div>
+                </div>
+              </div>
+              <a href="offers.html" class="btn btn-outline btn-sm chat-linked-offers-btn" style="flex-shrink: 0;"><span class="offers-btn-full">View Linked Offers</span><span class="offers-btn-short">Offers</span></a>
+            </div>
+
+            <div id="chat-messages-area" class="chat-messages-area">
+              <!-- Messages bubbles populated via JS -->
+            </div>
+
+            <form class="chat-input-bar" onsubmit="handleSendChat(event)">
+              <textarea id="chat-input-text" class="chat-composer-textarea" placeholder="Type a message... (Press Enter to send, Shift+Enter for new line)" rows="1" required></textarea>
+              <button type="submit" id="chat-send-btn" class="chat-send-btn btn btn-primary" title="Send message" aria-label="Send">
+                <svg class="send-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                <span class="sending-spinner"></span>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs (Phase 1 Bridge) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/chat.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+    if (window.Auth && !window.Auth.requireAuth("farmer")) {}
+
+    let currentConversationId = null;
+    let activeChatListenerConvId = null;
+    let isConversationsSyncStarted = false;
+    let renderMessagesRaf = null;
+    let shouldForceScrollBottom = false;
+
+    function scheduleRenderChatMessages(forceScrollToBottom = false) {
+      if (forceScrollToBottom) {
+        shouldForceScrollBottom = true;
+      }
+      if (renderMessagesRaf) return;
+      renderMessagesRaf = requestAnimationFrame(() => {
+        renderMessagesRaf = null;
+        const force = shouldForceScrollBottom;
+        shouldForceScrollBottom = false;
+        executeRenderChatMessages(force);
+      });
+    }
+
+    async function autoDiscoverTradePartnerConversation(user) {
+      if (!user || !window.Chat) return null;
+      if (window.Storage && window.Storage.isDemoUser(user)) return null;
+
+      const myUid = user.uid || user.id;
+      // 1. Check completed or existing transactions
+      const txs = (window.Storage && typeof window.Storage.getTransactions === "function")
+        ? window.Storage.getTransactions()
+        : [];
+      const userTxs = txs.filter(t => t.farmerId === myUid || t.farmerUid === myUid || t.dealerId === myUid || t.dealerUid === myUid);
+      
+      let candidatePartnerId = null;
+      let candidateCropId = "";
+      let candidateCropTitle = "";
+
+      if (userTxs.length > 0) {
+        const latestTx = userTxs[userTxs.length - 1];
+        candidatePartnerId = (user.role === "farmer") ? (latestTx.dealerId || latestTx.dealerUid) : (latestTx.farmerId || latestTx.farmerUid);
+        candidateCropId = latestTx.cropId || "";
+        candidateCropTitle = latestTx.cropTitle || latestTx.cropName || "";
+      }
+
+      // 2. If no transactions, check active offers
+      if (!candidatePartnerId) {
+        const offers = (window.Storage && typeof window.Storage.getOffers === "function")
+          ? window.Storage.getOffers()
+          : [];
+        const userOffers = offers.filter(o => o.farmerId === myUid || o.dealerId === myUid);
+        if (userOffers.length > 0) {
+          const latestOffer = userOffers[userOffers.length - 1];
+          candidatePartnerId = (user.role === "farmer") ? (latestOffer.dealerId || latestOffer.dealerUid) : (latestOffer.farmerId || latestOffer.farmerUid);
+          candidateCropId = latestOffer.cropId || "";
+          candidateCropTitle = latestOffer.cropTitle || latestOffer.cropName || "";
+        }
+      }
+
+      if (candidatePartnerId) {
+        try {
+          const conv = await window.Chat.initConversationWithPartner(candidatePartnerId, candidateCropId, candidateCropTitle, user);
+          return conv;
+        } catch (e) {
+          console.warn("[FarmLink] Auto-discovery conversation creation note:", e);
+        }
+      }
+      return null;
+    }
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      const user = window.Auth ? window.Auth.getCurrentUser() : null;
+      const urlParams = new URLSearchParams(window.location.search);
+      const conversationParam = urlParams.get("conversation");
+      const partnerId = urlParams.get("partner");
+      const cropId = urlParams.get("cropId");
+
+      // Initial responsive check for mobile (<= 768px)
+      if (window.innerWidth <= 768) {
+        const sidebar = document.querySelector(".chat-sidebar");
+        const win = document.querySelector(".chat-window");
+        if (sidebar && win) {
+          if (conversationParam || partnerId) {
+            sidebar.classList.add("hide-mobile");
+            win.classList.remove("hide-mobile");
+          } else {
+            sidebar.classList.remove("hide-mobile");
+            win.classList.add("hide-mobile");
+          }
+        }
+      }
+
+      // Pre-sync transactions and offers so counterparties can be resolved
+      if (window.Storage) {
+        if (typeof window.Storage.syncTransactionsFromFirestore === "function") {
+          try { await window.Storage.syncTransactionsFromFirestore("farmer"); } catch (e) {}
+        }
+        if (typeof window.Storage.syncOffersFromFirestore === "function") {
+          try { await window.Storage.syncOffersFromFirestore("farmer"); } catch (e) {}
+        }
+      }
+
+      // 1. Initialize conversations sync for real users
+      if (window.Storage && typeof window.Storage.initConversationsSync === "function" && !isConversationsSyncStarted) {
+        isConversationsSyncStarted = true;
+        window.Storage.initConversationsSync(async (convs) => {
+          renderThreads();
+          if (conversationParam && !currentConversationId) {
+            await selectThread(conversationParam);
+          } else if (!currentConversationId && !partnerId && convs && convs.length > 0) {
+            await selectThread(convs[0].id);
+          }
+        });
+      }
+
+      // 2. Routing logic: priority to ?conversation=, then ?partner=, then existing convs, then auto-discovery
+      if (conversationParam) {
+        renderThreads();
+        await selectThread(conversationParam);
+      } else if (partnerId && user && window.Chat) {
+        await handleOpenPartnerChat(partnerId, cropId, user);
+      } else {
+        renderThreads();
+        const convs = window.Chat ? window.Chat.getConversations(user) : [];
+        if (convs && convs.length > 0) {
+          await selectThread(convs[0].id);
+        } else {
+          const autoConv = await autoDiscoverTradePartnerConversation(user);
+          if (autoConv && autoConv.id) {
+            renderThreads();
+            await selectThread(autoConv.id);
+          } else {
+            renderEmptyChatState();
+          }
+        }
+      }
+
+      // 3. Re-sync when Firebase Auth state is restored
+      const fb = window.FarmLinkFirebase;
+      if (fb && fb.auth && typeof fb.auth.onAuthStateChanged === "function") {
+        fb.auth.onAuthStateChanged(async (fbUser) => {
+          if (fbUser) {
+            const u = window.Auth ? window.Auth.getCurrentUser() : null;
+            if (window.Storage && typeof window.Storage.initConversationsSync === "function" && !isConversationsSyncStarted) {
+              isConversationsSyncStarted = true;
+              window.Storage.initConversationsSync(async (convs) => {
+                renderThreads();
+                if (conversationParam && !currentConversationId) {
+                  await selectThread(conversationParam);
+                } else if (!currentConversationId && !partnerId && convs && convs.length > 0) {
+                  await selectThread(convs[0].id);
+                }
+              });
+            }
+            if (conversationParam && !currentConversationId) {
+              await selectThread(conversationParam);
+            } else if (partnerId && u && window.Chat && !currentConversationId) {
+              await handleOpenPartnerChat(partnerId, cropId, u);
+            } else if (!currentConversationId) {
+              renderThreads();
+              const convs = window.Chat ? window.Chat.getConversations(u) : [];
+              if (convs && convs.length > 0) {
+                await selectThread(convs[0].id);
+              } else {
+                const autoConv = await autoDiscoverTradePartnerConversation(u);
+                if (autoConv && autoConv.id) {
+                  renderThreads();
+                  await selectThread(autoConv.id);
+                }
+              }
+            }
+          }
+        });
+      }
+
+      // 4. Listen for cross-window / real-time updates
+      window.addEventListener("farmlink:conversations-updated", async () => {
+        renderThreads();
+        if (conversationParam && currentConversationId !== conversationParam) {
+          await selectThread(conversationParam);
+        } else if (!currentConversationId && !partnerId) {
+          const u = window.Auth ? window.Auth.getCurrentUser() : null;
+          const convs = window.Chat ? window.Chat.getConversations(u) : [];
+          if (convs && convs.length > 0) {
+            await selectThread(convs[0].id);
+          }
+        }
+      });
+      window.addEventListener("farmlink:messages-updated", e => {
+        if (e.detail && e.detail.conversationId === currentConversationId) {
+          scheduleRenderChatMessages(false);
+        }
+      });
+
+      // 5. Thread search input filter
+      const searchBox = document.querySelector(".chat-search-box input");
+      if (searchBox) {
+        searchBox.addEventListener("input", e => {
+          renderThreads(e.target.value);
+        });
+      }
+
+      // Composer textarea auto-resize & Enter-to-send listener
+      const textarea = document.getElementById("chat-input-text");
+      if (textarea) {
+        textarea.addEventListener("input", () => {
+          textarea.style.height = "auto";
+          textarea.style.height = Math.min(textarea.scrollHeight, 120) + "px";
+        });
+        textarea.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" && !e.shiftKey) {
+            e.preventDefault();
+            handleSendChat(e);
+          }
+        });
+      }
+
+      // 6. Apply safe I18n translations
+      if (window.I18n && typeof window.I18n.applyTranslations === "function") {
+        window.I18n.applyTranslations();
+      }
+    });
+
+    // Window resize handler to maintain proper responsive visibility
+    window.addEventListener("resize", () => {
+      const sidebar = document.querySelector(".chat-sidebar");
+      const win = document.querySelector(".chat-window");
+      if (!sidebar || !win) return;
+      if (window.innerWidth > 768) {
+        sidebar.classList.remove("hide-mobile");
+        win.classList.remove("hide-mobile");
+      } else {
+        if (currentConversationId) {
+          sidebar.classList.add("hide-mobile");
+          win.classList.remove("hide-mobile");
+        } else {
+          sidebar.classList.remove("hide-mobile");
+          win.classList.add("hide-mobile");
+        }
+      }
+    });
+
+    window.addEventListener("beforeunload", () => {
+      if (window.Storage) {
+        if (typeof window.Storage.clearConversationsSync === "function") window.Storage.clearConversationsSync();
+        if (typeof window.Storage.clearActiveChatSync === "function") window.Storage.clearActiveChatSync();
+      }
+    });
+
+    async function handleOpenPartnerChat(partnerId, cropId, user) {
+      if (!window.Chat) return;
+      const conv = await window.Chat.initConversationWithPartner(partnerId, cropId, "", user);
+      renderThreads();
+      if (conv && conv.id) {
+        await selectThread(conv.id);
+      }
+    }
+
+    function renderThreads(filterText = "") {
+      const user = window.Auth ? window.Auth.getCurrentUser() : null;
+      if (!user || !window.Chat) return;
+
+      let conversations = window.Chat.getConversations(user);
+      if (filterText && filterText.trim()) {
+        const q = filterText.trim().toLowerCase();
+        conversations = conversations.filter(c =>
+          (c.name && c.name.toLowerCase().includes(q)) ||
+          (c.cropContext && c.cropContext.toLowerCase().includes(q)) ||
+          (c.lastMessage && c.lastMessage.toLowerCase().includes(q))
+        );
+      }
+
+      const listEl = document.getElementById("chat-thread-list");
+      if (!listEl) return;
+
+      if (!conversations || conversations.length === 0) {
+        if (filterText && filterText.trim()) {
+          listEl.innerHTML = `<li style="padding: 1.5rem 1rem; color: var(--text-muted); font-size: 0.85rem; text-align: center;">No conversations matching "${escapeHtml(filterText.trim())}"</li>`;
+        } else {
+          listEl.innerHTML = `
+            <li style="padding: 2.5rem 1.25rem; color: var(--text-muted); font-size: 0.88rem; text-align: center;">
+              <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="margin-bottom: 0.5rem; opacity: 0.4;">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+              <div style="font-weight: 600; color: var(--text-secondary); margin-bottom: 0.25rem;">No Conversations</div>
+              <div style="font-size: 0.8rem;">Direct trade negotiations will appear here.</div>
+            </li>
+          `;
+        }
+        return;
+      }
+
+      listEl.innerHTML = conversations.map(c => {
+        const isActive = (c.id === currentConversationId);
+        const unreadBadge = c.unreadCount > 0 ? `<span class="badge badge-brand" style="margin-left: auto; font-size: 0.7rem; flex-shrink: 0;">${c.unreadCount}</span>` : '';
+        return `
+          <li class="chat-thread-item ${isActive ? 'active' : ''}" data-id="${c.id}" onclick="selectThread('${c.id}')">
+            <div class="user-avatar">${escapeHtml(c.avatar || "DL")}</div>
+            <div class="chat-thread-meta">
+              <div class="chat-thread-name">
+                <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${escapeHtml(c.name || "Wholesaler")}</span>
+                <small class="text-xs text-muted" style="flex-shrink: 0;">${escapeHtml(c.time || "")}</small>
+              </div>
+              <div class="chat-thread-snippet" style="display: flex; align-items: center;">
+                <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${escapeHtml(c.lastMessage || "No messages yet.")}</span>
+                ${unreadBadge}
+              </div>
+              ${c.cropContext ? `<div class="text-xs text-brand" style="margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">📦 ${escapeHtml(c.cropContext)}</div>` : ''}
+            </div>
+          </li>
+        `;
+      }).join("");
+
+      if (currentConversationId) {
+        const active = conversations.find(c => c.id === currentConversationId);
+        if (active) updateChatHeader(active);
+      }
+    }
+
+    function handleMobileBackToThreads() {
+      const sidebar = document.querySelector(".chat-sidebar");
+      const win = document.querySelector(".chat-window");
+      if (sidebar && win) {
+        sidebar.classList.remove("hide-mobile");
+        win.classList.add("hide-mobile");
+      }
+    }
+
+    function handleMobileOpenChat() {
+      const sidebar = document.querySelector(".chat-sidebar");
+      const win = document.querySelector(".chat-window");
+      if (window.innerWidth <= 768 && sidebar && win) {
+        sidebar.classList.add("hide-mobile");
+        win.classList.remove("hide-mobile");
+      }
+    }
+
+    function updateThreadListActiveState(convId) {
+      const threadItems = document.querySelectorAll(".chat-thread-item");
+      threadItems.forEach(el => {
+        if (el.getAttribute("data-id") === convId) {
+          el.classList.add("active");
+        } else {
+          el.classList.remove("active");
+        }
+      });
+    }
+
+    async function selectThread(convId, forceReload = false) {
+      if (!convId) return;
+      const isSwitching = (currentConversationId !== convId);
+      currentConversationId = convId;
+      if (window.Chat) {
+        window.Chat.activeConversationId = convId;
+      }
+
+      handleMobileOpenChat();
+      updateThreadListActiveState(convId);
+
+      // Enable and restore input bar
+      const input = document.getElementById("chat-input-text");
+      const sendBtn = document.getElementById("chat-send-btn");
+      if (input) {
+        input.disabled = false;
+        input.placeholder = "Type a message... (Press Enter to send, Shift+Enter for new line)";
+      }
+      if (sendBtn) sendBtn.disabled = false;
+
+      const user = window.Auth ? window.Auth.getCurrentUser() : null;
+      let convs = window.Chat ? window.Chat.getConversations(user) : [];
+      let activeConv = convs.find(c => c.id === convId);
+
+      // If activeConv not found in local cache, resolve dynamically!
+      if (!activeConv && convId.startsWith("conv_") && user) {
+        const cleanId = convId.replace("conv_", "");
+        const parts = cleanId.split("_");
+        if (parts.length >= 2) {
+          const myUid = user.uid || user.id;
+          const partnerId = (myUid === parts[0]) ? parts[1] : parts[0];
+          try {
+            activeConv = await window.Chat.initConversationWithPartner(partnerId, "", "", user);
+            renderThreads();
+          } catch (e) {
+            console.warn("[FarmLink] Dynamic thread initialization note:", e);
+          }
+        }
+      }
+
+      // Update Chat Header
+      updateChatHeader(activeConv);
+
+      // Attach active message listener if switching thread or not yet attached
+      if (isSwitching || activeChatListenerConvId !== convId || forceReload) {
+        activeChatListenerConvId = convId;
+        if (window.Chat && typeof window.Chat.setActiveConversation === "function") {
+          const partnerInfo = activeConv && window.Chat.getPartnerFromConversation
+            ? window.Chat.getPartnerFromConversation(activeConv, user ? (user.uid || user.id) : null)
+            : null;
+          window.Chat.setActiveConversation(convId, partnerInfo, () => {
+            scheduleRenderChatMessages(false);
+          });
+        }
+      }
+
+      scheduleRenderChatMessages(true);
+
+      // Mark received messages as read
+      if (window.Storage && typeof window.Storage.markMessagesAsReadInFirestore === "function" && user) {
+        window.Storage.markMessagesAsReadInFirestore(convId, user.uid || user.id);
+      }
+    }
+
+    function updateChatHeader(conv) {
+      const avatarEl = document.getElementById("chat-header-avatar");
+      const nameEl = document.getElementById("chat-header-name");
+      const subEl = document.getElementById("chat-header-subtitle");
+
+      if (!conv) {
+        if (nameEl) nameEl.textContent = "Select a conversation";
+        if (subEl) subEl.textContent = "Choose a trade partner from the list";
+        if (avatarEl) avatarEl.textContent = "--";
+        return;
+      }
+
+      if (avatarEl) avatarEl.textContent = conv.avatar || "DL";
+      if (nameEl) nameEl.textContent = conv.name || conv.dealerName || "Wholesale Dealer";
+      if (subEl) {
+        const subtitle = conv.dealerBusiness || conv.cropContext || "Active Negotiation Partner";
+        subEl.textContent = subtitle;
+      }
+    }
+
+    function renderEmptyChatState() {
+      currentConversationId = null;
+      activeChatListenerConvId = null;
+      if (window.Chat) window.Chat.activeConversationId = null;
+      const area = document.getElementById("chat-messages-area");
+      if (!area) return;
+      area.innerHTML = `
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--text-muted); text-align: center; padding: 2rem;">
+          <div style="width: 64px; height: 64px; border-radius: 50%; background-color: var(--border-color-subtle); display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;">
+            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" style="color: var(--primary-600);">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+          </div>
+          <div style="font-weight: 700; font-size: 1.1rem; color: var(--text-primary); margin-bottom: 0.35rem;">FarmLink Direct Trade Messages</div>
+          <div style="font-size: 0.88rem; max-width: 340px; line-height: 1.5;">Select a verified wholesaler conversation from the list to begin negotiating prices, dispatch schedules, and quality requirements.</div>
+        </div>
+      `;
+      updateChatHeader(null);
+
+      // Disable input bar when no conversation is selected
+      const textarea = document.getElementById("chat-input-text");
+      const sendBtn = document.getElementById("chat-send-btn");
+      if (textarea) {
+        textarea.disabled = true;
+        textarea.placeholder = "Select or start a conversation to send messages...";
+        textarea.value = "";
+        textarea.style.height = "auto";
+      }
+      if (sendBtn) sendBtn.disabled = true;
+    }
+
+    function getDayPillLabel(dateVal) {
+      if (!dateVal) return "Today";
+      const d = new Date(dateVal);
+      if (isNaN(d.getTime())) return "Today";
+      const today = new Date();
+      const yesterday = new Date();
+      yesterday.setDate(today.getDate() - 1);
+
+      if (d.toDateString() === today.toDateString()) return "Today";
+      if (d.toDateString() === yesterday.toDateString()) return "Yesterday";
+      return d.toLocaleDateString(undefined, {
+        day: 'numeric',
+        month: 'short',
+        year: (d.getFullYear() !== today.getFullYear() ? 'numeric' : undefined)
+      });
+    }
+
+    function executeRenderChatMessages(forceScrollToBottom = false) {
+      if (!currentConversationId) {
+        renderEmptyChatState();
+        return;
+      }
+
+      const user = window.Auth ? window.Auth.getCurrentUser() : null;
+      if (!user) return;
+
+      const myId = user.uid || user.id;
+      const rawMessages = window.Storage ? window.Storage.getMessages(currentConversationId) : [];
+      const area = document.getElementById("chat-messages-area");
+      if (!area) return;
+
+      // Deduplicate strictly by ID
+      const seen = new Set();
+      const messages = [];
+      rawMessages.forEach(m => {
+        const id = m.id || m.messageId;
+        if (!id || !seen.has(id)) {
+          if (id) seen.add(id);
+          messages.push(m);
+        }
+      });
+
+      if (messages.length === 0) {
+        area.dataset.lastSignature = "";
+        area.innerHTML = `
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--text-muted); font-size: 0.9rem; text-align: center; padding: 2rem;">
+            <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="margin-bottom: 0.75rem; opacity: 0.5;">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span style="font-weight: 600; margin-bottom: 0.25rem;">Start the Conversation</span>
+            <span style="font-size: 0.82rem; max-width: 280px;">No messages in this trade thread yet. Send a greeting or quote to initiate negotiations!</span>
+          </div>
+        `;
+        return;
+      }
+
+      // Avoid replacing the entire conversation if messages and status are unchanged
+      const currentSignature = messages.map(m => (m.id || m.messageId || '') + ':' + (m.text || '') + ':' + (m.isRead || m.read ? '1' : '0')).join('|');
+      if (!forceScrollToBottom && area.dataset.lastSignature === currentSignature && area.children.length > 0) {
+        return;
+      }
+      area.dataset.lastSignature = currentSignature;
+
+      // Check if user is near the bottom (within 120px) before updating DOM
+      const distanceFromBottom = area.scrollHeight - area.scrollTop - area.clientHeight;
+      const isNearBottom = distanceFromBottom <= 120;
+      const previousScrollTop = area.scrollTop;
+
+      let html = "";
+      let lastDayKey = null;
+      let lastSenderId = null;
+
+      messages.forEach((m, idx) => {
+        const isMe = (m.senderId === myId || m.senderId === user.id);
+        const dayKey = m.createdAt ? new Date(m.createdAt).toDateString() : "today";
+
+        // Insert Date Separator when calendar day changes
+        if (dayKey !== lastDayKey) {
+          lastDayKey = dayKey;
+          const dayLabel = getDayPillLabel(m.createdAt);
+          html += `
+            <div class="chat-date-separator">
+              <span class="chat-date-pill">${escapeHtml(dayLabel)}</span>
+            </div>
+          `;
+          lastSenderId = null;
+        }
+
+        const isConsecutive = (m.senderId === lastSenderId);
+        lastSenderId = m.senderId;
+
+        let timeStr = m.timestamp || "";
+        if (!timeStr && m.createdAt) {
+          try {
+            timeStr = new Date(m.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+          } catch (e) {
+            timeStr = "";
+          }
+        }
+
+        const isRead = Boolean(m.isRead || m.read);
+        const receiptHtml = isMe ? `
+          <span class="chat-receipt-status ${isRead ? 'is-read' : 'is-sent'}" title="${isRead ? 'Read' : 'Delivered'}">
+            ${isRead ? '✓✓' : '✓'}
+          </span>
+        ` : '';
+
+        const msgDomId = escapeHtml(m.id || m.messageId || ('msg_item_' + idx));
+
+        html += `
+          <div class="chat-bubble ${isMe ? 'chat-bubble-sent' : 'chat-bubble-received'} ${isConsecutive ? 'msg-consecutive' : ''}" data-msg-id="${msgDomId}">
+            <div class="chat-bubble-text">${escapeHtml(m.text || "")}</div>
+            <div class="chat-bubble-meta">
+              <span class="chat-time">${escapeHtml(timeStr)}</span>
+              ${receiptHtml}
+            </div>
+          </div>
+        `;
+      });
+
+      area.innerHTML = html;
+
+      if (forceScrollToBottom || isNearBottom) {
+        area.scrollTop = area.scrollHeight;
+      } else {
+        area.scrollTop = previousScrollTop;
+      }
+    }
+
+    async function handleSendChat(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      const textarea = document.getElementById("chat-input-text");
+      const sendBtn = document.getElementById("chat-send-btn");
+      const text = textarea ? textarea.value.trim() : "";
+      if (!text || !currentConversationId) return;
+
+      const user = window.Auth ? window.Auth.getCurrentUser() : null;
+      if (!user || !window.Chat) return;
+
+      const originalText = textarea.value;
+      textarea.disabled = true;
+      if (sendBtn) {
+        sendBtn.disabled = true;
+        const icon = sendBtn.querySelector(".send-icon");
+        const spinner = sendBtn.querySelector(".sending-spinner");
+        if (icon) icon.style.display = "none";
+        if (spinner) spinner.style.display = "inline-block";
+      }
+
+      try {
+        const res = await window.Chat.sendMessage(text, user);
+        if (res && res.success !== false) {
+          textarea.value = "";
+          textarea.style.height = "auto";
+          scheduleRenderChatMessages(true);
+          renderThreads();
+        } else {
+          textarea.value = originalText;
+          if (window.App && window.App.showToast) {
+            window.App.showToast(res && res.error ? res.error : "Failed to send message", "error");
+          }
+        }
+      } catch (err) {
+        console.error("[FarmLink] Send message error:", err);
+        textarea.value = originalText;
+        if (window.App && window.App.showToast) {
+          window.App.showToast("Failed to deliver message. Please retry.", "error");
+        }
+      } finally {
+        textarea.disabled = false;
+        if (sendBtn) {
+          sendBtn.disabled = false;
+          const icon = sendBtn.querySelector(".send-icon");
+          const spinner = sendBtn.querySelector(".sending-spinner");
+          if (icon) icon.style.display = "inline-block";
+          if (spinner) spinner.style.display = "none";
+        }
+        textarea.focus({ preventScroll: true });
+      }
+    }
+
+    function escapeHtml(str) {
+      if (!str) return "";
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>

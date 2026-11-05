@@ -1,0 +1,40 @@
+{
+  "firestore": {
+    "rules": "firestore.rules"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "functions": {
+    "source": "functions",
+    "codebase": "default",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ]
+  },
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      ".firebaserc",
+      "**/.*",
+      "**/.*/**",
+      "**/node_modules/**",
+      "backups/**",
+      "scratch/**",
+      "functions/**",
+      "**/*.rules",
+      "**/*.md",
+      "**/*.test.js",
+      "**/*.spec.js",
+      "**/test_*.js",
+      "**/*.log",
+      "**/*.env*",
+      "**/*.key",
+      "**/*.pem",
+      "vercel.json",
+      ".vercelignore"
+    ]
+  }
+}

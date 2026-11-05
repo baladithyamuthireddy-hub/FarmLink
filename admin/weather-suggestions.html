@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Suggestions & Advisories — FarmLink Admin</title>
+  
+  <link rel="stylesheet" href="../css/themes.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Admin 10-item Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+          </svg>
+          <span data-i18n="brandName">FarmLink</span>
+        </a>
+        <span class="sidebar-role-badge" style="background: rgba(239, 68, 68, 0.15); color: #dc2626;" data-i18n="roleAdmin">Admin</span>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li class="nav-item-header">Platform Governance</li>
+        <li>
+          <a href="dashboard.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span data-i18n="aNavOverview">Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="farmers.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            <span data-i18n="aNavFarmers">Farmers</span>
+          </a>
+        </li>
+        <li>
+          <a href="dealers.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="aNavDealers">Dealers</span>
+          </a>
+        </li>
+        <li>
+          <a href="listings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span data-i18n="aNavListings">Crop Listings</span>
+          </a>
+        </li>
+        <li>
+          <a href="market-prices.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span data-i18n="aNavPrices">Market Prices</span>
+          </a>
+        </li>
+        <li>
+          <a href="transactions.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <span data-i18n="aNavTransactions">Transactions</span>
+          </a>
+        </li>
+        <li>
+          <a href="notifications.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span data-i18n="notificationsTitle">Notifications</span>
+          </a>
+        </li>
+        <li>
+          <a href="weather-suggestions.html" class="sidebar-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            <span data-i18n="aNavWeatherSuggestions">Weather Suggestions</span>
+          </a>
+        </li>
+        <li>
+          <a href="reports.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            <span data-i18n="aNavReports">Reports</span>
+          </a>
+        </li>
+        <li>
+          <a href="settings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-i18n="aNavSettings">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="logoutUser()" class="sidebar-link" style="color: var(--danger-600);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span data-i18n="logout">Logout</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-profile">
+          <div class="user-avatar user-avatar-display" style="background: linear-gradient(135deg, #dc2626, #ef4444);">AD</div>
+          <div class="user-info">
+            <span class="user-name user-name-display">Admin Officer</span>
+            <span class="user-role user-role-display">APMC ADMIN</span>
+          </div>
+        </div>
+        <button class="btn-icon" onclick="logoutUser()" title="Logout">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="topbar-title" data-i18n="aNavWeatherSuggestions">Agricultural Weather Suggestions</h1>
+        </div>
+
+        <div class="topbar-right">
+          <button class="lang-toggle-btn" onclick="toggleLanguage()"><span>🌐</span><span class="lang-toggle-text">తెలుగు</span></button>
+          <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span class="theme-label">Dark</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="content-container">
+
+        <!-- District Selector & Microclimate Overview -->
+        <div class="card" style="margin-bottom: 2rem;">
+          <div class="card-header" style="padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); margin-bottom: 1.25rem;">
+            <div>
+              <h2 class="card-title">Microclimate Monitor by District</h2>
+              <p class="text-xs text-muted">Select an AP agricultural zone to review current weather telemetry and issue advisories.</p>
+            </div>
+            <select id="select-district" class="form-control" style="width: auto; min-width: 180px;" onchange="updateDistrictTelemetry(this.value)">
+              <option value="Guntur">Guntur District</option>
+              <option value="Chittoor">Chittoor District</option>
+              <option value="Kurnool">Kurnool District</option>
+              <option value="West Godavari">West Godavari District</option>
+            </select>
+          </div>
+
+          <div id="district-weather-stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+        <!-- Create & Broadcast Advisory Form -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+          <div class="card">
+            <h3 class="card-title" style="margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+              Broadcast New Agricultural Advisory
+            </h3>
+
+            <form onsubmit="handleBroadcastAdvisory(event)">
+              <div class="form-group">
+                <label class="form-label">Target District</label>
+                <select id="adv-district" class="form-control" required>
+                  <option value="Guntur">Guntur (Mirchi & Cotton belt)</option>
+                  <option value="Chittoor">Chittoor (Tomato & Horticulture)</option>
+                  <option value="Kurnool">Kurnool (Cotton & Pulses)</option>
+                  <option value="West Godavari">West Godavari (Paddy & Aqua)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Advisory Severity</label>
+                <select id="adv-severity" class="form-control">
+                  <option value="danger">🔴 Danger / Halt Foliar Spraying</option>
+                  <option value="warning">🟡 Warning / High Heat & Irrigation Timing</option>
+                  <option value="info">🔵 Notice / Moderate Wind Warning</option>
+                  <option value="success">🟢 Favorable / Optimal Harvest & Sun-drying</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Advisory Title (English)</label>
+                <input type="text" id="adv-title" class="form-control" placeholder="e.g., Heavy Rain Alert: Clear Tomato Trench Channels" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Advisory Title (Telugu - తెలుగు)</label>
+                <input type="text" id="adv-title-te" class="form-control" placeholder="e.g., భారీ వర్ష హెచ్చరిక: కాలువల్లో నీరు నిల్వకుండా చూడండి">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Advisory Instruction (English)</label>
+                <textarea id="adv-text" class="form-control" rows="3" placeholder="Provide direct, practical farmer advice regarding spraying, irrigation, or harvesting." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                Broadcast Advisory via Portal & SMS
+              </button>
+            </form>
+          </div>
+
+          <!-- Active Advisories in Effect -->
+          <div class="card">
+            <h3 class="card-title" style="margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+              Current Active Advisories in System
+            </h3>
+            <div id="active-advisories-list" style="display: flex; flex-direction: column; gap: 1rem;">
+              <!-- Populated via JS -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs (Phase 1 Bridge) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/weather.js"></script>
+  <script src="../js/admin.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+    if (window.Auth && !window.Auth.requireAuth("admin")) {}
+
+    document.addEventListener("DOMContentLoaded", () => {
+      updateDistrictTelemetry("Guntur");
+      renderActiveAdvisories();
+    });
+
+    function updateDistrictTelemetry(district) {
+      const weather = window.Weather ? window.Weather.getCityWeather(district) : null;
+      const statsBox = document.getElementById("district-weather-stats");
+      if (!weather || !statsBox) return;
+
+      statsBox.innerHTML = `
+        <div style="background: var(--bg-surface-secondary); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); text-align: center;">
+          <div class="text-xs text-muted">TEMPERATURE</div>
+          <div style="font-size: 1.6rem; font-weight: 800; color: var(--text-primary);">${weather.temp}°C</div>
+          <div class="text-xs font-semibold" style="color: var(--primary-600);">${weather.condition}</div>
+        </div>
+
+        <div style="background: var(--bg-surface-secondary); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); text-align: center;">
+          <div class="text-xs text-muted">RAIN PROBABILITY</div>
+          <div style="font-size: 1.6rem; font-weight: 800; color: #2563eb;">${weather.rainProb}%</div>
+          <div class="text-xs text-muted">${weather.rainProb > 50 ? 'High precipitation' : 'Low precipitation'}</div>
+        </div>
+
+        <div style="background: var(--bg-surface-secondary); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); text-align: center;">
+          <div class="text-xs text-muted">AIR HUMIDITY</div>
+          <div style="font-size: 1.6rem; font-weight: 800; color: var(--emerald-600);">${weather.humidity}%</div>
+          <div class="text-xs text-muted">Moisture index</div>
+        </div>
+
+        <div style="background: var(--bg-surface-secondary); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); text-align: center;">
+          <div class="text-xs text-muted">WIND VELOCITY</div>
+          <div style="font-size: 1.6rem; font-weight: 800; color: var(--amber-600);">${weather.wind} km/h</div>
+          <div class="text-xs text-muted">${weather.wind > 15 ? 'Drift risk' : 'Calm breeze'}</div>
+        </div>
+      `;
+    }
+
+    function renderActiveAdvisories() {
+      const weatherData = window.Storage.get("farmlink_weather") || {};
+      const cities = weatherData.cities || {};
+      const container = document.getElementById("active-advisories-list");
+      
+      let allAdvisories = [];
+      Object.keys(cities).forEach(cityName => {
+        const cityObj = cities[cityName];
+        if (cityObj.advisories && cityObj.advisories.length > 0) {
+          cityObj.advisories.forEach(adv => {
+            allAdvisories.push({ ...adv, district: cityName });
+          });
+        }
+      });
+
+      if (allAdvisories.length === 0) {
+        container.innerHTML = `<div class="text-sm text-muted" style="padding: 1.5rem; text-align: center;">No active advisories broadcast currently.</div>`;
+        return;
+      }
+
+      container.innerHTML = allAdvisories.map(adv => `
+        <div class="alert alert-${adv.type}" style="margin: 0; padding: 0.85rem;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.35rem;">
+            <span class="badge badge-info" style="font-size: 0.7rem;">📍 ${adv.district}</span>
+            <span class="badge badge-${adv.type}" style="font-size: 0.7rem; text-transform: uppercase;">${adv.type}</span>
+          </div>
+          <div style="font-weight: 700; font-size: 0.9rem; margin-bottom: 0.25rem;">${adv.title}</div>
+          <p style="font-size: 0.82rem; margin: 0; opacity: 0.95; line-height: 1.4;">${adv.text}</p>
+        </div>
+      `).join("");
+    }
+
+    function handleBroadcastAdvisory(e) {
+      e.preventDefault();
+      const district = document.getElementById("adv-district").value;
+      const severity = document.getElementById("adv-severity").value;
+      const title = document.getElementById("adv-title").value;
+      const titleTe = document.getElementById("adv-title-te").value || title;
+      const text = document.getElementById("adv-text").value;
+
+      const weatherData = window.Storage.get("farmlink_weather") || {};
+      if (!weatherData.cities) weatherData.cities = {};
+      if (!weatherData.cities[district]) weatherData.cities[district] = { advisories: [] };
+      if (!weatherData.cities[district].advisories) weatherData.cities[district].advisories = [];
+
+      const newAdv = {
+        id: "adv_" + Date.now(),
+        type: severity,
+        title,
+        titleTe,
+        text,
+        textTe: text
+      };
+
+      weatherData.cities[district].advisories.unshift(newAdv);
+      window.Storage.set("farmlink_weather", weatherData);
+
+      // Add to activity
+      window.Storage.addActivity({
+        targetRole: "farmer",
+        type: "weather",
+        title: "New Advisory: " + title,
+        titleTe: "కొత్త సూచన: " + titleTe,
+        desc: text,
+        descTe: text
+      });
+
+      window.App.showToast(`Advisory broadcast to all ${district} farmers via SMS & Portal!`, "success");
+      document.getElementById("adv-title").value = "";
+      document.getElementById("adv-title-te").value = "";
+      document.getElementById("adv-text").value = "";
+
+      renderActiveAdvisories();
+    }
+  </script>
+</body>
+</html>

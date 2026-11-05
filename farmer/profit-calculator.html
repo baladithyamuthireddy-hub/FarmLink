@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer Profit Calculator — FarmLink</title>
+  
+  <link rel="stylesheet" href="../css/themes.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+          </svg>
+          <span data-i18n="brandName">FarmLink</span>
+        </a>
+        <span class="sidebar-role-badge" data-i18n="roleFarmer">Farmer</span>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li class="nav-item-header" data-i18n="fNavOverview">Main Menu</li>
+        <li>
+          <a href="dashboard.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span data-i18n="fNavOverview">Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="crops.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span data-i18n="fNavMyCrops">My Listed Crops</span>
+          </a>
+        </li>
+        <li>
+          <a href="add-crop.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <span data-i18n="fNavAddCrop">Add New Crop</span>
+          </a>
+        </li>
+        <li>
+          <a href="offers.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span data-i18n="fNavOffers">Dealer Offers</span>
+            <span id="offers-count-badge" class="sidebar-badge">2</span>
+          </a>
+        </li>
+        <li>
+          <a href="messages.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span data-i18n="fNavMessages">Messages</span>
+          </a>
+        </li>
+        <li>
+          <a href="notifications.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span data-i18n="notificationsTitle">Notifications</span>
+          </a>
+        </li>
+
+        <li class="nav-item-header" data-i18n="whyTitle">Insights & Tools</li>
+        <li>
+          <a href="market-prices.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span data-i18n="fNavMarket">Market Prices</span>
+          </a>
+        </li>
+        <li>
+          <a href="weather.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            <span data-i18n="fNavWeather">Weather & Advisories</span>
+          </a>
+        </li>
+        <li>
+          <a href="profit-calculator.html" class="sidebar-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"/></svg>
+            <span data-i18n="fNavCalculator">Profit Calculator</span>
+          </a>
+        </li>
+        <li>
+          <a href="transactions.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span data-i18n="fNavTransactions">Sales History</span>
+          </a>
+        </li>
+        <li>
+          <a href="profile.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="fNavProfile">Farmer Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="settings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-i18n="fNavSettings">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="logoutUser()" class="sidebar-link" style="color: var(--danger-600);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span data-i18n="logout">Logout</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-profile">
+          <div class="user-avatar user-avatar-display">FL</div>
+          <div class="user-info">
+            <span class="user-name user-name-display">Farmer</span>
+            <span class="user-role user-role-display">FARMER</span>
+          </div>
+        </div>
+        <button class="btn-icon" onclick="logoutUser()" title="Logout"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></button>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="topbar-title" data-i18n="calcTitle">Farmer Cultivation & Profit Calculator</h1>
+        </div>
+        <div class="topbar-right">
+          <button class="lang-toggle-btn" onclick="toggleLanguage()"><span>🌐</span><span class="lang-toggle-text">తెలుగు</span></button>
+          <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span class="theme-label">Dark</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="content-container">
+
+        <!-- Top Header & Listed Crops Integration -->
+        <div class="card" style="margin-bottom: 1.5rem; background: var(--bg-surface-secondary); padding: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div style="flex: 1; min-width: 260px;">
+              <label for="crop-selector" style="font-weight: 700; font-size: 0.92rem; display: block; margin-bottom: 0.35rem;" data-i18n="selectListedCrop">
+                🌾 Populate from My Listed Crops:
+              </label>
+              <select id="crop-selector" class="form-control" onchange="onSelectListedCrop(this.value)">
+                <option value="">-- Select a Listed Crop or Enter Manually --</option>
+              </select>
+            </div>
+            <div style="flex: 1; min-width: 260px;">
+              <div style="font-weight: 700; font-size: 0.92rem; margin-bottom: 0.35rem;" data-i18n="quickPresets">
+                ⚡ Quick Regional Presets:
+              </div>
+              <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <button class="btn btn-secondary btn-sm" onclick="applyPreset('prompt_sample')">📋 1 Acre Sample (₹33k/₹45k)</button>
+                <button class="btn btn-secondary btn-sm" onclick="applyPreset('chilli')">🌶️ Teja Chilli</button>
+                <button class="btn btn-secondary btn-sm" onclick="applyPreset('tomato')">🍅 Hybrid Tomato</button>
+                <button class="btn btn-secondary btn-sm" onclick="applyPreset('rice')">🌾 Paddy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-grid">
+          <!-- Cost Input Form -->
+          <div class="card">
+            <h3 style="margin-bottom: 1.25rem; font-size: 1.25rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;" data-i18n="cropCostDetails">
+              Cultivation Cost Breakdown (₹)
+            </h3>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" data-i18n="cropNameLabel">Crop / Produce Name</label>
+                <input type="text" id="calc-crop-name" class="form-control" value="Guntur Teja Dry Red Chilli" placeholder="e.g. Tomato, Chilli, Cotton" oninput="recalc()">
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="acreageLabel">Cultivation Land Area (Acres)</label>
+                <input type="number" id="calc-acreage" class="form-control" value="1" min="0.1" step="0.5" oninput="recalc()">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" data-i18n="seedCost">Seed / Sapling Cost (₹)</label>
+                <input type="number" id="calc-seed" class="form-control" value="5000" min="0" oninput="recalc()">
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="fertilizerCost">Fertilizers & Nutrients (₹)</label>
+                <input type="number" id="calc-fertilizer" class="form-control" value="8000" min="0" oninput="recalc()">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" data-i18n="pesticideCost">Pesticides & Protection (₹)</label>
+                <input type="number" id="calc-pesticide" class="form-control" value="4000" min="0" oninput="recalc()">
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="labourCost">Labour & Harvesting (₹)</label>
+                <input type="number" id="calc-labour" class="form-control" value="10000" min="0" oninput="recalc()">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" data-i18n="irrigationCost">Irrigation & Power (₹)</label>
+                <input type="number" id="calc-irrigation" class="form-control" value="3000" min="0" oninput="recalc()">
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="transportCost">Transportation & Mandi Bags (₹)</label>
+                <input type="number" id="calc-transport" class="form-control" value="2000" min="0" oninput="recalc()">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" data-i18n="otherCost">Other Expenses & Mandi Cess (₹)</label>
+              <input type="number" id="calc-other" class="form-control" value="1000" min="0" oninput="recalc()">
+            </div>
+
+            <h3 style="margin: 1.5rem 0 1rem 0; font-size: 1.15rem; border-top: 1px solid var(--border-color); padding-top: 1.25rem;" data-i18n="harvestYieldHeading">
+              Estimated Harvest Yield & Selling Price
+            </h3>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" data-i18n="yieldQty">Estimated Yield (kg / units)</label>
+                <input type="number" id="calc-yield" class="form-control" value="500" min="0" oninput="recalc()">
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="sellingPrice">Selling Price (₹ per kg)</label>
+                <input type="number" id="calc-price" class="form-control" value="90" min="0" step="0.5" oninput="recalc()">
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+              <button class="btn btn-primary" onclick="handleSaveCalculation()">
+                <span>💾</span> <span data-i18n="btnSaveCalculation">Save Calculation</span>
+              </button>
+              <button class="btn btn-secondary" onclick="resetCalculator()" data-i18n="btnReset">
+                <span>🔄</span> Reset Values
+              </button>
+            </div>
+          </div>
+
+          <!-- Summary & Profit Meter -->
+          <div>
+            <div class="calc-summary-card">
+              <h3 style="font-size: 1.3rem; margin-bottom: 1.25rem;" data-i18n="financialSummary">Financial Summary</h3>
+
+              <div class="calc-metric-row">
+                <span class="text-muted" data-i18n="totalInvestment">Total Investment:</span>
+                <span style="font-weight: 700;" id="sum-investment">₹33,000</span>
+              </div>
+
+              <div class="calc-metric-row">
+                <span class="text-muted" data-i18n="costPerKg">Production Cost per kg:</span>
+                <span style="font-weight: 700;" id="sum-cost-per-kg">₹66.00 / kg</span>
+              </div>
+
+              <div class="calc-metric-row">
+                <span class="text-muted" data-i18n="expectedRevenue">Expected Revenue:</span>
+                <span style="font-weight: 700; color: var(--primary-700);" id="sum-revenue">₹45,000</span>
+              </div>
+
+              <div class="calc-metric-row">
+                <span class="text-muted" data-i18n="profitMargin">Profit Margin (%):</span>
+                <span style="font-weight: 700;" id="sum-margin">26.7%</span>
+              </div>
+
+              <div class="calc-metric-row">
+                <span class="text-muted" data-i18n="roiLabel">Return on Investment (ROI):</span>
+                <span style="font-weight: 700;" id="sum-roi">36.4%</span>
+              </div>
+
+              <!-- Big Net Profit / Loss Banner -->
+              <div id="profit-meter-container" class="calc-net-profit">
+                <div id="profit-meter-title" class="text-xs text-muted font-semibold" data-i18n="estimatedProfit">ESTIMATED PROFIT</div>
+                <div id="sum-profit" class="calc-net-profit-val">₹12,000</div>
+                <div id="profit-meter-status" class="text-xs font-semibold" style="margin-top: 0.35rem; color: var(--emerald-600);">
+                  ✓ Profitable Selling Price
+                </div>
+              </div>
+
+              <p class="text-xs text-muted" style="margin-top: 1.25rem; line-height: 1.5;" data-i18n="calcFormulaNote">
+                * Formulas: Total Investment = Seed + Fertilizer + Pesticide + Labour + Irrigation + Transport + Other. Revenue = Quantity × Price. Profit/Loss = Revenue - Investment. Margin = (Profit / Revenue) × 100.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Saved Calculations Section -->
+        <div style="margin-top: 3rem;">
+          <div class="card-header" style="padding-bottom: 0.75rem; margin-bottom: 1rem;">
+            <div>
+              <h2 class="card-title" style="font-size: 1.35rem;" data-i18n="savedCalculationsTitle">Saved Calculations</h2>
+              <p class="text-xs text-muted" data-i18n="savedCalculationsSub">Review previously analyzed cultivation budgets, revenues, and profit margins.</p>
+            </div>
+          </div>
+
+          <div id="saved-calculations-container">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs (Phase 1 Bridge) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+    if (window.Auth && !window.Auth.requireAuth("farmer")) {}
+
+    let currentUser = null;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      currentUser = window.Auth.getCurrentUser();
+      populateCropSelector();
+      renderSavedCalculations();
+      recalc();
+    });
+
+    function populateCropSelector() {
+      if (!currentUser) return;
+      const select = document.getElementById("crop-selector");
+      const crops = window.Storage.getCrops().filter(c => c.farmerId === currentUser.id);
+
+      select.innerHTML = `<option value="">-- Select a Listed Crop or Enter Manually --</option>`;
+      crops.forEach(crop => {
+        const opt = document.createElement("option");
+        opt.value = crop.id;
+        opt.textContent = `${crop.title} (${crop.quantity} ${crop.unit} @ ₹${crop.expectedPrice || crop.price}/${crop.unit})`;
+        select.appendChild(opt);
+      });
+    }
+
+    function onSelectListedCrop(cropId) {
+      if (!cropId) return;
+      const crop = window.Storage.getCropById(cropId);
+      if (!crop) return;
+
+      document.getElementById("calc-crop-name").value = crop.title;
+      document.getElementById("calc-yield").value = Number(crop.quantity) || 500;
+      document.getElementById("calc-price").value = Number(crop.expectedPrice || crop.price) || 50;
+
+      // Provide sensible default costs if starting from fresh
+      if (crop.category === "Chilli" || crop.title.toLowerCase().includes("chilli")) {
+        applyPreset("prompt_sample", false);
+      } else if (crop.category === "Tomato" || crop.title.toLowerCase().includes("tomato")) {
+        applyPreset("tomato", false);
+      } else if (crop.category === "Rice" || crop.title.toLowerCase().includes("rice") || crop.title.toLowerCase().includes("paddy")) {
+        applyPreset("rice", false);
+      }
+
+      document.getElementById("calc-crop-name").value = crop.title;
+      document.getElementById("calc-yield").value = Number(crop.quantity) || 500;
+      document.getElementById("calc-price").value = Number(crop.expectedPrice || crop.price) || 50;
+
+      recalc();
+      window.App.showToast(`Populated data from "${crop.title}". You can adjust any values freely.`, "info");
+    }
+
+    function getInputs() {
+      return {
+        cropName: document.getElementById("calc-crop-name").value.trim() || "Cultivation Crop",
+        acreage: Number(document.getElementById("calc-acreage").value) || 1,
+        seed: Number(document.getElementById("calc-seed").value) || 0,
+        fertilizer: Number(document.getElementById("calc-fertilizer").value) || 0,
+        pesticide: Number(document.getElementById("calc-pesticide").value) || 0,
+        labour: Number(document.getElementById("calc-labour").value) || 0,
+        irrigation: Number(document.getElementById("calc-irrigation").value) || 0,
+        transport: Number(document.getElementById("calc-transport").value) || 0,
+        other: Number(document.getElementById("calc-other").value) || 0,
+        yield: Number(document.getElementById("calc-yield").value) || 0,
+        price: Number(document.getElementById("calc-price").value) || 0
+      };
+    }
+
+    function recalc() {
+      const inputs = getInputs();
+      const res = window.Calculator.calculate(inputs);
+      const isTe = window.I18n && window.I18n.currentLang === "te";
+
+      document.getElementById("sum-investment").textContent = "₹" + res.totalInvestment.toLocaleString();
+      document.getElementById("sum-cost-per-kg").textContent = "₹" + res.costPerKg.toFixed(2) + " / unit";
+      document.getElementById("sum-revenue").textContent = "₹" + res.expectedRevenue.toLocaleString();
+      document.getElementById("sum-margin").textContent = res.margin + "%";
+      document.getElementById("sum-roi").textContent = res.roi + "%";
+
+      const meterContainer = document.getElementById("profit-meter-container");
+      const titleEl = document.getElementById("profit-meter-title");
+      const valEl = document.getElementById("sum-profit");
+      const statusEl = document.getElementById("profit-meter-status");
+
+      if (res.isProfit) {
+        meterContainer.className = "calc-net-profit";
+        titleEl.textContent = isTe ? "అంచనా లాభం" : "ESTIMATED PROFIT";
+        valEl.className = "calc-net-profit-val";
+        valEl.textContent = "+₹" + res.netProfit.toLocaleString();
+        statusEl.style.color = "var(--emerald-600)";
+        statusEl.textContent = isTe ? "✓ లాభదాయకమైన విక్రయ ధర" : "✓ Profitable Selling Price";
+      } else {
+        meterContainer.className = "calc-net-loss";
+        titleEl.textContent = isTe ? "అంచనా నష్టం" : "ESTIMATED LOSS";
+        valEl.className = "calc-net-loss-val";
+        valEl.textContent = "-₹" + Math.abs(res.netProfit).toLocaleString();
+        statusEl.style.color = "#dc2626";
+        statusEl.textContent = isTe ? "⚠ ఉత్పత్తి వ్యయం రాబడిని మించింది" : "⚠ Production Cost Exceeds Revenue";
+      }
+    }
+
+    function applyPreset(presetKey, showToastMsg = true) {
+      if (presetKey === "prompt_sample") {
+        document.getElementById("calc-crop-name").value = "1 Acre Guntur Teja Chilli (Sample)";
+        document.getElementById("calc-acreage").value = 1;
+        document.getElementById("calc-seed").value = 5000;
+        document.getElementById("calc-fertilizer").value = 8000;
+        document.getElementById("calc-pesticide").value = 4000;
+        document.getElementById("calc-labour").value = 10000;
+        document.getElementById("calc-irrigation").value = 3000;
+        document.getElementById("calc-transport").value = 2000;
+        document.getElementById("calc-other").value = 1000;
+        document.getElementById("calc-yield").value = 500;
+        document.getElementById("calc-price").value = 90;
+      } else if (window.Calculator.presets[presetKey]) {
+        const p = window.Calculator.presets[presetKey];
+        document.getElementById("calc-crop-name").value = p.name;
+        document.getElementById("calc-acreage").value = 1;
+        document.getElementById("calc-seed").value = p.seed;
+        document.getElementById("calc-fertilizer").value = p.fertilizer;
+        document.getElementById("calc-pesticide").value = p.pesticide;
+        document.getElementById("calc-labour").value = p.labour;
+        document.getElementById("calc-irrigation").value = p.irrigation;
+        document.getElementById("calc-transport").value = p.transport;
+        document.getElementById("calc-other").value = p.other;
+        document.getElementById("calc-yield").value = p.yield;
+        document.getElementById("calc-price").value = p.price;
+      }
+
+      recalc();
+      if (showToastMsg) {
+        window.App.showToast("Applied preset values.", "info");
+      }
+    }
+
+    function resetCalculator() {
+      document.getElementById("calc-crop-name").value = "";
+      document.getElementById("calc-acreage").value = 1;
+      document.getElementById("calc-seed").value = 0;
+      document.getElementById("calc-fertilizer").value = 0;
+      document.getElementById("calc-pesticide").value = 0;
+      document.getElementById("calc-labour").value = 0;
+      document.getElementById("calc-irrigation").value = 0;
+      document.getElementById("calc-transport").value = 0;
+      document.getElementById("calc-other").value = 0;
+      document.getElementById("calc-yield").value = 0;
+      document.getElementById("calc-price").value = 0;
+      recalc();
+      window.App.showToast("Calculator reset.", "info");
+    }
+
+    function handleSaveCalculation() {
+      const inputs = getInputs();
+      if (!inputs.yield || !inputs.price) {
+        window.App.showToast("Please enter an estimated yield quantity and selling price.", "warning");
+        return;
+      }
+
+      const res = window.Calculator.calculate(inputs);
+      const newCalc = {
+        farmerId: (currentUser && currentUser.id) ? currentUser.id : null,
+        cropName: inputs.cropName,
+        acreage: inputs.acreage,
+        seedCost: inputs.seed,
+        fertilizerCost: inputs.fertilizer,
+        pesticideCost: inputs.pesticide,
+        labourCost: inputs.labour,
+        irrigationCost: inputs.irrigation,
+        transportCost: inputs.transport,
+        otherCost: inputs.other,
+        totalInvestment: res.totalInvestment,
+        quantity: inputs.yield,
+        unit: "kg",
+        sellingPrice: inputs.price,
+        expectedRevenue: res.expectedRevenue,
+        netProfit: res.netProfit,
+        profitMargin: res.margin,
+        isProfit: res.isProfit,
+        createdAt: new Date().toISOString()
+      };
+
+      window.Storage.addCalculation(newCalc);
+      window.App.showToast("Calculation saved to records!", "success");
+      renderSavedCalculations();
+    }
+
+    function renderSavedCalculations() {
+      const container = document.getElementById("saved-calculations-container");
+      if (!container) return;
+
+      const farmerId = (currentUser && currentUser.id) ? currentUser.id : null;
+      const calculations = window.Storage.getCalculations(farmerId);
+      const isTe = window.I18n && window.I18n.currentLang === "te";
+
+      if (!calculations || calculations.length === 0) {
+        container.innerHTML = `
+          <div class="card empty-state" style="padding: 2.5rem 1.5rem; text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 0.5rem;">📊</div>
+            <div class="empty-state-title" data-i18n="noSavedCalculations">No saved calculations yet.</div>
+            <p class="empty-state-desc" data-i18n="noSavedCalculationsDesc">Use the calculator above to model your costs and click "Save Calculation" to track records.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="card" style="overflow-x: auto; padding: 0;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.92rem;">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--border-color); background: var(--bg-surface-secondary);">
+                <th style="padding: 1rem 1.25rem;">Crop & Details</th>
+                <th style="padding: 1rem;">Date</th>
+                <th style="padding: 1rem;">Investment</th>
+                <th style="padding: 1rem;">Revenue</th>
+                <th style="padding: 1rem;">Profit / Loss</th>
+                <th style="padding: 1rem;">Margin</th>
+                <th style="padding: 1rem 1.25rem; text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${calculations.map(calc => {
+                const dateStr = new Date(calc.createdAt).toLocaleDateString([], { month: "short", day: "numeric", year: "numeric" });
+                const profitClass = calc.isProfit ? "text-emerald" : "text-danger";
+                const profitSign = calc.isProfit ? "+" : "";
+
+                return `
+                  <tr style="border-bottom: 1px solid var(--border-color-subtle);">
+                    <td style="padding: 1rem 1.25rem;">
+                      <div style="font-weight: 700; color: var(--text-primary);">${calc.cropName}</div>
+                      <div class="text-xs text-muted">${calc.acreage || 1} Acre • ${calc.quantity} ${calc.unit || 'kg'} @ ₹${calc.sellingPrice}</div>
+                    </td>
+                    <td style="padding: 1rem; color: var(--text-secondary); font-size: 0.85rem;">${dateStr}</td>
+                    <td style="padding: 1rem; font-weight: 600;">₹${Number(calc.totalInvestment).toLocaleString()}</td>
+                    <td style="padding: 1rem; font-weight: 600;">₹${Number(calc.expectedRevenue).toLocaleString()}</td>
+                    <td style="padding: 1rem; font-weight: 800;" class="${profitClass}">
+                      ${profitSign}₹${Number(calc.netProfit).toLocaleString()}
+                    </td>
+                    <td style="padding: 1rem; font-weight: 700;">
+                      <span class="badge ${calc.isProfit ? 'badge-info' : 'badge-warning'}" style="font-size: 0.78rem;">
+                        ${calc.profitMargin}%
+                      </span>
+                    </td>
+                    <td style="padding: 1rem 1.25rem; text-align: right;">
+                      <button class="btn btn-outline btn-sm" onclick="loadSavedCalculation('${calc.id}')" title="Load into calculator">
+                        ${isTe ? "చూడండి" : "View"}
+                      </button>
+                      <button class="btn btn-icon btn-sm" style="color: var(--danger-600); margin-left: 0.35rem;" onclick="handleDeleteCalculation('${calc.id}')" title="Delete">
+                        🗑️
+                      </button>
+                    </td>
+                  </tr>
+                `;
+              }).join("")}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    function loadSavedCalculation(calcId) {
+      const calc = window.Storage.getCalculationById(calcId);
+      if (!calc) return;
+
+      document.getElementById("calc-crop-name").value = calc.cropName || "";
+      document.getElementById("calc-acreage").value = calc.acreage || 1;
+      document.getElementById("calc-seed").value = calc.seedCost || 0;
+      document.getElementById("calc-fertilizer").value = calc.fertilizerCost || 0;
+      document.getElementById("calc-pesticide").value = calc.pesticideCost || 0;
+      document.getElementById("calc-labour").value = calc.labourCost || 0;
+      document.getElementById("calc-irrigation").value = calc.irrigationCost || 0;
+      document.getElementById("calc-transport").value = calc.transportCost || 0;
+      document.getElementById("calc-other").value = calc.otherCost || 0;
+      document.getElementById("calc-yield").value = calc.quantity || 0;
+      document.getElementById("calc-price").value = calc.sellingPrice || 0;
+
+      recalc();
+      window.scrollTo({ top: 120, behavior: "smooth" });
+      window.App.showToast(`Loaded calculation for "${calc.cropName}".`, "info");
+    }
+
+    function handleDeleteCalculation(calcId) {
+      if (confirm("Are you sure you want to delete this saved calculation?")) {
+        window.Storage.deleteCalculation(calcId);
+        window.App.showToast("Calculation deleted.", "info");
+        renderSavedCalculations();
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "farmlink-production-bf431",
+    "production": "farmlink-production-bf431"
+  }
+}

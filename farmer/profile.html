@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer Profile — FarmLink</title>
+  
+  <link rel="stylesheet" href="../css/themes.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+          </svg>
+          <span data-i18n="brandName">FarmLink</span>
+        </a>
+        <span class="sidebar-role-badge" data-i18n="roleFarmer">Farmer</span>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li class="nav-item-header" data-i18n="fNavOverview">Main Menu</li>
+        <li>
+          <a href="dashboard.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span data-i18n="fNavOverview">Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="crops.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span data-i18n="fNavMyCrops">My Listed Crops</span>
+          </a>
+        </li>
+        <li>
+          <a href="add-crop.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <span data-i18n="fNavAddCrop">Add New Crop</span>
+          </a>
+        </li>
+        <li>
+          <a href="offers.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span data-i18n="fNavOffers">Dealer Offers</span>
+            <span id="offers-count-badge" class="sidebar-badge">2</span>
+          </a>
+        </li>
+        <li>
+          <a href="messages.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span data-i18n="fNavMessages">Messages</span>
+          </a>
+        </li>
+        <li>
+          <a href="notifications.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span data-i18n="notificationsTitle">Notifications</span>
+          </a>
+        </li>
+
+        <li class="nav-item-header" data-i18n="whyTitle">Insights & Tools</li>
+        <li>
+          <a href="market-prices.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span data-i18n="fNavMarket">Market Prices</span>
+          </a>
+        </li>
+        <li>
+          <a href="weather.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            <span data-i18n="fNavWeather">Weather & Advisories</span>
+          </a>
+        </li>
+        <li>
+          <a href="profit-calculator.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"/></svg>
+            <span data-i18n="fNavCalculator">Profit Calculator</span>
+          </a>
+        </li>
+        <li>
+          <a href="transactions.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span data-i18n="fNavTransactions">Sales History</span>
+          </a>
+        </li>
+        <li>
+          <a href="profile.html" class="sidebar-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="fNavProfile">Farmer Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="settings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-i18n="fNavSettings">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="logoutUser()" class="sidebar-link" style="color: var(--danger-600);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span data-i18n="logout">Logout</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-profile">
+          <div class="user-avatar user-avatar-display">FL</div>
+          <div class="user-info">
+            <span class="user-name user-name-display">Farmer</span>
+            <span class="user-role user-role-display">FARMER</span>
+          </div>
+        </div>
+        <button class="btn-icon" onclick="logoutUser()" title="Logout"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></button>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="topbar-title" data-i18n="fNavProfile">Farmer Verification Profile</h1>
+        </div>
+        <div class="topbar-right">
+          <button class="lang-toggle-btn" onclick="toggleLanguage()"><span>🌐</span><span class="lang-toggle-text">తెలుగు</span></button>
+          <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span class="theme-label">Dark</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="content-container" style="max-width: 900px;">
+        
+        <!-- Profile Header Card -->
+        <div class="card" style="margin-bottom: 2rem;">
+          <div style="display: flex; gap: 2rem; align-items: center; flex-wrap: wrap;">
+            <div style="position: relative;">
+              <img id="profile-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" style="width: 110px; height: 110px; border-radius: var(--radius-full); object-fit: cover; border: 3px solid var(--primary-600);">
+              <span class="badge badge-success" style="position: absolute; bottom: 0; right: 0;">Verified</span>
+            </div>
+
+            <div style="flex: 1;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem;">
+                <div>
+                  <h2 id="profile-name" style="font-size: 1.6rem; margin-bottom: 0.25rem;">Farmer</h2>
+                  <p class="text-sm text-muted" id="profile-location">📍 Tadikonda, Guntur Dist, AP</p>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openEditProfileModal()">Edit Profile</button>
+              </div>
+
+              <div style="display: flex; gap: 2rem; margin-top: 1.25rem; flex-wrap: wrap;">
+                <div>
+                  <span class="text-xs text-muted font-semibold">FARMER RATING</span>
+                  <div style="font-size: 1.25rem; font-weight: 800; color: var(--amber-500);" id="profile-rating">4.9 ★ <small class="text-xs text-muted">(28 reviews)</small></div>
+                </div>
+                <div>
+                  <span class="text-xs text-muted font-semibold">TOTAL TRANSACTIONS</span>
+                  <div style="font-size: 1.25rem; font-weight: 800;" id="profile-total-tx">34</div>
+                </div>
+                <div>
+                  <span class="text-xs text-muted font-semibold">ACTIVE CROPS</span>
+                  <div style="font-size: 1.25rem; font-weight: 800; color: var(--primary-700);" id="profile-active-crops">2</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detailed Profile Information -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+          <div class="card">
+            <h3 style="font-size: 1.15rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Contact & Location Details</h3>
+            <div style="display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.92rem;">
+              <div><strong>Age:</strong> <span id="profile-age">46 Years</span></div>
+              <div><strong>Phone:</strong> <span id="profile-phone">+91 9876543210</span></div>
+              <div><strong>Email:</strong> <span id="profile-email">ramesh@farmlink.in</span></div>
+              <div><strong>District:</strong> <span id="profile-district">Guntur District, Andhra Pradesh</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 style="font-size: 1.15rem; margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Crops & Farming Portfolio</h3>
+            <div style="display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.92rem;">
+              <div>
+                <strong>Currently Cultivated Crops:</strong>
+                <div class="text-brand font-semibold" id="profile-current-crops">Guntur Teja Chilli, Hybrid Tomato, Cotton</div>
+              </div>
+              <div>
+                <strong>Previously Grown Crops:</strong>
+                <div class="text-muted" id="profile-previous-crops">Black Gram, Groundnut, Maize</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- About Farmer -->
+        <div class="card" style="margin-bottom: 2rem;">
+          <h3 style="font-size: 1.15rem; margin-bottom: 0.75rem;" data-i18n="aboutFarmer">About the Farmer</h3>
+          <p id="profile-about" style="line-height: 1.6; color: var(--text-secondary);"></p>
+        </div>
+
+        <!-- Verified Ratings & Reviews Section -->
+        <div class="card">
+          <div class="card-header" style="padding-bottom: 0.75rem; margin-bottom: 1.25rem;">
+            <div>
+              <h3 class="card-title" style="font-size: 1.25rem;" data-i18n="verifiedReviews">Verified Dealer Reviews & Trust Ratings</h3>
+              <p class="text-xs text-muted" data-i18n="verifiedReviewsSub">Feedback submitted by wholesale buyers after successful delivery and settlement.</p>
+            </div>
+            <span class="badge badge-emerald" id="reviews-count-badge">0 Reviews</span>
+          </div>
+
+          <div id="profile-reviews-list">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Profile Modal -->
+  <div id="modal-edit-profile" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Edit Farmer Profile</h3>
+        <button class="modal-close" onclick="window.App.closeModal('modal-edit-profile')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="handleSaveProfile(event)">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" id="edit-name" class="form-control" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Age</label>
+              <input type="number" id="edit-age" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone</label>
+              <input type="tel" id="edit-phone" class="form-control" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Village / Location</label>
+            <input type="text" id="edit-location" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Crops Currently Grown</label>
+            <input type="text" id="edit-current-crops" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Previous Crops</label>
+            <input type="text" id="edit-prev-crops" class="form-control">
+          </div>
+          <div class="form-group">
+            <label class="form-label">About Farmer & Farming Practices</label>
+            <textarea id="edit-about" class="form-control" rows="3"></textarea>
+          </div>
+          <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem;">
+            <button type="button" class="btn btn-secondary" onclick="window.App.closeModal('modal-edit-profile')">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs (Phase 1 Bridge) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/reviews.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+    if (window.Auth && !window.Auth.requireAuth("farmer")) {}
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", () => {
+        loadProfileData();
+        if (window.Storage && typeof window.Storage.syncReviewsFromFirestore === "function") {
+          const user = window.Auth ? window.Auth.getCurrentUser() : null;
+          if (user) {
+            window.Storage.syncReviewsFromFirestore(user.uid || user.id).then(() => {
+              loadProfileData();
+            }).catch(err => console.warn("[FarmLink] Reviews sync note:", err));
+          }
+        }
+      });
+    } else {
+      loadProfileData();
+      if (window.Storage && typeof window.Storage.syncReviewsFromFirestore === "function") {
+        const user = window.Auth ? window.Auth.getCurrentUser() : null;
+        if (user) {
+          window.Storage.syncReviewsFromFirestore(user.uid || user.id).then(() => {
+            loadProfileData();
+          }).catch(err => console.warn("[FarmLink] Reviews sync note:", err));
+        }
+      }
+    }
+
+    function loadProfileData() {
+      const user = window.Auth.getCurrentUser();
+      if (!user) return;
+      if (window.App && window.App.updateUserDisplay) window.App.updateUserDisplay();
+
+      document.getElementById("profile-name").textContent = user.name;
+      document.getElementById("profile-location").textContent = "📍 " + (user.location || "Andhra Pradesh");
+      document.getElementById("profile-age").textContent = (user.age || 45) + " Years";
+      document.getElementById("profile-phone").textContent = "+91 " + user.phone;
+      document.getElementById("profile-email").textContent = user.email;
+      document.getElementById("profile-district").textContent = (user.district || "Guntur") + " District, Andhra Pradesh";
+      document.getElementById("profile-current-crops").textContent = user.currentCrops || "Tomato, Chilli, Cotton";
+      document.getElementById("profile-previous-crops").textContent = user.previousCrops || "Groundnut, Black Gram";
+      document.getElementById("profile-about").textContent = user.about || "Progressive farmer practicing integrated crop management.";
+      document.getElementById("profile-total-tx").textContent = (user.totalTransactions !== undefined ? user.totalTransactions : 0);
+
+      const crops = window.Storage.getCrops().filter(c => c.farmerId === user.id || (user.uid && c.farmerId === user.uid));
+      document.getElementById("profile-active-crops").textContent = crops.length;
+
+      // Dynamic Ratings & Reviews
+      const ratingSummary = window.Storage.getUserRatingSummary(user.uid || user.id);
+      const isTe = window.I18n && window.I18n.currentLang === "te";
+      const ratingEl = document.getElementById("profile-rating");
+      if (ratingEl) {
+        ratingEl.innerHTML = `${ratingSummary.average.toFixed(1)} ★ <small class="text-xs text-muted">(${ratingSummary.count} ${isTe ? 'సమీక్షలు' : 'reviews'})</small>`;
+      }
+
+      const reviewsListContainer = document.getElementById("profile-reviews-list");
+      const badgeCountEl = document.getElementById("reviews-count-badge");
+      if (badgeCountEl) {
+        badgeCountEl.textContent = `${ratingSummary.count} ${isTe ? 'ధృవీకరించిన సమీక్షలు' : 'Verified Reviews'}`;
+      }
+
+      if (reviewsListContainer) {
+        if (!ratingSummary.reviews || ratingSummary.reviews.length === 0) {
+          reviewsListContainer.innerHTML = `
+            <div class="empty-state" style="padding: 2.5rem 1.5rem; text-align: center;">
+              <div style="font-size: 2.75rem; margin-bottom: 0.5rem;">🌟</div>
+              <div class="empty-state-title" data-i18n="noReviewsYet">No reviews yet.</div>
+              <p class="empty-state-desc" data-i18n="noReviewsDesc">Ratings and verified feedback from wholesale dealers will appear here after completed sales transactions.</p>
+            </div>
+          `;
+        } else {
+          reviewsListContainer.innerHTML = ratingSummary.reviews.map(r => window.Reviews.renderReviewCard(r)).join("");
+        }
+      }
+    }
+
+    function openEditProfileModal() {
+      const user = window.Auth.getCurrentUser();
+      document.getElementById("edit-name").value = user.name;
+      document.getElementById("edit-age").value = user.age || 45;
+      document.getElementById("edit-phone").value = user.phone;
+      document.getElementById("edit-location").value = user.location || "";
+      document.getElementById("edit-current-crops").value = user.currentCrops || "";
+      document.getElementById("edit-prev-crops").value = user.previousCrops || "";
+      document.getElementById("edit-about").value = user.about || "";
+      window.App.openModal("modal-edit-profile");
+    }
+
+    function handleSaveProfile(e) {
+      e.preventDefault();
+      const user = window.Auth.getCurrentUser();
+
+      const updated = window.Storage.updateUser(user.id, {
+        name: document.getElementById("edit-name").value,
+        age: Number(document.getElementById("edit-age").value),
+        phone: document.getElementById("edit-phone").value,
+        location: document.getElementById("edit-location").value,
+        currentCrops: document.getElementById("edit-current-crops").value,
+        previousCrops: document.getElementById("edit-prev-crops").value,
+        about: document.getElementById("edit-about").value
+      });
+
+      window.Auth.setSession(updated);
+      window.App.closeModal("modal-edit-profile");
+      window.App.showToast("Profile updated successfully!", "success");
+      loadProfileData();
+    }
+  </script>
+</body>
+</html>

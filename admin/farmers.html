@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer Accounts — FarmLink Admin</title>
+  
+  <link rel="stylesheet" href="../css/themes.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+          </svg>
+          <span data-i18n="brandName">FarmLink</span>
+        </a>
+        <span class="sidebar-role-badge" style="background: rgba(239, 68, 68, 0.15); color: #dc2626;" data-i18n="roleAdmin">Admin</span>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li class="nav-item-header">Platform Governance</li>
+        <li>
+          <a href="dashboard.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span data-i18n="aNavOverview">Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="farmers.html" class="sidebar-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            <span data-i18n="aNavFarmers">Farmers</span>
+          </a>
+        </li>
+        <li>
+          <a href="dealers.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="aNavDealers">Dealers</span>
+          </a>
+        </li>
+        <li>
+          <a href="listings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span data-i18n="aNavListings">Crop Listings</span>
+          </a>
+        </li>
+        <li>
+          <a href="market-prices.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span data-i18n="aNavPrices">Market Prices</span>
+          </a>
+        </li>
+        <li>
+          <a href="transactions.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <span data-i18n="aNavTransactions">Transactions</span>
+          </a>
+        </li>
+        <li>
+          <a href="notifications.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span data-i18n="notificationsTitle">Notifications</span>
+          </a>
+        </li>
+        <li>
+          <a href="weather-suggestions.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            <span data-i18n="aNavWeatherSuggestions">Weather Suggestions</span>
+          </a>
+        </li>
+        <li>
+          <a href="reports.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            <span data-i18n="aNavReports">Reports</span>
+          </a>
+        </li>
+        <li>
+          <a href="settings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-i18n="aNavSettings">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="logoutUser()" class="sidebar-link" style="color: var(--danger-600);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span data-i18n="logout">Logout</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-profile">
+          <div class="user-avatar user-avatar-display" style="background: linear-gradient(135deg, #dc2626, #ef4444);">AD</div>
+          <div class="user-info">
+            <span class="user-name user-name-display">Admin Officer</span>
+            <span class="user-role user-role-display">APMC ADMIN</span>
+          </div>
+        </div>
+        <button class="btn-icon" onclick="logoutUser()" title="Logout"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></button>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="topbar-title" data-i18n="aNavFarmers">Farmer Account Verifications</h1>
+        </div>
+        <div class="topbar-right">
+          <button class="lang-toggle-btn" onclick="toggleLanguage()"><span>🌐</span><span class="lang-toggle-text">తెలుగు</span></button>
+          <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span class="theme-label">Dark</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="content-container">
+
+        <div class="admin-accounts-header">
+          <div id="farmers-error-banner" class="alert alert-danger admin-error-banner" style="display: none;">
+            <div style="font-weight: 700; margin-bottom: 0.25rem;">Firestore Access Notice</div>
+            <div id="farmers-error-msg" style="font-size: 0.88rem;"></div>
+          </div>
+
+          <div class="admin-accounts-stats-grid">
+            <div class="admin-stat-summary-card">
+              <div class="admin-stat-icon-wrap" style="background: rgba(34, 197, 94, 0.15); color: var(--primary-600);">🌾</div>
+              <div>
+                <div class="admin-stat-label">Total Verified Farmers</div>
+                <div class="admin-stat-value" id="farmers-total-count">--</div>
+              </div>
+            </div>
+            <div class="admin-stat-summary-card">
+              <div class="admin-stat-icon-wrap" style="background: rgba(59, 130, 246, 0.15); color: var(--blue-600);">✅</div>
+              <div>
+                <div class="admin-stat-label">Active Platform Accounts</div>
+                <div class="admin-stat-value" id="farmers-active-count">--</div>
+              </div>
+            </div>
+            <div class="admin-stat-summary-card">
+              <div class="admin-stat-icon-wrap" style="background: rgba(245, 158, 11, 0.15); color: var(--amber-600);">📍</div>
+              <div>
+                <div class="admin-stat-label">Districts Represented</div>
+                <div class="admin-stat-value" id="farmers-districts-count">--</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="admin-accounts-toolbar">
+            <div class="admin-search-wrap">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" id="farmers-search-input" class="form-control admin-search-input" placeholder="Search farmers by name, email, phone, district...">
+            </div>
+            <div class="admin-filter-group">
+              <select id="farmers-district-filter" class="form-control" style="width: auto; min-width: 160px;">
+                <option value="all">All Districts</option>
+              </select>
+              <select id="farmers-status-filter" class="form-control" style="width: auto; min-width: 140px;">
+                <option value="all">All Statuses</option>
+                <option value="active">Active</option>
+                <option value="verified">Verified</option>
+                <option value="pending">Pending</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Farmer Name</th>
+                  <th>Location / District</th>
+                  <th>Phone</th>
+                  <th>Crops Grown</th>
+                  <th>Rating</th>
+                  <th>Sales / Transactions</th>
+                  <th>Account Status</th>
+                </tr>
+              </thead>
+              <tbody id="farmers-admin-tbody">
+                <tr>
+                  <td colspan="7" class="admin-table-loading">
+                    <div class="spinner" style="width: 24px; height: 24px; margin: 0 auto 0.75rem auto; border: 3px solid var(--border-color); border-top-color: var(--primary-600); border-radius: 50%; animation: spin 0.8s linear infinite;"></div>
+                    <div>Loading genuine farmer records from Cloud Firestore...</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs (Phase 1 Bridge) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+    if (window.Auth && !window.Auth.requireAuth("admin")) {}
+
+    let allGenuineFarmers = [];
+    let allGenuineCrops = [];
+    let allGenuineTransactions = [];
+
+    function isDemoRecord(u) {
+      if (!u) return true;
+      if (u.isDemo === true) return true;
+      const id = String(u.id || u.uid || "");
+      const demoIds = ["farmer_1", "dealer_1", "admin_1", "farmer_2", "farmer_3", "farmer_4", "dealer_2"];
+      if (demoIds.includes(id)) return true;
+      const demoEmails = [
+        "farmer@example.com", "dealer@example.com", "admin@example.com",
+        "ramesh@farmlink.in", "venkat@agritraders.in", "admin@farmlink.in", "admin@farmlink.gov.in"
+      ];
+      if (u.email && demoEmails.includes(String(u.email).toLowerCase().trim())) return true;
+      return false;
+    }
+
+    async function loadFarmersFromFirestore() {
+      const fb = window.FarmLinkFirebase;
+      const tbody = document.getElementById("farmers-admin-tbody");
+      const errBanner = document.getElementById("farmers-error-banner");
+      const errMsg = document.getElementById("farmers-error-msg");
+
+      if (!fb || !fb.db) {
+        // Fallback to local storage genuine getters
+        if (window.Storage && typeof window.Storage.getGenuineFarmers === 'function') {
+          allGenuineFarmers = window.Storage.getGenuineFarmers();
+          renderFarmersTable();
+        } else {
+          showError("Firebase configuration bridge is unavailable.");
+        }
+        return;
+      }
+
+      // Check current auth session
+      const fbUser = fb.auth ? fb.auth.currentUser : null;
+      if (!fbUser) {
+        showError("No active Firebase Authentication session detected for Admin. Cloud Firestore security rules require an authenticated Admin account to retrieve genuine records. Please sign in via Admin Login.");
+        return;
+      }
+
+      try {
+        if (errBanner) errBanner.style.display = "none";
+
+        // Query genuine Firestore collections in parallel
+        const [usersSnap, cropsSnap, txSnap] = await Promise.all([
+          fb.db.collection("users").get(),
+          fb.db.collection("crops").get().catch(() => ({ docs: [] })),
+          fb.db.collection("transactions").get().catch(() => ({ docs: [] }))
+        ]);
+
+        const rawFarmers = [];
+        usersSnap.forEach(doc => {
+          const d = doc.data();
+          if (!d) return;
+          const u = { id: doc.id, uid: doc.id, ...d };
+          if (isDemoRecord(u)) return;
+          const role = String(u.role || "").toLowerCase().trim();
+          if (role === "farmer") {
+            rawFarmers.push({
+              id: doc.id,
+              uid: doc.id,
+              name: d.name || d.displayName || "Verified Farmer",
+              email: d.email || "N/A",
+              phone: d.phone || d.phoneNumber || "N/A",
+              district: d.district || d.location || "Andhra Pradesh",
+              location: d.location || d.district || "Andhra Pradesh",
+              rating: Number(d.rating) || 5.0,
+              status: d.status || "Active",
+              currentCrops: d.currentCrops || d.crops || "",
+              createdAt: d.createdAt || d.registeredDate || "",
+              ...d
+            });
+          }
+        });
+
+        const rawCrops = [];
+        cropsSnap.forEach(doc => {
+          const d = doc.data();
+          if (d && !isDemoRecord(d) && String(d.status || '').toLowerCase() !== 'removed') {
+            rawCrops.push({ id: doc.id, ...d });
+          }
+        });
+
+        const rawTxs = [];
+        txSnap.forEach(doc => {
+          const d = doc.data();
+          if (d && !isDemoRecord(d)) {
+            rawTxs.push({ id: doc.id, ...d });
+          }
+        });
+
+        allGenuineFarmers = rawFarmers;
+        allGenuineCrops = rawCrops;
+        allGenuineTransactions = rawTxs;
+
+        // Also update local cache so other tabs have updated records
+        if (window.Storage && typeof window.Storage.syncUsersFromFirestore === 'function') {
+          window.Storage.syncUsersFromFirestore().catch(() => {});
+        }
+
+        populateDistrictFilter();
+        updateSummaryStats();
+        renderFarmersTable();
+      } catch (err) {
+        console.error("[FarmLink Admin] Error loading farmers from Firestore:", err);
+        showError(`Firestore Error: ${err.message || "Failed to retrieve farmer accounts"}`);
+        // Fallback to genuine users from cache
+        if (window.Storage && typeof window.Storage.getGenuineFarmers === 'function') {
+          allGenuineFarmers = window.Storage.getGenuineFarmers();
+          renderFarmersTable();
+        }
+      }
+    }
+
+    function showError(msg) {
+      const errBanner = document.getElementById("farmers-error-banner");
+      const errMsg = document.getElementById("farmers-error-msg");
+      if (errBanner && errMsg) {
+        errMsg.textContent = msg;
+        errBanner.style.display = "block";
+      }
+    }
+
+    function updateSummaryStats() {
+      const totalEl = document.getElementById("farmers-total-count");
+      const activeEl = document.getElementById("farmers-active-count");
+      const distEl = document.getElementById("farmers-districts-count");
+
+      if (totalEl) totalEl.textContent = allGenuineFarmers.length;
+      if (activeEl) {
+        const activeCount = allGenuineFarmers.filter(f => String(f.status || '').toLowerCase() !== 'suspended').length;
+        activeEl.textContent = activeCount;
+      }
+      if (distEl) {
+        const districts = new Set(allGenuineFarmers.map(f => f.district).filter(Boolean));
+        distEl.textContent = districts.size || 1;
+      }
+    }
+
+    function populateDistrictFilter() {
+      const select = document.getElementById("farmers-district-filter");
+      if (!select) return;
+      const districts = Array.from(new Set(allGenuineFarmers.map(f => f.district).filter(Boolean)))
+        .filter(d => d.toLowerCase() !== 'andhra pradesh');
+      
+      const currentVal = select.value;
+      select.innerHTML = '<option value="all">All Districts</option>' +
+        districts.map(d => `<option value="${escapeHtml(d)}">${escapeHtml(d)}</option>`).join('');
+      if (currentVal) select.value = currentVal;
+    }
+
+    function renderFarmersTable() {
+      const tbody = document.getElementById("farmers-admin-tbody");
+      if (!tbody) return;
+
+      const searchInput = document.getElementById("farmers-search-input");
+      const distFilter = document.getElementById("farmers-district-filter");
+      const statusFilter = document.getElementById("farmers-status-filter");
+
+      const query = searchInput ? searchInput.value.toLowerCase().trim() : "";
+      const selectedDist = distFilter ? distFilter.value : "all";
+      const selectedStatus = statusFilter ? statusFilter.value : "all";
+
+      let filtered = allGenuineFarmers.filter(f => {
+        if (query) {
+          const matchName = String(f.name || '').toLowerCase().includes(query);
+          const matchEmail = String(f.email || '').toLowerCase().includes(query);
+          const matchPhone = String(f.phone || '').toLowerCase().includes(query);
+          const matchDist = String(f.district || '').toLowerCase().includes(query);
+          const matchLoc = String(f.location || '').toLowerCase().includes(query);
+          if (!matchName && !matchEmail && !matchPhone && !matchDist && !matchLoc) return false;
+        }
+
+        if (selectedDist !== "all") {
+          if (String(f.district || '').toLowerCase() !== selectedDist.toLowerCase()) return false;
+        }
+
+        if (selectedStatus !== "all") {
+          if (String(f.status || '').toLowerCase() !== selectedStatus.toLowerCase()) return false;
+        }
+
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        const emptyMsg = query || selectedDist !== 'all' || selectedStatus !== 'all'
+          ? "No farmer accounts match your search and filter criteria."
+          : "No genuine registered farmers found in Cloud Firestore.";
+        tbody.innerHTML = `<tr><td colspan="7" class="text-center" style="padding: 3rem 1.5rem; color: var(--text-muted);">${escapeHtml(emptyMsg)}</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(f => {
+        const myUid = f.id || f.uid;
+        // Resolve crops grown from crops collection
+        const farmerCrops = allGenuineCrops.filter(c => c.farmerId === myUid || c.farmerUid === myUid);
+        let cropsDisplay = "";
+        if (farmerCrops.length > 0) {
+          const names = Array.from(new Set(farmerCrops.map(c => c.cropName || c.cropTitle).filter(Boolean)));
+          cropsDisplay = names.slice(0, 2).join(", ");
+          if (names.length > 2) cropsDisplay += ` (+${names.length - 2})`;
+          cropsDisplay += ` <small class="text-muted">(${farmerCrops.length} listing${farmerCrops.length > 1 ? 's' : ''})</small>`;
+        } else {
+          cropsDisplay = f.currentCrops || "No active listings";
+        }
+
+        // Resolve sales / transactions from transactions collection
+        const farmerTxs = allGenuineTransactions.filter(t => t.farmerId === myUid || t.farmerUid === myUid);
+        let salesDisplay = "";
+        if (farmerTxs.length > 0) {
+          const totalVal = farmerTxs.reduce((sum, t) => sum + (Number(t.totalAmount) || 0), 0);
+          salesDisplay = `<strong>${farmerTxs.length}</strong> <small class="text-muted">(₹${totalVal.toLocaleString('en-IN')})</small>`;
+        } else {
+          salesDisplay = f.totalTransactions ? `<strong>${f.totalTransactions}</strong>` : `<span class="text-muted">0</span>`;
+        }
+
+        const statusClass = String(f.status || '').toLowerCase() === 'suspended' ? 'badge-danger' : 'badge-success';
+        const statusLabel = f.status || 'Verified APMC';
+
+        return `
+          <tr>
+            <td>
+              <div style="font-weight: 700; color: var(--text-primary);">${escapeHtml(f.name)}</div>
+              <small class="text-muted">${escapeHtml(f.email)}</small>
+            </td>
+            <td>📍 ${escapeHtml(f.district || f.location || 'Andhra Pradesh')}</td>
+            <td>${f.phone && f.phone !== 'N/A' ? `+91 ${escapeHtml(f.phone)}` : '<span class="text-muted">N/A</span>'}</td>
+            <td>${cropsDisplay}</td>
+            <td><span style="color: var(--amber-500); font-weight: 700;">${(Number(f.rating) || 5.0).toFixed(1)} ★</span></td>
+            <td>${salesDisplay}</td>
+            <td><span class="badge ${statusClass}">${escapeHtml(statusLabel)}</span></td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. Initial load from local cache if available for instant display
+      if (window.Storage && typeof window.Storage.getGenuineFarmers === 'function') {
+        allGenuineFarmers = window.Storage.getGenuineFarmers();
+        if (allGenuineFarmers.length > 0) {
+          updateSummaryStats();
+          populateDistrictFilter();
+          renderFarmersTable();
+        }
+      }
+
+      // 2. Wait for Firebase Authentication session before querying genuine Firestore
+      const fb = window.FarmLinkFirebase;
+      if (fb && fb.auth && typeof fb.auth.onAuthStateChanged === 'function') {
+        fb.auth.onAuthStateChanged(async (user) => {
+          if (user) {
+            await loadFarmersFromFirestore();
+          } else {
+            showError("Authentication required. Please log in as Admin.");
+          }
+        });
+      } else {
+        loadFarmersFromFirestore();
+      }
+
+      // 3. Attach search and filter event listeners
+      const searchInput = document.getElementById("farmers-search-input");
+      if (searchInput) {
+        searchInput.addEventListener("input", () => renderFarmersTable());
+      }
+      const distFilter = document.getElementById("farmers-district-filter");
+      if (distFilter) {
+        distFilter.addEventListener("change", () => renderFarmersTable());
+      }
+      const statusFilter = document.getElementById("farmers-status-filter");
+      if (statusFilter) {
+        statusFilter.addEventListener("change", () => renderFarmersTable());
+      }
+
+      // 4. Apply safe I18n translations
+      if (window.I18n && typeof window.I18n.applyTranslations === 'function') {
+        window.I18n.applyTranslations();
+      }
+    });
+
+    function escapeHtml(str) {
+      if (!str) return "";
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>

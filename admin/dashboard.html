@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard & Marketplace Intelligence — FarmLink</title>
+  
+  <link rel="stylesheet" href="../css/themes.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/admin-analytics.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Platform Governance Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+          </svg>
+          <span data-i18n="brandName">FarmLink</span>
+        </a>
+        <span class="sidebar-role-badge" style="background: rgba(239, 68, 68, 0.15); color: #dc2626;" data-i18n="roleAdmin">Admin</span>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li class="nav-item-header">Platform Governance</li>
+        <li>
+          <a href="dashboard.html" class="sidebar-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span data-i18n="aNavOverview">Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="farmers.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            <span data-i18n="aNavFarmers">Farmers</span>
+          </a>
+        </li>
+        <li>
+          <a href="dealers.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="aNavDealers">Dealers</span>
+          </a>
+        </li>
+        <li>
+          <a href="listings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span data-i18n="aNavListings">Crop Listings</span>
+          </a>
+        </li>
+        <li>
+          <a href="market-prices.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span data-i18n="aNavPrices">Market Prices</span>
+          </a>
+        </li>
+        <li>
+          <a href="transactions.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <span data-i18n="aNavTransactions">Transactions</span>
+          </a>
+        </li>
+        <li>
+          <a href="notifications.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span data-i18n="notificationsTitle">Notifications</span>
+          </a>
+        </li>
+        <li>
+          <a href="weather-suggestions.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            <span data-i18n="aNavWeatherSuggestions">Weather Suggestions</span>
+          </a>
+        </li>
+        <li>
+          <a href="reports.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            <span data-i18n="aNavReports">Reports</span>
+          </a>
+        </li>
+        <li>
+          <a href="settings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-i18n="aNavSettings">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="logoutUser()" class="sidebar-link" style="color: var(--danger-600);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span data-i18n="logout">Logout</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-profile">
+          <div class="user-avatar user-avatar-display" style="background: linear-gradient(135deg, #dc2626, #ef4444);">AD</div>
+          <div class="user-info">
+            <span class="user-name user-name-display">Admin Officer</span>
+            <span class="user-role user-role-display">APMC ADMIN</span>
+          </div>
+        </div>
+        <button class="btn-icon" onclick="logoutUser()" title="Logout"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></button>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="topbar-title" data-i18n="aNavOverview">Agricultural Marketplace Intelligence & Analytics</h1>
+        </div>
+        <div class="topbar-right">
+          <button class="lang-toggle-btn" onclick="toggleLanguage()"><span>🌐</span><span class="lang-toggle-text">తెలుగు</span></button>
+          <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span class="theme-label">Dark</span>
+          </button>
+          <button class="btn btn-outline btn-sm" onclick="window.AdminAnalytics && window.AdminAnalytics.refresh()">🔄 Refresh Data</button>
+          <a href="market-prices.html" class="btn btn-primary btn-sm">Manage Market Rates</a>
+        </div>
+      </header>
+
+      <div class="content-container">
+
+        <!-- Admin Overview Banner -->
+        <div class="card" style="background: linear-gradient(135deg, #1e293b, #0f172a); color: #ffffff; margin-bottom: 1.75rem; padding: 1.75rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <span style="font-size: 0.8rem; background: rgba(255,255,255,0.15); padding: 0.2rem 0.6rem; border-radius: var(--radius-full); font-weight: 600;">🛡️ Agricultural Marketing & Fair Trade Oversight</span>
+              <h2 style="color: #ffffff; margin: 0.5rem 0; font-size: 1.6rem;">APMC Marketplace Analytics & Control Center</h2>
+              <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; max-width: 650px;">
+                Comprehensive intelligence across registered farmers, licensed wholesale buyers, crop listings, settlement volumes, and fair price compliance.
+              </p>
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <a href="reports.html" class="btn btn-outline btn-sm" style="color: #ffffff; border-color: rgba(255,255,255,0.4);">📊 Detailed Reports</a>
+              <a href="market-prices.html" class="btn btn-accent btn-sm" style="background: var(--primary-600); color: #ffffff;">Update Mandi Rates</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notification Summary Card -->
+        <div class="card" style="margin-bottom: 1.5rem; padding: 0.9rem 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; border-left: 4px solid var(--red-600); background: var(--bg-surface);">
+          <div style="display: flex; align-items: center; gap: 0.85rem;">
+            <div style="font-size: 1.35rem; width: 38px; height: 38px; border-radius: var(--radius-full); background: rgba(239, 68, 68, 0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">🔔</div>
+            <div>
+              <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary);" data-i18n="notificationsTitle">Notifications</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);" id="dashboard-notif-summary-text">Monitoring live platform governance alerts...</div>
+            </div>
+          </div>
+          <a href="notifications.html" class="btn btn-outline btn-sm" data-i18n="viewNotifications">View Notifications</a>
+        </div>
+
+        <!-- Live Firestore Analytics Diagnostic & Error Banner -->
+        <div id="analytics-error-banner" style="display: none; margin-bottom: 1.5rem;"></div>
+
+        <!-- ================================================================= -->
+        <!-- DASHBOARD FILTERS & INTERACTIVITY BAR                             -->
+        <!-- ================================================================= -->
+        <div class="analytics-filter-bar">
+          <div class="filter-group-container">
+            <div class="filter-item">
+              <span class="filter-label">Time Window</span>
+              <select id="filter-date-range" class="filter-select">
+                <option value="all">All Time</option>
+                <option value="7d">Last 7 Days</option>
+                <option value="30d">Last 30 Days</option>
+                <option value="3m">Last 3 Months</option>
+                <option value="6m">Last 6 Months</option>
+                <option value="12m">Last 12 Months</option>
+              </select>
+            </div>
+
+            <div class="filter-item">
+              <span class="filter-label">Crop Category</span>
+              <select id="filter-category" class="filter-select">
+                <option value="all">All Crop Categories</option>
+              </select>
+            </div>
+
+            <div class="filter-item">
+              <span class="filter-label">AP District</span>
+              <select id="filter-district" class="filter-select">
+                <option value="all">All AP Districts</option>
+              </select>
+            </div>
+
+            <div class="filter-item">
+              <span class="filter-label">Transaction Status</span>
+              <select id="filter-status" class="filter-select">
+                <option value="all">All Statuses</option>
+                <option value="Completed">Completed</option>
+                <option value="Paid">Paid</option>
+                <option value="Payment_Declared">Payment Declared</option>
+                <option value="Pending">Pending Fulfillment</option>
+                <option value="Cancelled">Cancelled</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-actions">
+            <span class="filter-status-indicator" id="active-filter-indicator">Showing All Marketplace Data</span>
+            <button id="btn-reset-filters" class="filter-reset-btn" title="Reset all filters">
+              <span>✕</span> Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- 1. PROFESSIONAL ADMIN OVERVIEW (8 KPI CARDS)                      -->
+        <!-- ================================================================= -->
+        <div class="kpi-grid">
+          <!-- 1. Total Registered Farmers -->
+          <div class="kpi-card" id="kpi-farmers">
+            <div class="kpi-card-top">
+              <span class="kpi-label">Registered Farmers</span>
+              <div class="kpi-icon-wrap kpi-icon-emerald">👨‍🌾</div>
+            </div>
+            <div class="kpi-value-wrap">
+              <span class="kpi-value">0</span>
+            </div>
+            <div class="kpi-trend-row">
+              <span class="kpi-trend-pill trend-neutral">• Verified growers</span>
+            </div>
+          </div>
+
+          <!-- 2. Total Registered Dealers -->
+          <div class="kpi-card" id="kpi-dealers">
+            <div class="kpi-card-top">
+              <span class="kpi-label">Registered Dealers</span>
+              <div class="kpi-icon-wrap kpi-icon-blue">💼</div>
+            </div>
+            <div class="kpi-value-wrap">
+              <span class="kpi-value">0</span>
+            </div>
+            <div class="kpi-trend-row">
+              <span class="kpi-trend-pill trend-neutral">• Licensed wholesale buyers</span>
+            </div>
+          </div>
+
+          <!-- 3. Active Crop Listings -->
+          <div class="kpi-card" id="kpi-listings">
+            <div class="kpi-card-top">
+              <span class="kpi-label">Active Crop Listings</span>
+              <div class="kpi-icon-wrap kpi-icon-amber">🌱</div>
+            </div>
+            <div class="kpi-value-wrap">
+              <span class="kpi-value">0</span>
+            </div>
+            <div class="kpi-trend-row">
+              <span class="kpi-trend-pill trend-neutral">• Marketplace lots</span>
+            </div>
+          </div>
+
+          <!-- 4. Total Transactions -->
+          <div class="kpi-card" id="kpi-total-tx">
+            <div class="kpi-card-top">
+              <span class="kpi-label">Total Transactions</span>
+              <div class="kpi-icon-wrap kpi-icon-purple">📋</div>
+            </div>
+            <div class="kpi-value-wrap">
+              <span class="kpi-value">0</span>
+            </div>
+            <div class="kpi-trend-row">
+              <span class="kpi-trend-pill trend-neutral">• Initiated contracts</span>
+            </div>
+          </div>
+
+          <!-- 5. Completed Transactions -->
+          <div class="kpi-card" id="kpi-completed-tx">
+            <div class="kpi-card-top">
+              <span class="kpi-label">Completed Transactions</span>
+              <div class="kpi-icon-wrap kpi-icon-teal">✅</div>
+            </div>
+            <div class="kpi-value-wrap">
+              <span class="kpi-value">0</span>
+            </div>
+            <div class="kpi-trend-row">
+              <span class="kpi-trend-pill trend-neutral">• Settled & fulfilled</span>
+            </div>
+          </div>
+
+          <!-- 6. Total Transaction Value (GMV) -->
+          <div class="kpi-card" id="kpi-gmv">
+            <div class="kpi-card-top">
+              <span class="kpi-label">Total Trade Volume (GMV)</span>
+              <div class="kpi-icon-wrap kpi-icon-emerald">💰</div>
+            </div>
+            <div class="kpi-value-wrap">
+              <span class="kpi-value">₹0</span>
+            </div>
+            <div class="kpi-trend-row">
+              <span class="kpi-trend-pill trend-neutral">• Gross realized value</span>
+            </div>
+          </div>
+
+          <!-- 7. Pending Transactions -->
+          <div class="kpi-card" id="kpi-pending-tx">
+            <div class="kpi-card-top">
+              <span class="kpi-label">Pending Transactions</span>
+              <div class="kpi-icon-wrap kpi-icon-red">⏳</div>
+            </div>
+            <div class="kpi-value-wrap">
+              <span class="kpi-value">0</span>
+            </div>
+            <div class="kpi-trend-row">
+              <span class="kpi-trend-pill trend-neutral">• In progress</span>
+            </div>
+          </div>
+
+          <!-- 8. Average Crop Listing Price -->
+          <div class="kpi-card" id="kpi-avg-price">
+            <div class="kpi-card-top">
+              <span class="kpi-label">Avg Crop Listing Price</span>
+              <div class="kpi-icon-wrap kpi-icon-indigo">🏷️</div>
+            </div>
+            <div class="kpi-value-wrap">
+              <span class="kpi-value">₹0</span>
+              <span class="kpi-unit">/kg</span>
+            </div>
+            <div class="kpi-trend-row">
+              <span class="kpi-trend-pill trend-neutral">• Market benchmark</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- 2. MARKETPLACE ACTIVITY TRENDS (INTERACTIVE LINE CHART)           -->
+        <!-- ================================================================= -->
+        <div class="analytics-section">
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div class="chart-title-wrap">
+                <h3 class="chart-title">📈 Marketplace Activity Trends</h3>
+                <span class="chart-subtitle">Real-time growth across farmer registrations, buyer accounts, crop lots, and settled trades</span>
+              </div>
+              <div class="chart-controls">
+                <button class="chart-btn-pill" data-activity-period="7d">7D</button>
+                <button class="chart-btn-pill active" data-activity-period="30d">30D</button>
+                <button class="chart-btn-pill" data-activity-period="3m">3M</button>
+                <button class="chart-btn-pill" data-activity-period="6m">6M</button>
+                <button class="chart-btn-pill" data-activity-period="12m">12M</button>
+              </div>
+            </div>
+            <div class="chart-container-fixed">
+              <canvas id="chart-activity-trends"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- 3. TRANSACTION ANALYTICS                                          -->
+        <!-- ================================================================= -->
+        <div class="analytics-section">
+          <div class="analytics-section-header">
+            <div>
+              <h2 class="analytics-section-title">💳 Transaction & Settlement Analytics</h2>
+              <p class="analytics-section-subtitle">Fulfillment stage breakdown, turnover trends, and execution performance</p>
+            </div>
+          </div>
+
+          <div class="analytics-grid-2">
+            <!-- Transaction Status Distribution (Doughnut Chart) -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <div class="chart-title-wrap">
+                  <h3 class="chart-title">Transaction Status Distribution</h3>
+                  <span class="chart-subtitle">Real-time distribution across two-party fulfillment phases</span>
+                </div>
+              </div>
+              <div class="chart-container-compact">
+                <canvas id="chart-tx-status"></canvas>
+              </div>
+            </div>
+
+            <!-- Transaction Value Trend (Bar / Area Chart) -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <div class="chart-title-wrap">
+                  <h3 class="chart-title">Transaction Value Trend</h3>
+                  <span class="chart-subtitle">Direct trade settlement turnover over time</span>
+                </div>
+              </div>
+              <div class="chart-container-compact">
+                <canvas id="chart-tx-value-trend"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transaction Performance 4-Metric Bar -->
+          <div class="perf-stat-bar">
+            <div class="perf-stat-item">
+              <span class="perf-stat-label">Total Transactions</span>
+              <span class="perf-stat-val" id="perf-total-tx">0</span>
+            </div>
+            <div class="perf-stat-item">
+              <span class="perf-stat-label">Completed Transactions</span>
+              <span class="perf-stat-val text-emerald" id="perf-completed-tx">0</span>
+            </div>
+            <div class="perf-stat-item">
+              <span class="perf-stat-label">Completion Rate</span>
+              <span class="perf-stat-val text-brand" id="perf-completion-rate">0%</span>
+            </div>
+            <div class="perf-stat-item">
+              <span class="perf-stat-label">Avg Transaction Value</span>
+              <span class="perf-stat-val text-purple" id="perf-atv">₹0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- 4. CROP & AGRICULTURAL MARKET ANALYTICS                          -->
+        <!-- ================================================================= -->
+        <div class="analytics-section">
+          <div class="analytics-section-header">
+            <div>
+              <h2 class="analytics-section-title">🌾 Crop & Agricultural Produce Analytics</h2>
+              <p class="analytics-section-subtitle">Listing frequencies, commodity price corridors, and trade turnover</p>
+            </div>
+          </div>
+
+          <div class="analytics-grid-3">
+            <!-- Most Listed Crops (Horizontal Bar Chart) -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <div class="chart-title-wrap">
+                  <h3 class="chart-title">Most Listed Crops</h3>
+                  <span class="chart-subtitle">Listing frequency across produce varieties</span>
+                </div>
+              </div>
+              <div class="chart-container-compact">
+                <canvas id="chart-most-listed-crops"></canvas>
+              </div>
+            </div>
+
+            <!-- Crop Price Comparison (Bar Chart) -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <div class="chart-title-wrap">
+                  <h3 class="chart-title">Price Comparison by Category</h3>
+                  <span class="chart-subtitle">Average expected farmer price in ₹/kg</span>
+                </div>
+              </div>
+              <div class="chart-container-compact">
+                <canvas id="chart-crop-price-comparison"></canvas>
+              </div>
+            </div>
+
+            <!-- Quantity & Top Crops by Value Summary -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <div class="chart-title-wrap">
+                  <h3 class="chart-title">Top Crops by Trade Value</h3>
+                  <span class="chart-subtitle">Realized GMV by commodity</span>
+                </div>
+              </div>
+              
+              <!-- Quantity stats mini box -->
+              <div style="background: var(--bg-surface-secondary); padding: 0.65rem 0.85rem; border-radius: var(--radius-md); margin-bottom: 0.85rem; display: flex; justify-content: space-between; font-size: 0.8rem;">
+                <div>
+                  <span class="text-muted">Total Listed:</span>
+                  <strong id="crop-total-quantity">0 kg</strong>
+                </div>
+                <div>
+                  <span class="text-muted">Available:</span>
+                  <strong class="text-emerald" id="crop-available-quantity">0 kg</strong>
+                </div>
+                <div>
+                  <span class="text-muted">Sold:</span>
+                  <strong class="text-brand" id="crop-sold-quantity">0 kg</strong>
+                </div>
+              </div>
+
+              <!-- Top crops value list -->
+              <div id="top-crops-value-container" style="max-height: 185px; overflow-y: auto;">
+                <div class="text-sm text-muted">Loading top commodities...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- 5. FARMER & DEALER ANALYTICS (LEADERBOARDS)                       -->
+        <!-- ================================================================= -->
+        <div class="analytics-section">
+          <div class="analytics-section-header">
+            <div>
+              <h2 class="analytics-section-title">👥 Farmer & Dealer Trade Leaderboards</h2>
+              <p class="analytics-section-subtitle">Top verified agricultural producers and licensed wholesale buyers by realized turnover</p>
+            </div>
+          </div>
+
+          <div class="analytics-grid-2">
+            <!-- Top Farmers -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3 class="chart-title">👨‍🌾 Top Farmers by Trade Value</h3>
+                <span class="badge badge-success">Producers</span>
+              </div>
+              <div class="table-responsive">
+                <table class="leaderboard-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 40px;">Rank</th>
+                      <th>Farmer Name</th>
+                      <th>Location</th>
+                      <th>Settled Deals</th>
+                      <th>Turnover</th>
+                      <th>Rating</th>
+                    </tr>
+                  </thead>
+                  <tbody id="top-farmers-tbody">
+                    <tr><td colspan="6" class="text-center text-muted py-3">Loading top growers...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Top Dealers -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3 class="chart-title">💼 Top Wholesale Dealers by Purchase Value</h3>
+                <span class="badge badge-primary">Wholesalers</span>
+              </div>
+              <div class="table-responsive">
+                <table class="leaderboard-table">
+                  <thead>
+                    <tr>
+                      <th style="width: 40px;">Rank</th>
+                      <th>Dealer Business</th>
+                      <th>Location</th>
+                      <th>Purchases</th>
+                      <th>Total Spend</th>
+                      <th>Rating</th>
+                    </tr>
+                  </thead>
+                  <tbody id="top-dealers-tbody">
+                    <tr><td colspan="6" class="text-center text-muted py-3">Loading top dealers...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- 6. OFFER & NEGOTIATION ANALYTICS                                  -->
+        <!-- ================================================================= -->
+        <div class="analytics-section">
+          <div class="analytics-section-header">
+            <div>
+              <h2 class="analytics-section-title">🤝 Offer & Price Negotiation Intelligence</h2>
+              <p class="analytics-section-subtitle">Fair-trade negotiation performance, counteroffer spreads, and agreement conversions</p>
+            </div>
+          </div>
+
+          <div class="analytics-grid-1-2">
+            <!-- Offer Outcomes (Doughnut Chart) -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <div class="chart-title-wrap">
+                  <h3 class="chart-title">Offer Outcomes Distribution</h3>
+                  <span class="chart-subtitle">Acceptance vs Counteroffer breakdown</span>
+                </div>
+              </div>
+              <div class="chart-container-compact">
+                <canvas id="chart-offer-outcomes"></canvas>
+              </div>
+            </div>
+
+            <!-- Negotiation Performance Highlights -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <h3 class="chart-title">Negotiation Key Metrics</h3>
+                <span class="badge badge-success">APMC Oversight</span>
+              </div>
+
+              <div class="perf-stat-bar" style="margin-top: 0; margin-bottom: 1.25rem;">
+                <div class="perf-stat-item">
+                  <span class="perf-stat-label">Total Offers</span>
+                  <span class="perf-stat-val" id="offer-total-count">0</span>
+                </div>
+                <div class="perf-stat-item">
+                  <span class="perf-stat-label">Accepted</span>
+                  <span class="perf-stat-val text-emerald" id="offer-accepted-count">0</span>
+                </div>
+                <div class="perf-stat-item">
+                  <span class="perf-stat-label">Countered</span>
+                  <span class="perf-stat-val text-brand" id="offer-countered-count">0</span>
+                </div>
+                <div class="perf-stat-item">
+                  <span class="perf-stat-label">Acceptance Rate</span>
+                  <span class="perf-stat-val text-purple" id="offer-accept-rate">0%</span>
+                </div>
+              </div>
+
+              <div style="background: var(--bg-surface-secondary); padding: 1rem 1.25rem; border-radius: var(--radius-md); border-left: 4px solid var(--primary-600);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                  <strong style="color: var(--text-primary); font-size: 0.95rem;">Average Buyer Negotiation Spread:</strong>
+                  <span style="font-size: 1.15rem; font-weight: 800; color: var(--primary-700);" id="offer-avg-discount">₹0 / kg</span>
+                </div>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin: 0;">
+                  Average price difference between farmer's initial ask and final agreed transaction price. Fair market negotiations enable swift closing without excessive commission yard markups.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- 7. LOCATION-BASED MARKETPLACE INSIGHTS                            -->
+        <!-- ================================================================= -->
+        <div class="analytics-section">
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <div class="chart-title-wrap">
+                <h3 class="chart-title">📍 Regional Trade Distribution Across Andhra Pradesh</h3>
+                <span class="chart-subtitle">Produce listings and fulfilled contracts aggregated by agricultural district</span>
+              </div>
+            </div>
+            <div class="chart-container-compact">
+              <canvas id="chart-location-distribution"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- 8. RECENT ACTIVITY FEED & OPERATIONAL ALERTS                      -->
+        <!-- ================================================================= -->
+        <div class="analytics-section">
+          <div class="analytics-grid-2">
+            <!-- Recent Marketplace Activity Feed -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <div class="chart-title-wrap">
+                  <h3 class="chart-title">⚡ Live Marketplace Activity Feed</h3>
+                  <span class="chart-subtitle">Chronological ledger of user registrations, crop postings, and trade events</span>
+                </div>
+              </div>
+              <div class="activity-feed-list" id="recent-activity-list">
+                <div class="text-sm text-muted text-center py-4">Loading real-time events...</div>
+              </div>
+            </div>
+
+            <!-- Administrative Operational Alerts -->
+            <div class="chart-card">
+              <div class="chart-card-header">
+                <div class="chart-title-wrap">
+                  <h3 class="chart-title">🛡️ Administrative Governance Alerts</h3>
+                  <span class="chart-subtitle">Automated oversight flags for stalled trades, incomplete produce lots, and price corridor variances</span>
+                </div>
+              </div>
+              <div class="alerts-list" id="admin-alerts-list">
+                <div class="text-sm text-muted text-center py-4">Scanning platform compliance...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- PRESERVED PLATFORM GOVERNANCE SECTIONS                            -->
+        <!-- ================================================================= -->
+
+        <!-- Quick Admin Actions & Mandi Rates Preview -->
+        <div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 2rem; margin-bottom: 2rem;">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Live APMC Mandi Benchmark Prices</h3>
+              <a href="market-prices.html" class="btn btn-outline btn-sm">Manage / Add Price</a>
+            </div>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Crop</th>
+                    <th>Mandi Yard</th>
+                    <th>Reference Rate</th>
+                    <th>Fair Range</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-rates-preview-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3 class="card-title" style="margin-bottom: 1.25rem;">Market Committee Tools</h3>
+            <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+              <a href="market-prices.html" class="btn btn-secondary" style="justify-content: flex-start;">
+                <span>📈</span> Update Mandi Benchmark Rates
+              </a>
+              <a href="listings.html" class="btn btn-secondary" style="justify-content: flex-start;">
+                <span>🛡️</span> Review & Moderate Crop Listings
+              </a>
+              <a href="farmers.html" class="btn btn-secondary" style="justify-content: flex-start;">
+                <span>👨‍🌾</span> Farmer Directory & Verifications
+              </a>
+              <a href="dealers.html" class="btn btn-secondary" style="justify-content: flex-start;">
+                <span>💼</span> Dealer Wholesaler Registrations
+              </a>
+              <a href="weather-suggestions.html" class="btn btn-secondary" style="justify-content: flex-start;">
+                <span>⛅</span> Broadcast Weather Advisories
+              </a>
+              <a href="reports.html" class="btn btn-secondary" style="justify-content: flex-start;">
+                <span>📊</span> Trade Reports & Analytics
+              </a>
+              <a href="settings.html" class="btn btn-secondary" style="justify-content: flex-start;">
+                <span>🔄</span> Reset Prototype Demo Data
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Admin User Overview Section -->
+        <div class="card" style="margin-bottom: 2rem;">
+          <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+              <h3 class="card-title" style="margin: 0;">Platform User Overview & Recent Registrations</h3>
+              <p class="text-sm text-muted" style="margin: 0.25rem 0 0 0;">Overview of active farmers, verified wholesale dealers, and administrator accounts.</p>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+              <a href="farmers.html" class="btn btn-outline btn-sm">Farmer Accounts</a>
+              <a href="dealers.html" class="btn btn-outline btn-sm">Dealer Accounts</a>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>User Name</th>
+                  <th>Role</th>
+                  <th>Contact</th>
+                  <th>Location / District</th>
+                  <th>Rating</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="admin-users-overview-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Admin Crop Listing Overview Section -->
+        <div class="card" style="margin-bottom: 2rem;">
+          <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+            <div>
+              <h3 class="card-title" style="margin: 0;">Active Crop Listings Overview</h3>
+              <p class="text-sm text-muted" style="margin: 0.25rem 0 0 0;">Comprehensive oversight of agricultural produce lots currently active in marketplace.</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <input type="text" id="admin-crop-search" class="form-control form-control-sm" placeholder="Search crop, farmer, or mandi..." oninput="filterAdminCrops()" style="width: 240px;">
+              <a href="listings.html" class="btn btn-outline btn-sm">Manage All Listings</a>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Crop Produce</th>
+                  <th>Farmer</th>
+                  <th>Location</th>
+                  <th>Quantity</th>
+                  <th>Expected Price</th>
+                  <th>Grade</th>
+                  <th>Listing Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="admin-crops-overview-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs (Phase 1 Bridge) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/chart.umd.min.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/admin.js"></script>
+  <script src="../js/admin-analytics.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+    if (window.Auth && !window.Auth.requireAuth("admin")) {}
+
+    let allAdminCrops = [];
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      // 1. Initialize Professional Admin Analytics Engine
+      if (window.AdminAnalytics) {
+        await window.AdminAnalytics.init();
+      }
+
+      // 2. Load Governance Tables using genuine records
+      loadAdminDashboard();
+
+      // 3. Dynamic Firebase Auth state listener to auto-refresh when auth resolves
+      if (window.FarmLinkFirebase && window.FarmLinkFirebase.auth && typeof window.FarmLinkFirebase.auth.onAuthStateChanged === 'function') {
+        window.FarmLinkFirebase.auth.onAuthStateChanged(user => {
+          if (user && window.AdminAnalytics && window.AdminAnalytics.hasError) {
+            window.AdminAnalytics.refresh();
+          }
+        });
+      }
+    });
+
+    function loadAdminDashboard() {
+      if (!window.Auth || !window.Auth.requireAuth("admin")) return;
+      
+      const users = (window.AdminAnalytics && typeof window.AdminAnalytics.getGenuineUsers === 'function')
+        ? window.AdminAnalytics.getGenuineUsers()
+        : (window.Storage && typeof window.Storage.getGenuineUsers === 'function' ? window.Storage.getGenuineUsers() : []);
+
+      allAdminCrops = (window.AdminAnalytics && typeof window.AdminAnalytics.getGenuineCrops === 'function')
+        ? window.AdminAnalytics.getGenuineCrops()
+        : (window.Storage && typeof window.Storage.getGenuineCrops === 'function' ? window.Storage.getGenuineCrops() : []);
+
+      // Mandi prices preview
+      const prices = (window.AdminAnalytics && typeof window.AdminAnalytics.getGenuineMarketPrices === 'function')
+        ? window.AdminAnalytics.getGenuineMarketPrices().slice(0, 5)
+        : (window.Storage && typeof window.Storage.getGenuineMarketPrices === 'function' ? window.Storage.getGenuineMarketPrices().slice(0, 5) : []);
+
+      const ratesBody = document.getElementById("admin-rates-preview-tbody");
+      if (ratesBody) {
+        if (prices.length === 0) {
+          ratesBody.innerHTML = `<tr><td colspan="4" class="text-center text-muted" style="padding: 1.5rem;">No mandi rates recorded in Firestore.</td></tr>`;
+        } else {
+          ratesBody.innerHTML = prices.map(p => `
+            <tr>
+              <td><strong>${p.crop || p.cropName}</strong></td>
+              <td><small class="text-muted">📍 ${p.mandi || p.location}</small></td>
+              <td style="font-weight: 700; color: var(--primary-700);">₹${p.marketPrice || p.referencePrice}/${p.unit || 'kg'}</td>
+              <td><span class="badge badge-success">₹${p.minFairPrice || p.fairMin} – ₹${p.maxFairPrice || p.fairMax}</span></td>
+            </tr>
+          `).join("");
+        }
+      }
+
+      // Users Overview Table
+      renderAdminUsersOverview(users);
+
+      // Crops Overview Table
+      renderAdminCropsOverview(allAdminCrops);
+    }
+
+    function renderAdminUsersOverview(users) {
+      const tbody = document.getElementById("admin-users-overview-tbody");
+      if (!tbody) return;
+
+      if (!users || users.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="text-center text-muted" style="padding: 2rem;">No registered users found in Firestore.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = users.map(u => {
+        let roleBadgeClass = "badge-success";
+        if (u.role === "dealer") roleBadgeClass = "badge-primary";
+        if (u.role === "admin") roleBadgeClass = "badge-danger";
+
+        return `
+          <tr>
+            <td>
+              <div style="font-weight: 700;">${u.name}</div>
+              <small class="text-muted">${u.email || u.businessName || ''}</small>
+            </td>
+            <td><span class="badge ${roleBadgeClass}">${(u.role || 'user').toUpperCase()}</span></td>
+            <td><small>${u.phone || 'Not provided'}</small></td>
+            <td><small>📍 ${u.location || u.district || 'Andhra Pradesh'}</small></td>
+            <td><span style="color: var(--amber-500); font-weight: 700;">${u.rating || '5.0'} ★</span></td>
+            <td><span class="badge badge-success">Active</span></td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function filterAdminCrops() {
+      const q = (document.getElementById("admin-crop-search").value || "").toLowerCase().trim();
+      if (!q) {
+        renderAdminCropsOverview(allAdminCrops);
+        return;
+      }
+      const filtered = allAdminCrops.filter(c => {
+        const title = (c.title || c.cropName || "").toLowerCase();
+        const farmer = (c.farmerName || "").toLowerCase();
+        const loc = (c.location || "").toLowerCase();
+        const grade = (c.qualityGrade || "").toLowerCase();
+        return title.includes(q) || farmer.includes(q) || loc.includes(q) || grade.includes(q);
+      });
+      renderAdminCropsOverview(filtered);
+    }
+
+    function renderAdminCropsOverview(crops) {
+      const tbody = document.getElementById("admin-crops-overview-tbody");
+      if (!tbody) return;
+
+      if (!crops || crops.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 2rem; color: var(--text-muted);">No crop listings found in Firestore.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = crops.map(c => {
+        const cropTitle = c.title || c.cropName || 'Agricultural Crop';
+        let gradeBadge = "badge-grade-a";
+        if (c.qualityGrade === "Grade B") gradeBadge = "badge-grade-b";
+        if (c.qualityGrade === "Grade C") gradeBadge = "badge-grade-c";
+
+        let statusBadge = "badge-success";
+        if (c.status === "Sold") statusBadge = "badge-secondary";
+        if (c.status === "Under Negotiation") statusBadge = "badge-warning";
+
+        const unitStr = String(c.unit || 'kg').toLowerCase().trim();
+        let priceHtml = `₹${c.expectedPrice}/${c.unit || 'kg'}`;
+        if (unitStr.includes('bag')) {
+          const bw = Number(c.bagWeightKg);
+          if (Number.isFinite(bw) && bw > 0) {
+            const pricePerKg = (Number(c.expectedPrice) / bw).toFixed(1);
+            priceHtml = `₹${c.expectedPrice}/${c.unit || 'bag'}<br><small class="text-muted" style="font-weight: normal;">(₹${pricePerKg}/kg @ ${bw}kg/bag)</small>`;
+          } else {
+            priceHtml = `₹${c.expectedPrice}/${c.unit || 'bag'}<br><small class="text-warning" style="font-size: 0.75rem; font-weight: 500;">Excluded: bag weight unavailable</small>`;
+          }
+        } else if (unitStr.includes('quintal') || unitStr === 'qtl') {
+          const pricePerKg = (Number(c.expectedPrice) / 100).toFixed(1);
+          priceHtml = `₹${c.expectedPrice}/${c.unit}<br><small class="text-muted" style="font-weight: normal;">(₹${pricePerKg}/kg)</small>`;
+        } else if (unitStr.includes('ton') || unitStr.includes('tonne')) {
+          const pricePerKg = (Number(c.expectedPrice) / 1000).toFixed(1);
+          priceHtml = `₹${c.expectedPrice}/${c.unit}<br><small class="text-muted" style="font-weight: normal;">(₹${pricePerKg}/kg)</small>`;
+        }
+
+        return `
+          <tr>
+            <td><strong>${cropTitle}</strong></td>
+            <td>${c.farmerName || 'Verified Farmer'}</td>
+            <td><small class="text-muted">📍 ${c.location || c.district || 'AP'}</small></td>
+            <td><strong>${Number(c.quantity || 0).toLocaleString()}</strong> <small>${c.unit || 'kg'}</small></td>
+            <td style="font-weight: 700; color: var(--primary-700);">${priceHtml}</td>
+            <td><span class="badge ${gradeBadge}">${c.qualityGrade || 'Grade A'}</span></td>
+            <td><small class="text-muted">${c.listedDate || c.harvestDate || 'Not recorded'}</small></td>
+            <td><span class="badge ${statusBadge}">${c.status || 'Available'}</span></td>
+          </tr>
+        `;
+      }).join("");
+    }
+  </script>
+</body>
+</html>

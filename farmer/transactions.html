@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales History & Invoices — FarmLink</title>
+  
+  <link rel="stylesheet" href="../css/themes.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+          </svg>
+          <span data-i18n="brandName">FarmLink</span>
+        </a>
+        <span class="sidebar-role-badge" data-i18n="roleFarmer">Farmer</span>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li class="nav-item-header" data-i18n="fNavOverview">Main Menu</li>
+        <li>
+          <a href="dashboard.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span data-i18n="fNavOverview">Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="crops.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span data-i18n="fNavMyCrops">My Listed Crops</span>
+          </a>
+        </li>
+        <li>
+          <a href="add-crop.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <span data-i18n="fNavAddCrop">Add New Crop</span>
+          </a>
+        </li>
+        <li>
+          <a href="offers.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span data-i18n="fNavOffers">Dealer Offers</span>
+            <span id="offers-count-badge" class="sidebar-badge">2</span>
+          </a>
+        </li>
+        <li>
+          <a href="messages.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span data-i18n="fNavMessages">Messages</span>
+          </a>
+        </li>
+        <li>
+          <a href="notifications.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span data-i18n="notificationsTitle">Notifications</span>
+          </a>
+        </li>
+
+        <li class="nav-item-header" data-i18n="whyTitle">Insights & Tools</li>
+        <li>
+          <a href="market-prices.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span data-i18n="fNavMarket">Market Prices</span>
+          </a>
+        </li>
+        <li>
+          <a href="weather.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            <span data-i18n="fNavWeather">Weather & Advisories</span>
+          </a>
+        </li>
+        <li>
+          <a href="profit-calculator.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"/></svg>
+            <span data-i18n="fNavCalculator">Profit Calculator</span>
+          </a>
+        </li>
+        <li>
+          <a href="transactions.html" class="sidebar-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span data-i18n="fNavTransactions">Sales History</span>
+          </a>
+        </li>
+        <li>
+          <a href="profile.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="fNavProfile">Farmer Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="settings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-i18n="fNavSettings">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="logoutUser()" class="sidebar-link" style="color: var(--danger-600);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span data-i18n="logout">Logout</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-profile">
+          <div class="user-avatar user-avatar-display">FL</div>
+          <div class="user-info">
+            <span class="user-name user-name-display">Farmer</span>
+            <span class="user-role user-role-display">FARMER</span>
+          </div>
+        </div>
+        <button class="btn-icon" onclick="logoutUser()" title="Logout"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></button>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="topbar-title" data-i18n="fNavTransactions">Sales History & Invoices</h1>
+        </div>
+        <div class="topbar-right">
+          <button class="lang-toggle-btn" onclick="toggleLanguage()"><span>🌐</span><span class="lang-toggle-text">తెలుగు</span></button>
+          <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span class="theme-label">Dark</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="content-container">
+
+        <!-- Sales Summary Stats -->
+        <div class="stats-grid" style="margin-bottom: 2rem;">
+          <div class="stat-card">
+            <div class="stat-content">
+              <span class="stat-label">Total Realized Revenue</span>
+              <span class="stat-value text-emerald" id="stat-total-revenue">₹2,31,600</span>
+              <span class="stat-trend text-emerald">100% directly credited</span>
+            </div>
+            <div class="stat-icon icon-blue">₹</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-content">
+              <span class="stat-label">Completed Trade Deals</span>
+              <span class="stat-value" id="stat-tx-count">2</span>
+              <span class="stat-trend text-emerald">All contracts fulfilled</span>
+            </div>
+            <div class="stat-icon">📦</div>
+          </div>
+        </div>
+
+        <!-- Transactions Table -->
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Crop & Quantity</th>
+                  <th>Wholesale Buyer</th>
+                  <th>Final Agreed Price</th>
+                  <th>Total Amount</th>
+                  <th>Trade Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="farmer-tx-tbody">
+                <!-- Populated via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Digital Invoice Receipt Modal -->
+  <div id="modal-invoice" class="modal-backdrop">
+    <div class="modal" style="max-width: 840px;">
+      <div class="modal-header">
+        <h3 class="modal-title">FarmLink – Transaction Receipt</h3>
+        <button class="modal-close" onclick="window.App.closeModal('modal-invoice')">&times;</button>
+      </div>
+      <div class="modal-body" id="invoice-modal-content">
+        <!-- Generated Receipt -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" onclick="window.print()">🖨️ Print Receipt</button>
+        <button class="btn btn-secondary" onclick="window.App.closeModal('modal-invoice')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rating Modal -->
+  <div id="modal-rate" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Rate Wholesale Buyer</h3>
+        <button class="modal-close" onclick="window.App.closeModal('modal-rate')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="rate-tx-id">
+        <div class="form-group" style="text-align: center; margin: 1rem 0;">
+          <label class="form-label" style="margin-bottom: 0.5rem;">Select Rating</label>
+          <div style="font-size: 2rem; color: var(--amber-500); cursor: pointer;" id="star-rating-box">
+            <span onclick="setStarRating(1)">★</span>
+            <span onclick="setStarRating(2)">★</span>
+            <span onclick="setStarRating(3)">★</span>
+            <span onclick="setStarRating(4)">★</span>
+            <span onclick="setStarRating(5)">★</span>
+          </div>
+          <input type="hidden" id="star-value" value="5">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Review / Feedback</label>
+          <textarea id="rate-review-text" class="form-control" rows="3" placeholder="Honest weighing scales, timely bank settlement, respectful communication..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="window.App.closeModal('modal-rate')">Cancel</button>
+        <button class="btn btn-primary" onclick="submitRating()">Submit Rating</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dispatch Produce Modal (Stage A) -->
+  <div id="modal-dispatch" class="modal-backdrop">
+    <div class="modal" style="max-width: 620px;">
+      <div class="modal-header">
+        <h3 class="modal-title">🚚 Mark Goods as Dispatched</h3>
+        <button class="modal-close" onclick="window.App.closeModal('modal-dispatch')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="dispatch-tx-id">
+        <!-- Lot Summary -->
+        <div id="dispatch-tx-summary" style="background: #f0fdf4; border: 1px solid #86efac; border-radius: 6px; padding: 0.85rem; margin-bottom: 1.25rem;"></div>
+
+        <form id="dispatch-form" onsubmit="event.preventDefault(); submitDispatch();">
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" style="font-weight: 600;">Dispatch Date &amp; Time *</label>
+            <input type="datetime-local" class="form-control" id="dispatch-datetime" required>
+            <small class="text-muted" style="display: block; margin-top: 0.25rem;">Defaults to current time. Recorded for transport verification.</small>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" style="font-weight: 600;">Quantity Dispatched *</label>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <input type="number" class="form-control" id="dispatch-quantity" step="any" min="0.01" required style="flex: 1;">
+              <span id="dispatch-unit-label" style="font-weight: 600; color: #374151;">kg</span>
+            </div>
+            <small class="text-muted" id="dispatch-max-hint" style="display: block; margin-top: 0.25rem;">Must not exceed contracted quantity.</small>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" style="font-weight: 600;">Transport / Vehicle Details (Optional)</label>
+            <input type="text" class="form-control" id="dispatch-transport" placeholder="e.g. AP 27 TX 1234 - Ashok Leyland 14ft Truck">
+            <small class="text-muted" style="display: block; margin-top: 0.25rem;">Vehicle registration number, transport operator, or driver contact.</small>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" style="font-weight: 600;">Additional Dispatch Notes (Optional)</label>
+            <textarea class="form-control" id="dispatch-notes" rows="2" placeholder="e.g. Produce crated in shade, moisture 12% verified, dispatched via Mandi Yard Gate 2."></textarea>
+          </div>
+
+          <div style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 4px; padding: 0.75rem; font-size: 0.82rem; color: #4b5563; margin-bottom: 1rem;">
+            ℹ️ <strong>Two-Party Logistics:</strong> Submitting dispatch records that goods have left your farm yard and notifies the buyer. Delivery will be marked complete only after the buyer confirms goods received.
+          </div>
+
+          <div class="modal-footer" style="padding: 0.75rem 0 0 0; margin-top: 1rem; border-top: 1px solid #e5e7eb; display: flex; justify-content: flex-end; gap: 0.5rem;">
+            <button type="button" class="btn btn-secondary" onclick="window.App.closeModal('modal-dispatch')">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="btn-submit-dispatch" style="background: #15803d; border-color: #15803d;">
+              🚚 Confirm &amp; Mark Dispatched
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirm Payment Received Modal (Stage 4: Farmer Payment Confirmation) -->
+  <div id="modal-confirm-payment" class="modal-backdrop">
+    <div class="modal" style="max-width: 620px;">
+      <div class="modal-header">
+        <h3 class="modal-title">💰 Confirm Payment Received</h3>
+        <button class="modal-close" onclick="window.App.closeModal('modal-confirm-payment')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="confirm-payment-tx-id">
+        <!-- Buyer Payment Declaration Summary -->
+        <div id="confirm-payment-summary" style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 6px; padding: 1rem; margin-bottom: 1.25rem;"></div>
+
+        <form id="confirm-payment-form" onsubmit="event.preventDefault(); submitConfirmPayment();">
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" style="font-weight: 600;">Confirmed Received Amount (₹) *</label>
+            <input type="number" class="form-control" id="confirm-payment-amount" step="any" min="1" required style="font-weight: 700; font-size: 1.05rem;">
+            <small class="text-muted" style="display: block; margin-top: 0.25rem;">Amount credited into your bank account or received via Mandi cash/UPI.</small>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" style="font-weight: 600;">Farmer Confirmation Notes (Optional)</label>
+            <textarea class="form-control" id="confirm-payment-notes" rows="2" placeholder="e.g. Bank SMS credit alert verified, transaction settled in full."></textarea>
+          </div>
+
+          <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 0.85rem; margin-bottom: 1.25rem;">
+            <label style="display: flex; align-items: flex-start; gap: 0.65rem; cursor: pointer; margin: 0;">
+              <input type="checkbox" id="confirm-payment-checkbox" required style="margin-top: 0.25rem; width: 17px; height: 17px; accent-color: #16a34a;">
+              <span style="font-size: 0.88rem; color: #1e293b; line-height: 1.4;">
+                <strong>I verify that I have received this payment.</strong><br>
+                <span style="font-size: 0.78rem; color: #64748b;">This will mark the payment as officially Settled &amp; Paid, completing the transaction settlement.</span>
+              </span>
+            </label>
+          </div>
+
+          <div class="modal-footer" style="padding: 0.75rem 0 0 0; margin-top: 1rem; border-top: 1px solid #e5e7eb; display: flex; justify-content: flex-end; gap: 0.5rem;">
+            <button type="button" class="btn btn-secondary" onclick="window.App.closeModal('modal-confirm-payment')">Close</button>
+            <button type="submit" class="btn btn-primary" id="btn-submit-confirm-payment" style="background: #16a34a; border-color: #16a34a;">
+              ✓ Confirm Payment Received
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delivery Details & Progress Timeline Modal (Both Parties) -->
+  <div id="modal-delivery-details" class="modal-backdrop">
+    <div class="modal" style="max-width: 720px;">
+      <div class="modal-header">
+        <h3 class="modal-title">🚚 Delivery Details &amp; Progress Timeline</h3>
+        <button class="modal-close" onclick="window.App.closeModal('modal-delivery-details')">&times;</button>
+      </div>
+      <div class="modal-body" id="delivery-details-modal-content"></div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="window.App.closeModal('modal-delivery-details')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs (Phase 1 Bridge) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/reviews.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+    if (window.Auth && !window.Auth.requireAuth("farmer")) {}
+
+    let farmerTransactions = [];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadTransactions();
+
+      // Realtime Firestore synchronization for Phase 3C & 3F
+      if (window.Storage && typeof window.Storage.syncTransactionsFromFirestore === "function") {
+        window.Storage.syncTransactionsFromFirestore("farmer").then(() => {
+          loadTransactions();
+        }).catch(err => console.warn("[FarmLink] Firestore transactions sync error:", err));
+      }
+
+      if (window.Storage && typeof window.Storage.syncReviewsFromFirestore === "function") {
+        const u = window.Auth ? window.Auth.getCurrentUser() : null;
+        if (u) {
+          window.Storage.syncReviewsFromFirestore(u.uid || u.id).then(() => {
+            loadTransactions();
+          }).catch(err => console.warn("[FarmLink] Firestore reviews sync error:", err));
+        }
+      }
+
+      if (window.Storage && typeof window.Storage.initTransactionsSync === "function") {
+        window.Storage.initTransactionsSync(() => {
+          loadTransactions();
+        }, "farmer");
+      }
+    });
+
+    function loadTransactions() {
+      const user = window.Auth.getCurrentUser();
+      if (!user) return;
+      const isTe = window.I18n && window.I18n.currentLang === "te";
+      const allTx = window.Storage.getTransactions();
+      farmerTransactions = allTx.filter(t => t.farmerId === user.id || (user.uid && (t.farmerId === user.uid || t.farmerUid === user.uid)));
+
+      const totalRev = farmerTransactions.reduce((acc, c) => acc + (Number(c.totalAmount) || 0), 0);
+      document.getElementById("stat-total-revenue").textContent = "₹" + totalRev.toLocaleString();
+      document.getElementById("stat-tx-count").textContent = farmerTransactions.length;
+
+      const currentUid = user.uid || user.id;
+      const tbody = document.getElementById("farmer-tx-tbody");
+      if (farmerTransactions.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="7" class="text-center" style="padding: 2rem;">No transaction records yet.</td></tr>`;
+      } else {
+        tbody.innerHTML = farmerTransactions.map(t => {
+          const statusInfo = window.Storage && typeof window.Storage.getTransactionStatusDisplay === "function"
+            ? window.Storage.getTransactionStatusDisplay(t)
+            : { label: t.status, labelTe: t.status, badgeClass: "badge-success", isFullyCompleted: t.status === "Completed" };
+          const deliveryInfo = window.Storage && typeof window.Storage.getDeliveryDetails === "function"
+            ? window.Storage.getDeliveryDetails(t)
+            : { isDispatched: false, isDelivered: false };
+          const existingReview = window.Reviews ? window.Reviews.getReviewByTransactionAndReviewer(t.id, currentUid) : null;
+          const alreadyReviewed = !!t.farmerRated || !!existingReview;
+          const displayRating = t.farmerRating || (existingReview ? existingReview.rating : 5);
+          const isFulfilled = statusInfo.isFullyCompleted;
+          const isCancelled = t.status === "Cancelled" || t.status === "cancelled" || t.dealStatus === "Cancelled" || t.dealStatus === "cancelled";
+
+          return `
+            <tr>
+              <td>
+                <div style="font-weight: 700; color: var(--text-primary);">${t.cropTitle || t.cropName}</div>
+                <div class="text-xs text-muted">${Number(t.quantity).toLocaleString()} ${t.unit || 'kg'}</div>
+              </td>
+              <td>
+                <strong>${t.dealerName}</strong>
+              </td>
+              <td>
+                <span style="font-weight: 700;">₹${t.finalPrice}/${t.unit || 'kg'}</span>
+              </td>
+              <td>
+                <span style="font-weight: 800; color: var(--emerald);">₹${Number(t.totalAmount).toLocaleString()}</span>
+              </td>
+              <td>
+                <span class="text-sm text-muted">${t.date}</span>
+              </td>
+              <td>
+                <div style="display: flex; flex-direction: column; gap: 0.35rem; align-items: flex-start;">
+                  <span class="badge ${statusInfo.badgeClass}" style="font-size: 0.76rem; font-weight: 700;" title="${statusInfo.summary || ''}">
+                    ${isTe ? (statusInfo.labelTe || statusInfo.label) : statusInfo.label}
+                  </span>
+                  <div style="display: flex; gap: 0.25rem; flex-wrap: wrap;">
+                    <span class="badge ${statusInfo.paymentClass || 'badge-warning'}" style="font-size: 0.68rem; padding: 0.15rem 0.4rem;">
+                      ${isTe ? (statusInfo.paymentLabelTe || statusInfo.paymentLabel) : (statusInfo.paymentLabel || 'Payment: Pending')}
+                    </span>
+                    <span class="badge ${statusInfo.deliveryClass || 'badge-info'}" style="font-size: 0.68rem; padding: 0.15rem 0.4rem;">
+                      ${isTe ? (statusInfo.deliveryLabelTe || statusInfo.deliveryLabel) : (statusInfo.deliveryLabel || 'Delivery: Pending')}
+                    </span>
+                  </div>
+                  <!-- Fulfillment Actions: Delivery & Payment -->
+                  <div style="display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.2rem;">
+                    ${deliveryInfo.isDelivered ? `
+                      <button class="btn btn-outline btn-xs" onclick="openDeliveryDetailsModal('${t.id}')" style="font-size: 0.72rem; padding: 0.15rem 0.45rem; border-color: #86efac; color: #166534;" title="View delivery confirmation history">
+                        ✓ Delivery Details
+                      </button>
+                    ` : (deliveryInfo.isDispatched ? `
+                      <button class="btn btn-outline btn-xs" onclick="openDeliveryDetailsModal('${t.id}')" style="font-size: 0.72rem; padding: 0.15rem 0.45rem;" title="View dispatch details and transport note">
+                        📦 View Dispatch Details
+                      </button>
+                    ` : `
+                      <button class="btn btn-primary btn-xs" onclick="openDispatchModal('${t.id}')" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: #15803d; border-color: #15803d;" title="Mark goods as dispatched with vehicle and quantity details">
+                        🚚 Mark as Dispatched
+                      </button>
+                    `)}
+
+                    ${!isCancelled ? (
+                      (t.paymentStatus === 'Paid' || t.paymentStatus === 'Settled' || t.paymentStatus === 'completed' || (t.farmerPayment && t.farmerPayment.farmerConfirmed)) ? `
+                        <span style="font-size: 0.72rem; color: #15803d; font-weight: 700; display: inline-flex; align-items: center; padding: 0.15rem 0.35rem;">✓ Payment Confirmed</span>
+                      ` : ((t.paymentStatus === 'Payment_Declared' || (t.dealerPayment && t.dealerPayment.dealerDeclared)) ? `
+                        <button class="btn btn-primary btn-xs" onclick="openConfirmPaymentModal('${t.id}')" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: #16a34a; border-color: #16a34a;" title="Buyer has declared payment. Verify and confirm receipt.">
+                          💰 Confirm Payment Received
+                        </button>
+                      ` : `
+                        <span class="badge badge-warning" style="font-size: 0.68rem; padding: 0.15rem 0.4rem;" title="Awaiting buyer to declare payment">⏳ Awaiting Buyer Payment</span>
+                      `)
+                    ) : ''}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div style="display: flex; gap: 0.4rem; align-items: center; flex-wrap: wrap;">
+                  <button class="btn btn-outline btn-sm" onclick="printReceipt('${t.id}')" title="Print Transaction Receipt">🖨️ Print Receipt</button>
+                  ${isFulfilled ? (
+                    alreadyReviewed ? `
+                      <button class="btn btn-outline btn-sm" disabled style="opacity: 0.7; cursor: not-allowed;" title="Review already submitted for this transaction">
+                        ✓ Reviewed (${displayRating}★)
+                      </button>
+                    ` : `
+                      <button class="btn btn-primary btn-sm" onclick="openRatingModal('${t.id}')" data-i18n="btnRateReview">
+                        Rate & Review
+                      </button>
+                    `
+                  ) : `
+                    <button class="btn btn-outline btn-sm" disabled style="opacity: 0.55; cursor: not-allowed;" title="Rating unlocks once payment settlement and delivery are both completed">
+                      Rate & Review (Pending)
+                    </button>
+                  `}
+                </div>
+              </td>
+            </tr>
+          `;
+        }).join("");
+      }
+
+      if (window.I18n && typeof window.I18n.applyTranslations === "function") {
+        window.I18n.applyTranslations();
+      }
+    }
+
+    function printReceipt(txId) {
+      const allTx = (window.Storage && typeof window.Storage.getTransactions === "function") ? window.Storage.getTransactions() : [];
+      const tx = (farmerTransactions && farmerTransactions.find(t => t.id === txId || t.transactionId === txId || (t.offerId && 'tx_' + t.offerId === txId)))
+        || allTx.find(t => t.id === txId || t.transactionId === txId || (t.offerId && 'tx_' + t.offerId === txId));
+
+      if (!tx) {
+        if (window.App && typeof window.App.showToast === "function") {
+          window.App.showToast("Transaction details could not be found.", "error");
+        }
+        return;
+      }
+
+      const receiptHtml = (window.Storage && typeof window.Storage.buildReceiptHtml === "function")
+        ? window.Storage.buildReceiptHtml(tx)
+        : `<div style="padding: 1.5rem; text-align: center;">Transaction ID: ${tx.id}</div>`;
+
+      const modalContentEl = document.getElementById("invoice-modal-content");
+      if (modalContentEl) {
+        modalContentEl.innerHTML = receiptHtml;
+      }
+
+      if (window.App && typeof window.App.openModal === "function") {
+        window.App.openModal("modal-invoice");
+      }
+
+      // Standalone print window attempt with in-page print fallback
+      try {
+        const printWin = window.open('', '_blank', 'width=850,height=900');
+        if (printWin && !printWin.closed) {
+          printWin.document.open();
+          printWin.document.write(`
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+              <meta charset="UTF-8">
+              <title>FarmLink Receipt - ${tx.id}</title>
+              <style>
+                @page { size: A4 portrait; margin: 1.2cm; }
+                * { box-sizing: border-box; }
+                body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #fff; color: #111827; margin: 0; padding: 0.5cm; }
+                .print-receipt-sheet { border: 2px solid #1e293b; padding: 1.5rem; border-radius: 6px; background: #ffffff; color: #111827; }
+                .print-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #15803d; padding-bottom: 0.85rem; margin-bottom: 1.25rem; }
+                .print-brand-title { color: #15803d; font-size: 1.35rem; font-weight: 800; margin: 0; }
+                .print-sub { font-size: 0.8rem; color: #4b5563; }
+                .print-parties-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.25rem; border: 1px solid #e5e7eb; padding: 0.85rem; border-radius: 4px; background-color: #f9fafb; }
+                .print-table { width: 100%; border-collapse: collapse; margin-bottom: 1.25rem; font-size: 0.95rem; }
+                .print-table th, .print-table td { border: 1px solid #d1d5db; padding: 0.65rem 0.75rem; }
+                .print-table th { background-color: #f3f4f6; color: #111827; font-weight: 700; }
+                .print-status-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 1rem; padding: 0.75rem; background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 4px; font-size: 0.85rem; }
+                .print-signatures { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px dashed #9ca3af; }
+                .print-signature-box { text-align: center; }
+                .print-signature-line { border-bottom: 1px solid #111827; height: 40px; margin-bottom: 0.5rem; }
+                .print-footer-notice { font-size: 0.75rem; color: #6b7280; text-align: center; margin-top: 1.25rem; border-top: 1px solid #e5e7eb; padding-top: 0.5rem; }
+              </style>
+            </head>
+            <body>
+              ${receiptHtml}
+              ${'<' + 'script>'}
+                window.addEventListener('load', () => {
+                  setTimeout(() => { window.print(); }, 150);
+                });
+              ${'<' + '/script>'}
+            </body>
+            </html>
+          `);
+          printWin.document.close();
+          try {
+            if (typeof printWin.focus === "function") {
+              printWin.focus();
+            }
+            if (typeof printWin.print === "function") {
+              printWin.print();
+            }
+          } catch (err) {
+            // Document load handler in popup will execute print
+          }
+          return;
+        }
+      } catch (e) {
+        console.log("[FarmLink] Using in-page print preview dialog:", e.message);
+      }
+
+      setTimeout(() => {
+        window.print();
+      }, 250);
+    }
+
+    function viewInvoice(txId) {
+      printReceipt(txId);
+    }
+
+    async function confirmPaymentReceivedAction(txId) {
+      if (confirm("Confirm that payment for this transaction has been received and verified?")) {
+        try {
+          if (window.Storage && typeof window.Storage.updateTransactionFulfillment === "function") {
+            await window.Storage.updateTransactionFulfillment(txId, { paymentStatus: "Paid" });
+            window.App.showToast("Payment status updated to Settled/Paid!", "success");
+            loadTransactions();
+          }
+        } catch (err) {
+          window.App.showToast(err.message || "Failed to update payment status.", "error");
+        }
+      }
+    }
+
+    function openConfirmPaymentModal(txId) {
+      const allTx = (window.Storage && typeof window.Storage.getTransactions === "function") ? window.Storage.getTransactions() : [];
+      const tx = (farmerTransactions && farmerTransactions.find(t => t.id === txId || t.transactionId === txId || (t.offerId && 'tx_' + t.offerId === txId)))
+        || allTx.find(t => t.id === txId || t.transactionId === txId || (t.offerId && 'tx_' + t.offerId === txId));
+
+      if (!tx) {
+        if (window.App && typeof window.App.showToast === "function") window.App.showToast("Transaction details not found.", "error");
+        return;
+      }
+
+      if (tx.status === "Cancelled" || tx.status === "cancelled" || tx.dealStatus === "Cancelled" || tx.dealStatus === "cancelled") {
+        if (window.App && typeof window.App.showToast === "function") window.App.showToast("Cannot confirm payment for a cancelled transaction.", "error");
+        return;
+      }
+
+      const dealerPay = tx.dealerPayment || {};
+      const declaredAmt = Number(dealerPay.amount || tx.totalAmount || (tx.finalPrice * tx.quantity));
+
+      document.getElementById("confirm-payment-tx-id").value = tx.id;
+      document.getElementById("confirm-payment-amount").value = declaredAmt;
+      document.getElementById("confirm-payment-notes").value = "";
+      document.getElementById("confirm-payment-checkbox").checked = false;
+
+      const summaryEl = document.getElementById("confirm-payment-summary");
+      if (summaryEl) {
+        summaryEl.innerHTML = `
+          <div style="font-size: 0.8rem; font-weight: 700; color: #15803d; text-transform: uppercase; margin-bottom: 0.35rem;">
+            STAGE 4: FARMER PAYMENT CONFIRMATION
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.82rem; color: #1e293b;">
+            <div>
+              <div>Produce: <strong>${tx.cropTitle || tx.cropName}</strong></div>
+              <div>Buyer (Dealer): <strong>${tx.dealerName}</strong></div>
+              <div>Contract Total: <strong>₹${Number(tx.totalAmount).toLocaleString('en-IN')}</strong></div>
+            </div>
+            <div>
+              <div>Declared Amount: <strong style="color: #15803d; font-size: 0.95rem;">₹${declaredAmt.toLocaleString('en-IN')}</strong></div>
+              <div>Payment Mode: <strong>${dealerPay.paymentMethod || 'Bank Transfer'}</strong></div>
+              <div>UTR / Ref: <strong>${dealerPay.referenceNumber || 'N/A'}</strong></div>
+            </div>
+          </div>
+          ${dealerPay.notes ? `
+            <div style="margin-top: 0.5rem; font-size: 0.78rem; color: #475569;">
+              Buyer Notes: <em>${dealerPay.notes}</em>
+            </div>
+          ` : ''}
+        `;
+      }
+
+      if (window.App && typeof window.App.openModal === "function") window.App.openModal("modal-confirm-payment");
+    }
+
+    async function submitConfirmPayment() {
+      const txId = document.getElementById("confirm-payment-tx-id").value;
+      const amt = Number(document.getElementById("confirm-payment-amount").value);
+      const notes = document.getElementById("confirm-payment-notes").value;
+      const chk = document.getElementById("confirm-payment-checkbox").checked;
+
+      if (!chk) {
+        if (window.App && typeof window.App.showToast === "function") {
+          window.App.showToast("Please check the confirmation box to verify payment received in your bank account.", "warning");
+        }
+        return;
+      }
+
+      if (isNaN(amt) || amt <= 0) {
+        if (window.App && typeof window.App.showToast === "function") {
+          window.App.showToast("Please enter a valid positive payment amount.", "warning");
+        }
+        return;
+      }
+
+      const submitBtn = document.getElementById("btn-submit-confirm-payment");
+      let origText = "";
+      if (submitBtn) {
+        origText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Confirming payment receipt...";
+      }
+
+      try {
+        if (!window.Storage || typeof window.Storage.recordFarmerPaymentConfirmation !== "function") {
+          throw new Error("Storage service unavailable.");
+        }
+
+        await window.Storage.recordFarmerPaymentConfirmation(txId, {
+          confirmedAmount: amt,
+          notes: notes
+        });
+
+        if (window.App) {
+          window.App.closeModal("modal-confirm-payment");
+          window.App.showToast("Payment confirmed as received! Fulfillment updated.", "success");
+        }
+        loadTransactions();
+      } catch (err) {
+        if (window.App && typeof window.App.showToast === "function") {
+          window.App.showToast(err.message || "Failed to confirm payment receipt.", "error");
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = origText;
+        }
+      }
+    }
+
+    function openDispatchModal(txId) {
+      const allTx = (window.Storage && typeof window.Storage.getTransactions === "function") ? window.Storage.getTransactions() : [];
+      const tx = (farmerTransactions && farmerTransactions.find(t => t.id === txId || t.transactionId === txId || (t.offerId && 'tx_' + t.offerId === txId)))
+        || allTx.find(t => t.id === txId || t.transactionId === txId || (t.offerId && 'tx_' + t.offerId === txId));
+
+      if (!tx) {
+        if (window.App && typeof window.App.showToast === "function") window.App.showToast("Transaction details not found.", "error");
+        return;
+      }
+
+      if (tx.status === "Cancelled" || tx.status === "cancelled" || tx.dealStatus === "Cancelled" || tx.dealStatus === "cancelled") {
+        if (window.App && typeof window.App.showToast === "function") window.App.showToast("Cannot dispatch a cancelled transaction.", "error");
+        return;
+      }
+
+      const delivery = (window.Storage && typeof window.Storage.getDeliveryDetails === "function") ? window.Storage.getDeliveryDetails(tx) : {};
+      if (delivery.isDispatched) {
+        if (window.App && typeof window.App.showToast === "function") window.App.showToast("Goods have already been marked as dispatched.", "warning");
+        return;
+      }
+
+      document.getElementById("dispatch-tx-id").value = tx.id;
+      document.getElementById("dispatch-quantity").value = tx.quantity;
+      document.getElementById("dispatch-quantity").max = tx.quantity;
+      document.getElementById("dispatch-unit-label").textContent = tx.unit || "kg";
+      document.getElementById("dispatch-max-hint").textContent = `Contracted lot size: ${Number(tx.quantity).toLocaleString()} ${tx.unit || 'kg'} (cannot exceed)`;
+
+      // Set datetime-local default to current local time
+      const now = new Date();
+      now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+      document.getElementById("dispatch-datetime").value = now.toISOString().slice(0, 16);
+
+      document.getElementById("dispatch-transport").value = "";
+      document.getElementById("dispatch-notes").value = "";
+
+      const summaryEl = document.getElementById("dispatch-tx-summary");
+      if (summaryEl) {
+        summaryEl.innerHTML = `
+          <div style="font-size: 0.82rem; color: #166534; font-weight: 700; margin-bottom: 0.25rem;">CONTRACT SUMMARY</div>
+          <div style="display: flex; justify-content: space-between; font-weight: 700; color: #111827;">
+            <span>${tx.cropTitle || tx.cropName}</span>
+            <span style="color: #15803d;">₹${Number(tx.totalAmount).toLocaleString()}</span>
+          </div>
+          <div style="font-size: 0.8rem; color: #4b5563; margin-top: 0.2rem;">
+            Buyer: <strong>${tx.dealerName}</strong> • Agreed Price: ₹${tx.finalPrice}/${tx.unit || 'kg'} • Total Lot: ${Number(tx.quantity).toLocaleString()} ${tx.unit || 'kg'}
+          </div>
+        `;
+      }
+
+      if (window.App && typeof window.App.openModal === "function") window.App.openModal("modal-dispatch");
+    }
+
+    async function submitDispatch() {
+      const txId = document.getElementById("dispatch-tx-id").value;
+      const dispatchDate = document.getElementById("dispatch-datetime").value;
+      const qty = Number(document.getElementById("dispatch-quantity").value);
+      const transport = document.getElementById("dispatch-transport").value;
+      const notes = document.getElementById("dispatch-notes").value;
+
+      const submitBtn = document.getElementById("btn-submit-dispatch");
+      let origText = "";
+      if (submitBtn) {
+        origText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Recording dispatch...";
+      }
+
+      try {
+        if (!window.Storage || typeof window.Storage.recordFarmerDispatch !== "function") {
+          throw new Error("Storage service unavailable.");
+        }
+
+        await window.Storage.recordFarmerDispatch(txId, {
+          dispatchDate: dispatchDate,
+          dispatchedQuantity: qty,
+          transportDetails: transport,
+          dispatchNotes: notes
+        });
+
+        if (window.App) {
+          window.App.closeModal("modal-dispatch");
+          window.App.showToast("Produce marked as dispatched! Awaiting dealer confirmation.", "success");
+        }
+        loadTransactions();
+      } catch (err) {
+        if (window.App && typeof window.App.showToast === "function") window.App.showToast(err.message || "Failed to record dispatch.", "error");
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = origText;
+        }
+      }
+    }
+
+    function openDeliveryDetailsModal(txId) {
+      const allTx = (window.Storage && typeof window.Storage.getTransactions === "function") ? window.Storage.getTransactions() : [];
+      const tx = (farmerTransactions && farmerTransactions.find(t => t.id === txId || t.transactionId === txId || (t.offerId && 'tx_' + t.offerId === txId)))
+        || allTx.find(t => t.id === txId || t.transactionId === txId || (t.offerId && 'tx_' + t.offerId === txId));
+
+      if (!tx) {
+        if (window.App && typeof window.App.showToast === "function") window.App.showToast("Transaction details not found.", "error");
+        return;
+      }
+
+      const delivery = (window.Storage && typeof window.Storage.getDeliveryDetails === "function") ? window.Storage.getDeliveryDetails(tx) : {};
+      const payment = (window.Storage && typeof window.Storage.getPaymentDetails === "function") ? window.Storage.getPaymentDetails(tx) : {};
+      const statusInfo = (window.Storage && typeof window.Storage.getTransactionStatusDisplay === "function") ? window.Storage.getTransactionStatusDisplay(tx) : {};
+      const unit = tx.unit || "kg";
+
+      const step1Done = true;
+      const step2Done = delivery.isDispatched;
+      const step3Done = delivery.isDelivered;
+      const step4Done = tx.paymentStatus === 'Paid' || tx.paymentStatus === 'Settled' || (tx.farmerPayment && tx.farmerPayment.farmerConfirmed);
+      const step5Done = statusInfo.isFullyCompleted;
+
+      const modalBody = document.getElementById("delivery-details-modal-content");
+      if (modalBody) {
+        modalBody.innerHTML = `
+          <!-- 5-Step Timeline -->
+          <div style="margin-bottom: 1.5rem; background: #f9fafb; padding: 1rem; border-radius: 6px; border: 1px solid #e5e7eb;">
+            <div style="font-weight: 700; color: #111827; margin-bottom: 0.85rem; font-size: 0.88rem;">ORDER FULFILLMENT &amp; SETTLEMENT TIMELINE</div>
+            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.35rem; text-align: center; font-size: 0.75rem;">
+              <div>
+                <div style="width: 28px; height: 28px; border-radius: 50%; margin: 0 auto 0.35rem; display: flex; align-items: center; justify-content: center; font-weight: 800; background: #15803d; color: #fff;">✓</div>
+                <strong>1. Deal Accepted</strong>
+                <div style="color: #6b7280; font-size: 0.68rem;">Contract Locked</div>
+              </div>
+              <div>
+                <div style="width: 28px; height: 28px; border-radius: 50%; margin: 0 auto 0.35rem; display: flex; align-items: center; justify-content: center; font-weight: 800; background: ${step2Done ? '#15803d' : '#9ca3af'}; color: #fff;">
+                  ${step2Done ? '✓' : '2'}
+                </div>
+                <strong>2. Dispatched</strong>
+                <div style="color: #6b7280; font-size: 0.68rem;">${step2Done ? 'In Transit' : 'Pending'}</div>
+              </div>
+              <div>
+                <div style="width: 28px; height: 28px; border-radius: 50%; margin: 0 auto 0.35rem; display: flex; align-items: center; justify-content: center; font-weight: 800; background: ${step3Done ? '#15803d' : '#9ca3af'}; color: #fff;">
+                  ${step3Done ? '✓' : '3'}
+                </div>
+                <strong>3. Delivered</strong>
+                <div style="color: #6b7280; font-size: 0.68rem;">${step3Done ? 'Confirmed' : 'Pending'}</div>
+              </div>
+              <div>
+                <div style="width: 28px; height: 28px; border-radius: 50%; margin: 0 auto 0.35rem; display: flex; align-items: center; justify-content: center; font-weight: 800; background: ${step4Done ? '#15803d' : ((tx.dealerPayment && tx.dealerPayment.dealerDeclared) ? '#2563eb' : '#f59e0b')}; color: #fff;">
+                  ${step4Done ? '✓' : '4'}
+                </div>
+                <strong>4. Payment</strong>
+                <div style="color: #6b7280; font-size: 0.68rem;">${step4Done ? 'Settled' : ((tx.dealerPayment && tx.dealerPayment.dealerDeclared) ? 'Declared' : 'Pending')}</div>
+              </div>
+              <div>
+                <div style="width: 28px; height: 28px; border-radius: 50%; margin: 0 auto 0.35rem; display: flex; align-items: center; justify-content: center; font-weight: 800; background: ${step5Done ? '#15803d' : '#9ca3af'}; color: #fff;">
+                  ${step5Done ? '✓' : '5'}
+                </div>
+                <strong>5. Completed</strong>
+                <div style="color: #6b7280; font-size: 0.68rem;">${step5Done ? 'Fulfilled' : 'In Progress'}</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Logistics & Settlement 4-Stage Grid -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
+            <!-- Stage 1 Card: Farmer Dispatch -->
+            <div style="border: 1px solid #d1d5db; border-radius: 6px; padding: 0.85rem; background: #fff;">
+              <div style="font-weight: 700; font-size: 0.78rem; color: #15803d; text-transform: uppercase; margin-bottom: 0.5rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.25rem;">
+                STAGE 1: FARMER DISPATCH
+              </div>
+              <div style="font-size: 0.82rem; line-height: 1.6;">
+                <div><strong>Status:</strong> ${delivery.isDispatched ? '<span class="badge badge-success">✓ Dispatched</span>' : '<span class="badge badge-warning">Pending</span>'}</div>
+                <div><strong>Dispatch Date:</strong> ${delivery.dispatchDate || 'Not recorded'}</div>
+                <div><strong>Contracted Quantity:</strong> ${Number(tx.quantity).toLocaleString()} ${unit}</div>
+                <div><strong>Dispatched Quantity:</strong> ${delivery.dispatchedQuantity ? `${delivery.dispatchedQuantity.toLocaleString()} ${unit}` : 'Not recorded'}</div>
+                <div><strong>Transport / Vehicle:</strong> ${delivery.transportDetails || 'Not recorded'}</div>
+                <div><strong>Dispatch Notes:</strong> ${delivery.dispatchNotes || 'None'}</div>
+              </div>
+            </div>
+
+            <!-- Stage 2 Card: Dealer Delivery Receipt -->
+            <div style="border: 1px solid #d1d5db; border-radius: 6px; padding: 0.85rem; background: #fff;">
+              <div style="font-weight: 700; font-size: 0.78rem; color: #2563eb; text-transform: uppercase; margin-bottom: 0.5rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.25rem;">
+                STAGE 2: DEALER RECEIPT CONFIRMATION
+              </div>
+              <div style="font-size: 0.82rem; line-height: 1.6;">
+                <div><strong>Status:</strong> ${delivery.isDelivered ? '<span class="badge badge-success">✓ Confirmed by Dealer</span>' : '<span class="badge badge-info">Awaiting Confirmation</span>'}</div>
+                <div><strong>Confirmation Date:</strong> ${delivery.deliveryConfirmedAt ? delivery.deliveryConfirmedAt.split('T')[0] : 'Not recorded'}</div>
+                <div><strong>Received Quantity:</strong> ${delivery.receivedQuantity ? `${delivery.receivedQuantity.toLocaleString()} ${unit}` : 'Not recorded'}</div>
+                <div><strong>Delivery Notes:</strong> ${delivery.deliveryNotes || 'None'}</div>
+                <div><strong>Confirmed By:</strong> ${delivery.deliveryConfirmedBy || (delivery.isDelivered ? tx.dealerName : 'Pending')}</div>
+              </div>
+            </div>
+
+            <!-- Stage 3 Card: Dealer Payment Declaration -->
+            <div style="border: 1px solid #d1d5db; border-radius: 6px; padding: 0.85rem; background: #fff;">
+              <div style="font-weight: 700; font-size: 0.78rem; color: #16a34a; text-transform: uppercase; margin-bottom: 0.5rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.25rem;">
+                STAGE 3: BUYER PAYMENT DECLARATION
+              </div>
+              <div style="font-size: 0.82rem; line-height: 1.6;">
+                <div><strong>Status:</strong> ${(tx.dealerPayment && tx.dealerPayment.dealerDeclared) ? '<span class="badge badge-success">✓ Declared Sent</span>' : '<span class="badge badge-warning">Pending Declaration</span>'}</div>
+                <div><strong>Declared Amount:</strong> ${tx.dealerPayment && tx.dealerPayment.amount ? `₹${Number(tx.dealerPayment.amount).toLocaleString('en-IN')}` : 'Not declared'}</div>
+                <div><strong>Payment Method:</strong> ${(tx.dealerPayment && tx.dealerPayment.paymentMethod) || 'Not declared'}</div>
+                <div><strong>Ref / UTR:</strong> ${(tx.dealerPayment && tx.dealerPayment.referenceNumber) || 'None'}</div>
+                <div><strong>Payment Date:</strong> ${(tx.dealerPayment && tx.dealerPayment.paymentDate) || 'Not recorded'}</div>
+              </div>
+            </div>
+
+            <!-- Stage 4 Card: Farmer Payment Confirmation -->
+            <div style="border: 1px solid #d1d5db; border-radius: 6px; padding: 0.85rem; background: #fff;">
+              <div style="font-weight: 700; font-size: 0.78rem; color: #059669; text-transform: uppercase; margin-bottom: 0.5rem; border-bottom: 1px solid #e5e7eb; padding-bottom: 0.25rem;">
+                STAGE 4: FARMER PAYMENT CONFIRMATION
+              </div>
+              <div style="font-size: 0.82rem; line-height: 1.6;">
+                <div><strong>Status:</strong> ${(tx.farmerPayment && tx.farmerPayment.farmerConfirmed) ? '<span class="badge badge-success">✓ Confirmed Received</span>' : '<span class="badge badge-warning">Awaiting Your Confirmation</span>'}</div>
+                <div><strong>Confirmed Amount:</strong> ${tx.farmerPayment && tx.farmerPayment.confirmedAmount ? `₹${Number(tx.farmerPayment.confirmedAmount).toLocaleString('en-IN')}` : 'Pending'}</div>
+                <div><strong>Confirmation Date:</strong> ${(tx.farmerPayment && tx.farmerPayment.confirmationDate) || 'Pending'}</div>
+                <div><strong>Settlement Status:</strong> ${(tx.paymentStatus === 'Paid' || tx.paymentStatus === 'Settled') ? '<span style="color: #15803d; font-weight: 700;">Settled</span>' : 'Pending'}</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Prompts if Actionable for Farmer -->
+          <div style="display: flex; justify-content: flex-end; gap: 0.5rem; padding-top: 0.5rem; flex-wrap: wrap;">
+            ${(!delivery.isDispatched && (tx.status !== 'Cancelled' && tx.status !== 'cancelled')) ? `
+              <button class="btn btn-primary" onclick="window.App.closeModal('modal-delivery-details'); openDispatchModal('${tx.id}');" style="background: #15803d; border-color: #15803d;">
+                🚚 Mark as Dispatched Now
+              </button>
+            ` : ''}
+
+            ${((tx.dealerPayment && tx.dealerPayment.dealerDeclared) && (!tx.farmerPayment || !tx.farmerPayment.farmerConfirmed) && (tx.status !== 'Cancelled' && tx.status !== 'cancelled')) ? `
+              <button class="btn btn-primary" onclick="window.App.closeModal('modal-delivery-details'); openConfirmPaymentModal('${tx.id}');" style="background: #16a34a; border-color: #16a34a;">
+                💰 Confirm Payment Received Now
+              </button>
+            ` : ''}
+          </div>
+        `;
+      }
+
+      if (window.App && typeof window.App.openModal === "function") window.App.openModal("modal-delivery-details");
+    }
+
+    function openRatingModal(txId) {
+      document.getElementById("rate-tx-id").value = txId;
+      setStarRating(5);
+      window.App.openModal("modal-rate");
+    }
+
+    function setStarRating(num) {
+      document.getElementById("star-value").value = num;
+      const stars = document.getElementById("star-rating-box").children;
+      for (let i = 0; i < 5; i++) {
+        stars[i].style.opacity = i < num ? "1" : "0.3";
+      }
+    }
+
+    async function submitRating() {
+      const txId = document.getElementById("rate-tx-id").value;
+      const tx = farmerTransactions.find(t => t.id === txId);
+      const rating = Number(document.getElementById("star-value").value) || 5;
+      const reviewText = document.getElementById("rate-review-text").value;
+      const currentUser = window.Auth.getCurrentUser();
+
+      if (!tx || !currentUser) return;
+
+      const submitBtn = document.querySelector("#modal-rate button[onclick*='submitRating']") || document.querySelector("#modal-rate .btn-primary");
+      let originalBtnText = "";
+      if (submitBtn) {
+        originalBtnText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = (window.I18n && window.I18n.currentLang === "te") ? "సమర్పిస్తోంది..." : "Submitting...";
+      }
+
+      try {
+        const res = await window.Reviews.submitReview({
+          txId: tx.id,
+          offerId: tx.offerId,
+          cropId: tx.cropId,
+          cropTitle: tx.cropTitle || tx.cropName,
+          reviewerId: currentUser.uid || currentUser.id,
+          reviewerName: currentUser.name,
+          reviewerRole: "farmer",
+          receiverId: tx.dealerId,
+          receiverName: tx.dealerName,
+          receiverRole: "dealer",
+          rating: rating,
+          feedback: reviewText
+        });
+
+        if (res.success) {
+          window.App.closeModal("modal-rate");
+          window.App.showToast((window.I18n && window.I18n.currentLang === "te") ? "డీలర్ రేటింగ్ మరియు సమీక్ష విజయవంతంగా నమోదైంది!" : "Dealer rating and review submitted successfully!", "success");
+          loadTransactions();
+        } else {
+          window.App.showToast(res.error || "Unable to submit review.", "error");
+        }
+      } catch (err) {
+        console.error("[FarmLink] Review submission error:", err);
+        window.App.showToast(err.message || "Unable to submit review.", "error");
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          if (originalBtnText) submitBtn.textContent = originalBtnText;
+        }
+      }
+    }
+  </script>
+</body>
+</html>

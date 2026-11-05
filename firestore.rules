@@ -1,0 +1,594 @@
+rules_version = '2';
+/**
+ * FarmLink - Production Firestore Security Rules
+ * Target Project: farmlink-production-bf431
+ * 
+ * STATUS: PROPOSED / NOT DEPLOYED - AWAITING USER APPROVAL
+ * Compatibility: Original FarmLink Vanilla JS Architecture (Phases 1 - 3I)
+ * Enforces zero-trust role-based access control, participant isolation,
+ * atomic negotiation & transaction verification, and review immutability.
+ */
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // -------------------------------------------------------------------------
+    // Global Authentication & Role Helper Functions
+    // -------------------------------------------------------------------------
+    function isAuthenticated() {
+      return request.auth != null && request.auth.uid != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function getUserDoc() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+
+    function isFarmer() {
+      return isAuthenticated() &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        ('role' in getUserDoc()) &&
+        getUserDoc().role == 'farmer';
+    }
+
+    function isDealer() {
+      return isAuthenticated() &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        ('role' in getUserDoc()) &&
+        getUserDoc().role == 'dealer';
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        ('role' in getUserDoc()) &&
+        getUserDoc().role == 'admin';
+    }
+
+    // =========================================================================
+    // 1. USERS COLLECTION (/users/{userId})
+    // =========================================================================
+    // Permits:
+    // - Authenticated users can read directory profiles for trading transparency.
+    // - New users create their own profile as 'farmer' or 'dealer' (no self-admin).
+    // - Existing users update profile details while preserving role and identity.
+    // Prevents:
+    // - Privilege escalation to 'admin' or setting 'verified: true'.
+    // - Modifying another user's profile document.
+    // - Deleting user profiles from the client.
+    // =========================================================================
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+
+      allow create: if isOwner(userId) &&
+        request.resource.data.keys().hasAll(['uid', 'role', 'name', 'email']) &&
+        request.resource.data.uid == userId &&
+        request.resource.data.id == userId &&
+        (request.resource.data.role == 'farmer' || request.resource.data.role == 'dealer') &&
+        request.resource.data.isDemo == false &&
+        !request.resource.data.keys().hasAny(['admin', 'verified', 'suspended']);
+
+      allow update: if isOwner(userId) &&
+        request.resource.data.uid == resource.data.uid &&
+        ( !('id' in resource.data) || request.resource.data.id == resource.data.id ) &&
+        request.resource.data.role == resource.data.role &&
+        ( !('email' in resource.data) || request.resource.data.email == resource.data.email ) &&
+        !request.resource.data.keys().hasAny(['admin', 'verified', 'suspended']);
+
+      allow delete: if false;
+    }
+
+    // =========================================================================
+    // 2. CROPS COLLECTION (/crops/{cropId})
+    // =========================================================================
+    // Permits:
+    // - Authenticated market participants browsing produce listings.
+    // - Verified farmers listing lots with positive quantity, price, and category.
+    // - Farmers updating their own listings or soft-deleting (status: 'Removed').
+    // Prevents:
+    // - Dealers or strangers creating listings or modifying farmer crops.
+    // - Ownership hijacking or altering immutable creation timestamps.
+    // - Hard deleting crop lots that have transaction history.
+    // =========================================================================
+    match /crops/{cropId} {
+      allow read: if isAuthenticated();
+
+      allow create: if isFarmer() &&
+        request.resource.data.farmerId == request.auth.uid &&
+        request.resource.data.quantity is number &&
+        request.resource.data.quantity > 0 &&
+        request.resource.data.expectedPrice is number &&
+        request.resource.data.expectedPrice > 0 &&
+        request.resource.data.status in ['Available', 'available', 'Active', 'active'] &&
+        request.resource.data.cropName is string &&
+        request.resource.data.cropName.size() > 0 &&
+        request.resource.data.cropName.size() <= 100;
+
+      allow update: if isAuthenticated() &&
+        resource.data.farmerId == request.auth.uid &&
+        request.resource.data.farmerId == resource.data.farmerId &&
+        request.resource.data.status in ['Available', 'available', 'Sold', 'sold', 'Removed', 'removed', 'Active', 'active'];
+
+      allow delete: if isAuthenticated() && resource.data.farmerId == request.auth.uid;
+    }
+
+    // =========================================================================
+    // 3. OFFERS COLLECTION (/offers/{offerId})
+    // =========================================================================
+    // Permits:
+    // - Strictly the specific farmer and specific dealer reading negotiation history.
+    // - Wholesale dealers submitting initial binding offers on active crop lots.
+    // - Alternating turn counter-offers until accepted, rejected, or cancelled.
+    // Prevents:
+    // - Third parties eavesdropping on private wholesale price bids.
+    // - Modifying terms after an offer has reached terminal state (Accepted/Rejected).
+    // - Changing immutable terms: cropId, farmerId, dealerId, quantity, unit, asking price.
+    // - Out-of-turn bidding or counter-offering against oneself.
+    // =========================================================================
+    match /offers/{offerId} {
+      allow read: if isAuthenticated() && (
+        resource.data.farmerId == request.auth.uid ||
+        resource.data.dealerId == request.auth.uid ||
+        isAdmin()
+      );
+
+      allow create: if isDealer() &&
+        request.resource.data.dealerId == request.auth.uid &&
+        request.resource.data.farmerId != null &&
+        request.resource.data.farmerId != request.auth.uid &&
+        request.resource.data.cropId != null &&
+        request.resource.data.offeredPrice is number &&
+        request.resource.data.offeredPrice > 0 &&
+        request.resource.data.quantity is number &&
+        request.resource.data.quantity > 0 &&
+        (request.resource.data.status == 'pending' || request.resource.data.status == 'Pending') &&
+        request.resource.data.lastSender == 'dealer';
+
+      allow update: if isAuthenticated() &&
+        (resource.data.farmerId == request.auth.uid || resource.data.dealerId == request.auth.uid) &&
+        ( !('id' in resource.data) || request.resource.data.id == resource.data.id ) &&
+        request.resource.data.cropId == resource.data.cropId &&
+        request.resource.data.farmerId == resource.data.farmerId &&
+        request.resource.data.dealerId == resource.data.dealerId &&
+        ( !('farmerExpectedPrice' in resource.data) || request.resource.data.farmerExpectedPrice == resource.data.farmerExpectedPrice ) &&
+        request.resource.data.quantity == resource.data.quantity &&
+        ( !('unit' in resource.data) || request.resource.data.unit == resource.data.unit ) &&
+        resource.data.status != 'Accepted' && resource.data.status != 'accepted' &&
+        resource.data.status != 'Rejected' && resource.data.status != 'rejected' &&
+        resource.data.status != 'Cancelled' && resource.data.status != 'cancelled' &&
+        (
+          // Alternating turn counter-offers:
+          (resource.data.lastSender == 'dealer' && request.auth.uid == resource.data.farmerId && request.resource.data.lastSender == 'farmer') ||
+          (resource.data.lastSender == 'farmer' && request.auth.uid == resource.data.dealerId && request.resource.data.lastSender == 'dealer') ||
+          // Status updates (accepting, rejecting, or cancelling without changing current offer price):
+          (request.resource.data.currentOfferPrice == resource.data.currentOfferPrice)
+        );
+
+      allow delete: if false;
+    }
+
+    // =========================================================================
+    // 4. TRANSACTIONS COLLECTION (/transactions/{txId})
+    // =========================================================================
+    // Permits:
+    // - Counterparty reading sales receipts and contract ledgers.
+    // - Atomic creation via client batch / runTransaction exactly when the offer
+    //   is marked 'Accepted' in the same commit.
+    // Prevents:
+    // - Client-side fabrication of unnegotiated financial transactions.
+    // - Modifying or deleting completed contract records (strict ledger immutability).
+    // - Mismatched trade amounts, crop IDs, or participant identifiers.
+    // =========================================================================
+    match /transactions/{txId} {
+      allow read: if isAuthenticated() && (
+        resource.data.farmerId == request.auth.uid ||
+        resource.data.dealerId == request.auth.uid ||
+        isAdmin()
+      );
+
+      function isFarmer() { return request.auth.uid == resource.data.farmerId; }
+      function isDealer() { return request.auth.uid == resource.data.dealerId; }
+      function affected() { return request.resource.data.diff(resource.data).affectedKeys(); }
+
+      function validFarmerDispatch() {
+        return !affected().hasAny(['farmerDispatch']) ||
+          (!('farmerDispatch' in resource.data) &&
+           isFarmer() &&
+           request.resource.data.farmerDispatch.farmerUid == request.auth.uid &&
+           request.resource.data.farmerDispatch.farmerConfirmed == true &&
+           request.resource.data.farmerDispatch.dispatchedQuantity is number &&
+           request.resource.data.farmerDispatch.dispatchedQuantity > 0 &&
+           request.resource.data.farmerDispatch.dispatchedQuantity <= resource.data.quantity);
+      }
+
+      function validDealerReceipt() {
+        return !affected().hasAny(['dealerReceipt']) ||
+          (!('dealerReceipt' in resource.data) &&
+           isDealer() &&
+           'farmerDispatch' in resource.data &&
+           resource.data.farmerDispatch.farmerConfirmed == true &&
+           request.resource.data.dealerReceipt.dealerUid == request.auth.uid &&
+           request.resource.data.dealerReceipt.dealerConfirmed == true &&
+           request.resource.data.dealerReceipt.receivedQuantity is number &&
+           request.resource.data.dealerReceipt.receivedQuantity > 0 &&
+           request.resource.data.dealerReceipt.receivedQuantity <= resource.data.farmerDispatch.dispatchedQuantity);
+      }
+
+      function validDealerPayment() {
+        return !affected().hasAny(['dealerPayment']) ||
+          (!('dealerPayment' in resource.data) &&
+           isDealer() &&
+           request.resource.data.dealerPayment.dealerUid == request.auth.uid &&
+           request.resource.data.dealerPayment.dealerDeclared == true &&
+           request.resource.data.dealerPayment.amount is number &&
+           request.resource.data.dealerPayment.amount > 0);
+      }
+
+      function validFarmerPayment() {
+        return !affected().hasAny(['farmerPayment']) ||
+          (!('farmerPayment' in resource.data) &&
+           isFarmer() &&
+           'dealerPayment' in resource.data &&
+           resource.data.dealerPayment.dealerDeclared == true &&
+           request.resource.data.farmerPayment.farmerUid == request.auth.uid &&
+           request.resource.data.farmerPayment.farmerConfirmed == true &&
+           request.resource.data.farmerPayment.confirmedAmount is number &&
+           request.resource.data.farmerPayment.confirmedAmount > 0);
+      }
+
+      function validDeliveryStatus() {
+        return !affected().hasAny(['deliveryStatus']) ||
+          request.resource.data.deliveryStatus in ['Pending_Delivery', 'pending'] ||
+          (
+            request.resource.data.deliveryStatus in ['Delivered', 'delivered', 'completed'] &&
+            (
+              ('deliveryStatus' in resource.data && resource.data.deliveryStatus in ['Delivered', 'delivered', 'completed']) ||
+              (
+                (isDealer() || isAdmin()) &&
+                'farmerDispatch' in request.resource.data &&
+                request.resource.data.farmerDispatch.farmerConfirmed == true &&
+                'dealerReceipt' in request.resource.data &&
+                request.resource.data.dealerReceipt.dealerConfirmed == true
+              )
+            )
+          );
+      }
+
+      function validPaymentStatus() {
+        return !affected().hasAny(['paymentStatus']) ||
+          request.resource.data.paymentStatus in ['Pending_Payment', 'pending'] ||
+          (
+            request.resource.data.paymentStatus in ['Payment_Declared'] &&
+            isDealer() &&
+            'dealerPayment' in request.resource.data
+          ) ||
+          (
+            request.resource.data.paymentStatus in ['Paid', 'paid', 'Settled', 'settled', 'completed'] &&
+            (
+              ('paymentStatus' in resource.data && resource.data.paymentStatus in ['Paid', 'paid', 'Settled', 'settled', 'completed']) ||
+              (
+                'dealerPayment' in request.resource.data &&
+                request.resource.data.dealerPayment.dealerDeclared == true &&
+                'farmerPayment' in request.resource.data &&
+                request.resource.data.farmerPayment.farmerConfirmed == true
+              )
+            )
+          );
+      }
+
+      function validRatings() {
+        return isAdmin() ||
+          (isFarmer() && !affected().hasAny(['dealerRated', 'dealerRating', 'dealerReview'])) ||
+          (isDealer() && !affected().hasAny(['farmerRated', 'farmerRating', 'farmerReview']));
+      }
+
+      function validCompletion() {
+        return !affected().hasAny(['dealStatus', 'status']) ||
+          (
+            !(request.resource.data.dealStatus in ['Fulfilled', 'fulfilled'] || request.resource.data.status in ['Completed', 'completed']) ||
+            (
+              request.resource.data.paymentStatus in ['Paid', 'paid', 'Settled', 'settled', 'completed'] &&
+              request.resource.data.deliveryStatus in ['Delivered', 'delivered', 'completed']
+            )
+          );
+      }
+
+      allow create: if isAuthenticated() &&
+        (request.auth.uid == request.resource.data.farmerId || request.auth.uid == request.resource.data.dealerId) &&
+        txId == 'tx_' + request.resource.data.offerId &&
+        request.resource.data.status in ['Completed', 'completed', 'Accepted', 'accepted'] &&
+        request.resource.data.totalAmount == request.resource.data.finalPrice * request.resource.data.quantity &&
+        getAfter(/databases/$(database)/documents/offers/$(request.resource.data.offerId)).data.status in ['Accepted', 'accepted'] &&
+        getAfter(/databases/$(database)/documents/offers/$(request.resource.data.offerId)).data.cropId == request.resource.data.cropId &&
+        getAfter(/databases/$(database)/documents/offers/$(request.resource.data.offerId)).data.farmerId == request.resource.data.farmerId &&
+        getAfter(/databases/$(database)/documents/offers/$(request.resource.data.offerId)).data.dealerId == request.resource.data.dealerId &&
+        getAfter(/databases/$(database)/documents/offers/$(request.resource.data.offerId)).data.quantity == request.resource.data.quantity &&
+        getAfter(/databases/$(database)/documents/offers/$(request.resource.data.offerId)).data.unit == request.resource.data.unit &&
+        getAfter(/databases/$(database)/documents/offers/$(request.resource.data.offerId)).data.currentOfferPrice == request.resource.data.finalPrice &&
+        exists(/databases/$(database)/documents/crops/$(request.resource.data.cropId)) &&
+        get(/databases/$(database)/documents/crops/$(request.resource.data.cropId)).data.farmerId == request.resource.data.farmerId;
+
+      allow update: if isAuthenticated() && (isFarmer() || isDealer() || isAdmin()) &&
+        resource.data.status != 'Cancelled' &&
+        resource.data.status != 'cancelled' &&
+        ( !('dealStatus' in resource.data) || (resource.data.dealStatus != 'Cancelled' && resource.data.dealStatus != 'cancelled') ) &&
+        affected().hasOnly([
+          'paymentStatus', 'deliveryStatus', 'dealStatus', 'status',
+          'farmerRated', 'farmerRating', 'farmerReview',
+          'dealerRated', 'dealerRating', 'dealerReview',
+          'updatedAt', 'note',
+          'farmerDispatch', 'dealerReceipt',
+          'dealerPayment', 'farmerPayment'
+        ]) &&
+        validRatings() &&
+        validFarmerDispatch() &&
+        validDealerReceipt() &&
+        validDealerPayment() &&
+        validFarmerPayment() &&
+        validDeliveryStatus() &&
+        validPaymentStatus() &&
+        validCompletion();
+
+      allow delete: if false;
+    }
+
+    // =========================================================================
+    // 5. NOTIFICATIONS COLLECTION (/notifications/{notifId})
+    // =========================================================================
+    // Permits:
+    // - Targeted alert delivery to specific recipient users.
+    // - Notification generation for valid trade events (offers, transactions, chats).
+    // - Recipient updating read status ('isRead: true').
+    // Prevents:
+    // - Arbitrary notification injection by non-participants.
+    // - Mutating notification contents or tampering with sender identity.
+    // =========================================================================
+    match /notifications/{notifId} {
+      allow read: if isAuthenticated() && (
+        resource.data.recipientUserId == request.auth.uid ||
+        resource.data.userId == request.auth.uid ||
+        (resource.data.type == 'message' && resource.data.senderUserId == request.auth.uid)
+      );
+
+      allow create: if isAuthenticated() &&
+        request.resource.data.id == notifId &&
+        request.resource.data.notificationId == notifId &&
+        request.resource.data.senderUserId == request.auth.uid &&
+        request.resource.data.recipientUserId != request.auth.uid &&
+        request.resource.data.userId == request.resource.data.recipientUserId &&
+        (request.resource.data.role == 'farmer' || request.resource.data.role == 'dealer') &&
+        request.resource.data.isRead == false &&
+        request.resource.data.read == false &&
+        request.resource.data.isDemo == false &&
+        (
+          // Offer Lifecycle Notifications
+          (
+            (request.resource.data.type in ['offer', 'counter', 'deal', 'rejected', 'cancelled']) &&
+            request.resource.data.relatedId != null &&
+            exists(/databases/$(database)/documents/offers/$(request.resource.data.relatedId)) &&
+            (
+              (request.auth.uid == get(/databases/$(database)/documents/offers/$(request.resource.data.relatedId)).data.dealerId &&
+               request.resource.data.recipientUserId == get(/databases/$(database)/documents/offers/$(request.resource.data.relatedId)).data.farmerId) ||
+              (request.auth.uid == get(/databases/$(database)/documents/offers/$(request.resource.data.relatedId)).data.farmerId &&
+               request.resource.data.recipientUserId == get(/databases/$(database)/documents/offers/$(request.resource.data.relatedId)).data.dealerId)
+            )
+          ) ||
+          // Transaction Notifications
+          (
+            request.resource.data.type == 'transaction' &&
+            request.resource.data.relatedId != null &&
+            exists(/databases/$(database)/documents/transactions/$(request.resource.data.relatedId)) &&
+            (
+              (request.auth.uid == get(/databases/$(database)/documents/transactions/$(request.resource.data.relatedId)).data.dealerId &&
+               request.resource.data.recipientUserId == get(/databases/$(database)/documents/transactions/$(request.resource.data.relatedId)).data.farmerId) ||
+              (request.auth.uid == get(/databases/$(database)/documents/transactions/$(request.resource.data.relatedId)).data.farmerId &&
+               request.resource.data.recipientUserId == get(/databases/$(database)/documents/transactions/$(request.resource.data.relatedId)).data.dealerId)
+            )
+          ) ||
+          // Chat Message Notifications
+          (
+            request.resource.data.type == 'message' &&
+            request.resource.data.relatedId != null &&
+            request.resource.data.messageId != null &&
+            notifId == 'notif_msg_' + request.resource.data.messageId &&
+            exists(/databases/$(database)/documents/conversations/$(request.resource.data.relatedId)) &&
+            (
+              (request.auth.uid == get(/databases/$(database)/documents/conversations/$(request.resource.data.relatedId)).data.dealerId &&
+               request.resource.data.recipientUserId == get(/databases/$(database)/documents/conversations/$(request.resource.data.relatedId)).data.farmerId) ||
+              (request.auth.uid == get(/databases/$(database)/documents/conversations/$(request.resource.data.relatedId)).data.farmerId &&
+               request.resource.data.recipientUserId == get(/databases/$(database)/documents/conversations/$(request.resource.data.relatedId)).data.dealerId)
+            ) &&
+            exists(/databases/$(database)/documents/conversations/$(request.resource.data.relatedId)/messages/$(request.resource.data.messageId)) &&
+            get(/databases/$(database)/documents/conversations/$(request.resource.data.relatedId)/messages/$(request.resource.data.messageId)).data.senderId == request.auth.uid &&
+            get(/databases/$(database)/documents/conversations/$(request.resource.data.relatedId)/messages/$(request.resource.data.messageId)).data.recipientId == request.resource.data.recipientUserId
+          )
+        );
+
+      allow update: if isAuthenticated() &&
+        resource.data.recipientUserId == request.auth.uid &&
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['isRead', 'read', 'updatedAt']);
+
+      allow delete: if false;
+    }
+
+    // =========================================================================
+    // 6. CONVERSATIONS & MESSAGES (/conversations/{conversationId})
+    // =========================================================================
+    // Permits:
+    // - Two authenticated trading partners maintaining direct conversation threads.
+    // - Exchanging messages up to 2,000 characters.
+    // - Recipient marking individual messages as read.
+    // Prevents:
+    // - Unrelated third parties accessing or snooping on private trade conversations.
+    // - Forging sender identities or injecting into conversations one is not party to.
+    // - Editing sent message text after submission.
+    // =========================================================================
+    match /conversations/{conversationId} {
+      allow read: if isAuthenticated() && (
+        resource.data.farmerId == request.auth.uid ||
+        resource.data.dealerId == request.auth.uid ||
+        (resource.data.participants != null && request.auth.uid in resource.data.participants)
+      );
+
+      allow create: if isAuthenticated() &&
+        (request.resource.data.farmerId == request.auth.uid || request.resource.data.dealerId == request.auth.uid) &&
+        (!('id' in request.resource.data) || request.resource.data.id == conversationId) &&
+        (!('conversationId' in request.resource.data) || request.resource.data.conversationId == conversationId) &&
+        request.resource.data.farmerId != null &&
+        request.resource.data.dealerId != null &&
+        request.resource.data.farmerId != request.resource.data.dealerId &&
+        conversationId == 'conv_' + request.resource.data.farmerId + '_' + request.resource.data.dealerId;
+
+      allow update: if isAuthenticated() && (
+        resource.data.farmerId == request.auth.uid ||
+        resource.data.dealerId == request.auth.uid
+      ) &&
+        request.resource.data.farmerId == resource.data.farmerId &&
+        request.resource.data.dealerId == resource.data.dealerId &&
+        (!('id' in request.resource.data) || request.resource.data.id == resource.data.id) &&
+        (!('conversationId' in request.resource.data) || request.resource.data.conversationId == resource.data.conversationId);
+
+      allow delete: if false;
+
+      // Messages Subcollection (/conversations/{conversationId}/messages/{messageId})
+      match /messages/{messageId} {
+        allow read: if isAuthenticated() && (
+          get(/databases/$(database)/documents/conversations/$(conversationId)).data.farmerId == request.auth.uid ||
+          get(/databases/$(database)/documents/conversations/$(conversationId)).data.dealerId == request.auth.uid
+        );
+
+        allow create: if isAuthenticated() &&
+          request.resource.data.senderId == request.auth.uid &&
+          (
+            (request.auth.uid == get(/databases/$(database)/documents/conversations/$(conversationId)).data.farmerId &&
+             request.resource.data.recipientId == get(/databases/$(database)/documents/conversations/$(conversationId)).data.dealerId) ||
+            (request.auth.uid == get(/databases/$(database)/documents/conversations/$(conversationId)).data.dealerId &&
+             request.resource.data.recipientId == get(/databases/$(database)/documents/conversations/$(conversationId)).data.farmerId)
+          ) &&
+          (!('conversationId' in request.resource.data) || request.resource.data.conversationId == conversationId) &&
+          request.resource.data.text is string &&
+          request.resource.data.text.size() > 0 &&
+          request.resource.data.text.size() <= 2000;
+
+        allow update: if isAuthenticated() &&
+          resource.data.recipientId == request.auth.uid &&
+          request.resource.data.diff(resource.data).affectedKeys().hasOnly(['isRead', 'read']);
+
+        allow delete: if false;
+      }
+    }
+
+    // =========================================================================
+    // 7. REVIEWS COLLECTION (/reviews/{reviewId})
+    // =========================================================================
+    // Permits:
+    // - Authenticated users reading reviews to evaluate counterparty trust.
+    // - Legitimate trading counterparties submitting 1-5 star ratings only after
+    //   a transaction is successfully completed.
+    // Prevents:
+    // - Duplicate reviews via deterministic ID: rev_{transactionId}_{reviewerId}.
+    // - Fabricating reviews without an authentic completed transaction.
+    // - Self-reviews or reviewing unrelated traders.
+    // - Mutating or deleting reviews once submitted.
+    // =========================================================================
+    match /reviews/{reviewId} {
+      allow read: if isAuthenticated();
+
+      allow create: if isAuthenticated() &&
+        request.resource.data.transactionId is string &&
+        request.resource.data.transactionId.size() > 0 &&
+        request.resource.data.transactionId.size() <= 100 &&
+        reviewId == 'rev_' + request.resource.data.transactionId + '_' + request.auth.uid &&
+        request.resource.data.id == reviewId &&
+        request.resource.data.reviewId == reviewId &&
+        request.resource.data.reviewerId == request.auth.uid &&
+        request.resource.data.isDemo == false &&
+        request.resource.data.userCreated == true &&
+        request.resource.data.rating is int &&
+        request.resource.data.rating >= 1 &&
+        request.resource.data.rating <= 5 &&
+        request.resource.data.feedback is string &&
+        request.resource.data.feedback.size() <= 500 &&
+        request.resource.data.createdAt is string &&
+        request.resource.data.createdAt.size() >= 10 &&
+        request.resource.data.createdAt.size() <= 40 &&
+        request.resource.data.updatedAt is string &&
+        request.resource.data.updatedAt.size() >= 10 &&
+        request.resource.data.updatedAt.size() <= 40 &&
+        request.resource.data.reviewerRole in ['farmer', 'dealer'] &&
+        request.resource.data.receiverRole in ['farmer', 'dealer'] &&
+        request.resource.data.reviewerRole != request.resource.data.receiverRole &&
+        request.resource.data.reviewerId != request.resource.data.receiverId &&
+        (!('cropTitle' in request.resource.data) || (request.resource.data.cropTitle is string && request.resource.data.cropTitle.size() <= 100)) &&
+        (!('reviewerName' in request.resource.data) || (request.resource.data.reviewerName is string && request.resource.data.reviewerName.size() <= 100)) &&
+        (!('receiverName' in request.resource.data) || (request.resource.data.receiverName is string && request.resource.data.receiverName.size() <= 100)) &&
+        request.resource.data.keys().hasAll([
+          'id', 'reviewId', 'transactionId', 'reviewerId', 'reviewerRole',
+          'receiverId', 'receiverRole', 'rating', 'feedback',
+          'createdAt', 'updatedAt', 'isDemo', 'userCreated'
+        ]) &&
+        request.resource.data.keys().hasOnly([
+          'id', 'reviewId', 'transactionId', 'offerId', 'cropId', 'cropTitle',
+          'reviewerId', 'reviewerName', 'reviewerRole', 'receiverId',
+          'receiverName', 'receiverRole', 'rating', 'feedback',
+          'createdAt', 'updatedAt', 'isDemo', 'userCreated'
+        ]) &&
+        exists(/databases/$(database)/documents/transactions/$(request.resource.data.transactionId)) &&
+        // Genuine completion requirement: transaction cannot be pending payment or delivery, and cannot be cancelled
+        get(/databases/$(database)/documents/transactions/$(request.resource.data.transactionId)).data.status != 'Cancelled' &&
+        get(/databases/$(database)/documents/transactions/$(request.resource.data.transactionId)).data.status != 'cancelled' &&
+        (
+          !( 'dealStatus' in get(/databases/$(database)/documents/transactions/$(request.resource.data.transactionId)).data ) ||
+          (
+            get(/databases/$(database)/documents/transactions/$(request.resource.data.transactionId)).data.dealStatus != 'Cancelled' &&
+            get(/databases/$(database)/documents/transactions/$(request.resource.data.transactionId)).data.dealStatus != 'cancelled'
+          )
+        ) &&
+        ( 'paymentStatus' in get(/databases/$(database)/documents/transactions/$(request.resource.data.transactionId)).data ) &&
+        get(/databases/$(database)/documents/transactions/$(request.resource.data.transactionId)).data.paymentStatus in ['Paid', 'paid', 'Settled', 'settled', 'completed'] &&
+        ( 'deliveryStatus' in get(/databases/$(database)/documents/transactions/$(request.resource.data.transactionId)).data ) &&
+        get(/databases/$(database)/documents/transactions/$(request.resource.data.transactionId)).data.deliveryStatus in ['Delivered', 'delivered', 'completed'] &&
+        (
+          (
+            request.resource.data.reviewerRole == 'farmer' &&
+            request.resource.data.receiverRole == 'dealer' &&
+            get(/databases/$(database)/documents/transactions/$(request.resource.data.transactionId)).data.farmerId == request.auth.uid &&
+            get(/databases/$(database)/documents/transactions/$(request.resource.data.transactionId)).data.dealerId == request.resource.data.receiverId
+          ) ||
+          (
+            request.resource.data.reviewerRole == 'dealer' &&
+            request.resource.data.receiverRole == 'farmer' &&
+            get(/databases/$(database)/documents/transactions/$(request.resource.data.transactionId)).data.dealerId == request.auth.uid &&
+            get(/databases/$(database)/documents/transactions/$(request.resource.data.transactionId)).data.farmerId == request.resource.data.receiverId
+          )
+        ) &&
+        (!('offerId' in request.resource.data) || (
+          request.resource.data.offerId is string &&
+          request.resource.data.offerId == get(/databases/$(database)/documents/transactions/$(request.resource.data.transactionId)).data.offerId
+        )) &&
+        (!('cropId' in request.resource.data) || (
+          request.resource.data.cropId is string &&
+          request.resource.data.cropId == get(/databases/$(database)/documents/transactions/$(request.resource.data.transactionId)).data.cropId
+        ));
+
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    // =========================================================================
+    // 8. MARKET PRICES COLLECTION (/market_prices/{priceId})
+    // =========================================================================
+    // Permits:
+    // - Authenticated market participants reading APMC benchmark rates.
+    // - Verified administrators managing benchmark rates.
+    // =========================================================================
+    match /market_prices/{priceId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
+  }
+}

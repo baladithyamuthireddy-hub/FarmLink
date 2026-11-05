@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Market Prices — FarmLink Admin</title>
+  
+  <link rel="stylesheet" href="../css/themes.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+          </svg>
+          <span data-i18n="brandName">FarmLink</span>
+        </a>
+        <span class="sidebar-role-badge" style="background: rgba(239, 68, 68, 0.15); color: #dc2626;" data-i18n="roleAdmin">Admin</span>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li class="nav-item-header">Platform Governance</li>
+        <li>
+          <a href="dashboard.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span data-i18n="aNavOverview">Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="farmers.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            <span data-i18n="aNavFarmers">Farmers</span>
+          </a>
+        </li>
+        <li>
+          <a href="dealers.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="aNavDealers">Dealers</span>
+          </a>
+        </li>
+        <li>
+          <a href="listings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span data-i18n="aNavListings">Crop Listings</span>
+          </a>
+        </li>
+        <li>
+          <a href="market-prices.html" class="sidebar-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span data-i18n="aNavPrices">Market Prices</span>
+          </a>
+        </li>
+        <li>
+          <a href="transactions.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <span data-i18n="aNavTransactions">Transactions</span>
+          </a>
+        </li>
+        <li>
+          <a href="notifications.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span data-i18n="notificationsTitle">Notifications</span>
+          </a>
+        </li>
+        <li>
+          <a href="weather-suggestions.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            <span data-i18n="aNavWeatherSuggestions">Weather Suggestions</span>
+          </a>
+        </li>
+        <li>
+          <a href="reports.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            <span data-i18n="aNavReports">Reports</span>
+          </a>
+        </li>
+        <li>
+          <a href="settings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-i18n="aNavSettings">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="logoutUser()" class="sidebar-link" style="color: var(--danger-600);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span data-i18n="logout">Logout</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-profile">
+          <div class="user-avatar user-avatar-display" style="background: linear-gradient(135deg, #dc2626, #ef4444);">AD</div>
+          <div class="user-info">
+            <span class="user-name user-name-display">Admin Officer</span>
+            <span class="user-role user-role-display">APMC ADMIN</span>
+          </div>
+        </div>
+        <button class="btn-icon" onclick="logoutUser()" title="Logout"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></button>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="topbar-title" data-i18n="aNavPrices">APMC Mandi Benchmark Rates</h1>
+        </div>
+        <div class="topbar-right">
+          <button class="lang-toggle-btn" onclick="toggleLanguage()"><span>🌐</span><span class="lang-toggle-text">తెలుగు</span></button>
+          <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span class="theme-label">Dark</span>
+          </button>
+          <button class="btn btn-primary btn-sm" onclick="openPriceModal()">+ Add Crop Benchmark</button>
+        </div>
+      </header>
+
+      <div class="content-container">
+
+        <div class="card" style="margin-bottom: 2rem; padding: 1rem 1.5rem; background: var(--bg-surface-secondary);">
+          <p class="text-sm text-muted">
+            Admin Note: These reference prices serve as the official benchmark for the platform's Fair Price Range indicators. Updating these values directly recalibrates fair price flags across Farmer and Dealer interfaces.
+          </p>
+        </div>
+
+        <div class="card" style="padding: 0; overflow: hidden;">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Crop Name</th>
+                  <th>Telugu Term</th>
+                  <th>Mandi Yard Location</th>
+                  <th>Market Reference Price</th>
+                  <th>Fair Min Range</th>
+                  <th>Fair Max Range</th>
+                  <th data-i18n="effectiveDate">Effective Date</th>
+                  <th>Last Updated</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="prices-admin-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Add/Edit Price Modal -->
+  <div id="modal-price" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title" id="price-modal-title">Set Mandi Benchmark Price</h3>
+        <button class="modal-close" onclick="window.App.closeModal('modal-price')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="handleSavePrice(event)">
+          <input type="hidden" id="price-id">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Crop Name (English)</label>
+              <input type="text" id="p-crop" class="form-control" placeholder="Tomato" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Crop Name (Telugu)</label>
+              <input type="text" id="p-crop-te" class="form-control" placeholder="టమాటా" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">APMC Regional Mandi Yard</label>
+            <input type="text" id="p-mandi" class="form-control" placeholder="Madanapalle Mandi, Chittoor" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Market Price (₹)</label>
+              <input type="number" id="p-rate" class="form-control" step="0.5" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Unit</label>
+              <select id="p-unit" class="form-control">
+                <option value="kg">kg</option>
+                <option value="Quintal">Quintal</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Fair Minimum Price (₹)</label>
+              <input type="number" id="p-min" class="form-control" step="0.5" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Fair Maximum Price (₹)</label>
+              <input type="number" id="p-max" class="form-control" step="0.5" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" data-i18n="effectiveDate">Effective Date</label>
+            <input type="date" id="p-effective-date" class="form-control" required>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem;">
+            <button type="button" class="btn btn-secondary" onclick="window.App.closeModal('modal-price')">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Benchmark</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs (Phase 1 Bridge) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/admin.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+    if (window.Auth && !window.Auth.requireAuth("admin")) {}
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadPricesTable();
+    });
+
+    function loadPricesTable() {
+      const prices = window.Storage.getMarketPrices();
+      const tbody = document.getElementById("prices-admin-tbody");
+      if (!tbody) return;
+
+      if (prices.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="9" class="text-center" style="padding: 2.5rem; color: var(--text-muted);">No mandi benchmark rates established yet.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = prices.map(p => `
+        <tr>
+          <td><strong>${p.crop || p.cropName || ''}</strong></td>
+          <td><span style="color: var(--primary-700);">${p.cropTe || '-'}</span></td>
+          <td>📍 ${p.mandi || p.location || ''}</td>
+          <td><span style="font-weight: 800; font-size: 1.1rem; color: var(--primary-700);">₹${p.marketPrice !== undefined ? p.marketPrice : (p.referencePrice || 0)}/${p.unit || 'kg'}</span></td>
+          <td>₹${p.minFairPrice !== undefined ? p.minFairPrice : (p.fairMin || 0)}/${p.unit || 'kg'}</td>
+          <td>₹${p.maxFairPrice !== undefined ? p.maxFairPrice : (p.fairMax || 0)}/${p.unit || 'kg'}</td>
+          <td><span class="badge" style="background: rgba(16, 185, 129, 0.1); color: #059669; font-weight: 600;">${p.effectiveDate || p.updatedDate || '2026-09-17'}</span></td>
+          <td><small class="text-muted">${p.updatedDate || 'Recent'}</small></td>
+          <td>
+            <div style="display: flex; gap: 0.35rem;">
+              <button class="btn btn-outline btn-sm" onclick="editPrice('${p.id}')">Edit</button>
+              <button class="btn btn-danger btn-sm" onclick="deletePrice('${p.id}')">Delete</button>
+            </div>
+          </td>
+        </tr>
+      `).join("");
+    }
+
+    function openPriceModal() {
+      document.getElementById("price-modal-title").textContent = "Add New Mandi Benchmark";
+      document.getElementById("price-id").value = "";
+      document.getElementById("p-crop").value = "";
+      document.getElementById("p-crop-te").value = "";
+      document.getElementById("p-mandi").value = "";
+      document.getElementById("p-rate").value = "";
+      document.getElementById("p-min").value = "";
+      document.getElementById("p-max").value = "";
+      document.getElementById("p-effective-date").value = new Date().toISOString().split("T")[0];
+      window.App.openModal("modal-price");
+    }
+
+    function editPrice(id) {
+      const price = window.Storage.getMarketPrices().find(p => p.id === id);
+      if (!price) return;
+
+      document.getElementById("price-modal-title").textContent = "Edit Mandi Benchmark";
+      document.getElementById("price-id").value = price.id;
+      document.getElementById("p-crop").value = price.crop || price.cropName || "";
+      document.getElementById("p-crop-te").value = price.cropTe || "";
+      document.getElementById("p-mandi").value = price.mandi || price.location || "";
+      document.getElementById("p-rate").value = price.marketPrice !== undefined ? price.marketPrice : (price.referencePrice || 0);
+      document.getElementById("p-unit").value = price.unit || "kg";
+      document.getElementById("p-min").value = price.minFairPrice !== undefined ? price.minFairPrice : (price.fairMin || 0);
+      document.getElementById("p-max").value = price.maxFairPrice !== undefined ? price.maxFairPrice : (price.fairMax || 0);
+      document.getElementById("p-effective-date").value = price.effectiveDate || new Date().toISOString().split("T")[0];
+      window.App.openModal("modal-price");
+    }
+
+    function handleSavePrice(e) {
+      e.preventDefault();
+      const id = document.getElementById("price-id").value;
+      const crop = document.getElementById("p-crop").value.trim();
+      const cropTe = document.getElementById("p-crop-te").value.trim();
+      const mandi = document.getElementById("p-mandi").value.trim();
+      const rate = Number(document.getElementById("p-rate").value);
+      const unit = document.getElementById("p-unit").value;
+      const minFair = Number(document.getElementById("p-min").value);
+      const maxFair = Number(document.getElementById("p-max").value);
+      const effDate = document.getElementById("p-effective-date").value || new Date().toISOString().split("T")[0];
+
+      const data = {
+        id: id || undefined,
+        crop: crop,
+        cropName: crop,
+        cropTe: cropTe,
+        mandi: mandi,
+        location: mandi,
+        marketPrice: rate,
+        referencePrice: rate,
+        unit: unit,
+        minFairPrice: minFair,
+        maxFairPrice: maxFair,
+        fairMin: minFair,
+        fairMax: maxFair,
+        effectiveDate: effDate
+      };
+
+      window.Admin.saveMarketPrice(data);
+      window.App.closeModal("modal-price");
+      window.App.showToast("Mandi benchmark saved!", "success");
+      loadPricesTable();
+    }
+
+    function deletePrice(id) {
+      if (confirm("Delete this market benchmark rate?")) {
+        window.Admin.deleteMarketPrice(id);
+        window.App.showToast("Benchmark deleted.", "info");
+        loadPricesTable();
+      }
+    }
+  </script>
+</body>
+</html>

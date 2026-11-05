@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saved Crops — FarmLink</title>
+  
+  <link rel="stylesheet" href="../css/themes.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <!-- Dealer 10-item Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+          </svg>
+          <span data-i18n="brandName">FarmLink</span>
+        </a>
+        <span class="sidebar-role-badge" style="background: rgba(59, 130, 246, 0.15); color: #2563eb;" data-i18n="roleDealer">Dealer</span>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li class="nav-item-header">Procurement</li>
+        <li>
+          <a href="dashboard.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span data-i18n="dNavOverview">Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="marketplace.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <span data-i18n="dNavMarketplace">Browse Marketplace</span>
+          </a>
+        </li>
+        <li>
+          <a href="offers.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span data-i18n="dNavMyOffers">My Offers & Bids</span>
+            <span class="sidebar-badge" id="dealer-offers-badge">1</span>
+          </a>
+        </li>
+        <li>
+          <a href="messages.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span data-i18n="dNavMessages">Messages</span>
+          </a>
+        </li>
+        <li>
+          <a href="notifications.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span data-i18n="notificationsTitle">Notifications</span>
+          </a>
+        </li>
+        <li>
+          <a href="purchases.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span data-i18n="dNavPurchases">Purchase History</span>
+          </a>
+        </li>
+        <li>
+          <a href="saved-crops.html" class="sidebar-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+            <span data-i18n="savedCrops">Saved Crops</span>
+          </a>
+        </li>
+        <li>
+          <a href="profile.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="dNavProfile">Business Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="settings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-i18n="dNavSettings">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="logoutUser()" class="sidebar-link" style="color: var(--danger-600);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span data-i18n="logout">Logout</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-profile">
+          <div class="user-avatar user-avatar-display" style="background: linear-gradient(135deg, #2563eb, #3b82f6);">DL</div>
+          <div class="user-info">
+            <span class="user-name user-name-display">Dealer</span>
+            <span class="user-role user-role-display">DEALER</span>
+          </div>
+        </div>
+        <button class="btn-icon" onclick="logoutUser()" title="Logout">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="topbar-title" data-i18n="savedCrops">Saved Crops & Watchlist</h1>
+        </div>
+
+        <div class="topbar-right">
+          <button class="lang-toggle-btn" onclick="toggleLanguage()">
+            <span>🌐</span><span class="lang-toggle-text">తెలుగు</span>
+          </button>
+          <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <span class="theme-label">Dark</span>
+          </button>
+          <a href="marketplace.html" class="btn btn-primary btn-sm" data-i18n="dNavMarketplace">Browse Marketplace</a>
+        </div>
+      </header>
+
+      <div class="content-container">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2 style="font-size: 1.4rem; margin-bottom: 0.25rem;">Bookmarked Agricultural Lots</h2>
+            <p class="text-sm text-muted">Track farmer lots of interest, monitor harvest dates, and submit bids when ready.</p>
+          </div>
+          <span id="saved-count-tag" class="badge badge-info">2 Saved Crops</span>
+        </div>
+
+        <!-- Saved Crops Grid -->
+        <div id="saved-crops-container" class="crops-grid">
+          <!-- Populated dynamically via JS -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs (Phase 1 Bridge) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/market.js"></script>
+  <script src="../js/crops.js"></script>
+  <script src="../js/offers.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+    if (window.Auth && !window.Auth.requireAuth("dealer")) {}
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadSavedCrops();
+    });
+
+    function loadSavedCrops() {
+      const savedCrops = window.Storage.getSavedCrops();
+      const container = document.getElementById("saved-crops-container");
+      const countTag = document.getElementById("saved-count-tag");
+
+      countTag.textContent = `${savedCrops.length} Saved Lots`;
+
+      if (savedCrops.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state" style="grid-column: 1 / -1;">
+            <div style="font-size: 3rem; margin-bottom: 0.5rem;">🔖</div>
+            <div class="empty-state-title">No crops saved yet</div>
+            <p class="empty-state-desc">When browsing the wholesale marketplace, click the bookmark icon on any harvest to save it here for convenient tracking.</p>
+            <a href="marketplace.html" class="btn btn-primary btn-sm" data-i18n="dNavMarketplace">Browse Marketplace</a>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = savedCrops.map(crop => {
+        const benchmark = window.Market ? window.Market.getBenchmarkForCrop(crop.title) : null;
+        return `
+          <div class="card crop-card">
+            <div class="crop-image-container">
+              <img src="${crop.image}" alt="${crop.title}" class="crop-image">
+              <span class="crop-badge">${crop.qualityGrade}</span>
+              <button onclick="removeSavedCrop('${crop.id}')" title="Remove Bookmark" style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.6); color: #f59e0b; border: none; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                ★
+              </button>
+            </div>
+            <div class="crop-card-body">
+              <div class="crop-header">
+                <h3 class="crop-title">${crop.title}</h3>
+                <span class="crop-category">${crop.category}</span>
+              </div>
+              <div class="crop-meta">
+                <div class="crop-meta-item">
+                  <span class="crop-meta-label">Farmer:</span>
+                  <span class="crop-meta-value font-semibold">${crop.farmerName}</span>
+                </div>
+                <div class="crop-meta-item">
+                  <span class="crop-meta-label">Location:</span>
+                  <span class="crop-meta-value">${crop.location}</span>
+                </div>
+                <div class="crop-meta-item">
+                  <span class="crop-meta-label">Available Qty:</span>
+                  <span class="crop-meta-value font-semibold">${crop.quantity.toLocaleString()} ${crop.unit}</span>
+                </div>
+                <div class="crop-meta-item">
+                  <span class="crop-meta-label">Farmer's Ask:</span>
+                  <span class="crop-meta-value font-semibold text-brand">₹${crop.expectedPrice}/${crop.unit}</span>
+                </div>
+              </div>
+              ${benchmark ? `
+                <div style="font-size: 0.75rem; color: var(--emerald-600); margin: 0.5rem 0; font-weight: 600;">
+                  APMC Fair Range: ₹${benchmark.minFairPrice} – ₹${benchmark.maxFairPrice}/${benchmark.unit}
+                </div>
+              ` : ""}
+              <div style="display: flex; gap: 0.5rem; margin-top: 1rem;">
+                <a href="crop-details.html?id=${crop.id}" class="btn btn-primary btn-sm" style="flex: 1;">
+                  Make Bid / Offer
+                </a>
+                <button onclick="removeSavedCrop('${crop.id}')" class="btn btn-outline btn-sm" title="Remove">
+                  Remove
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function removeSavedCrop(cropId) {
+      window.Storage.toggleSaveCrop(cropId);
+      window.App.showToast("Removed crop from your saved list.", "info");
+      loadSavedCrops();
+    }
+  </script>
+</body>
+</html>

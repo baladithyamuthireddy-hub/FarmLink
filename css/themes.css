@@ -1,0 +1,108 @@
+/* ==========================================================================
+   FarmLink - Theme System (Light & Dark Mode)
+   ========================================================================== */
+
+:root {
+  /* Brand Agricultural Palette */
+  --primary-50: #f0fdf4;
+  --primary-100: #dcfce7;
+  --primary-200: #bbf7d0;
+  --primary-500: #22c55e;
+  --primary-600: #16a34a;
+  --primary-700: #15803d;
+  --primary-800: #166534;
+  --primary-900: #14532d;
+
+  /* Accent & Status Colors */
+  --emerald: #10b981;
+  --amber-500: #f59e0b;
+  --amber-600: #d97706;
+  --red-500: #ef4444;
+  --red-600: #dc2626;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --purple-500: #8b5cf6;
+
+  /* Spacing & Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Transitions & Micro-interactions */
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.25, 0.64, 1);
+  --transition-fast: 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Default Light Theme Variables */
+  --bg-body: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-secondary: #f1f5f9;
+  --bg-sidebar: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8fafc;
+  --bg-input: #ffffff;
+  --bg-elevated: #ffffff;
+  
+  --border-color: #e2e8f0;
+  --border-color-subtle: #f1f5f9;
+  --border-color-hover: #cbd5e1;
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --text-inverse: #ffffff;
+  --text-primary-brand: #166534;
+
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+  --badge-grade-a-bg: #ecfdf5;
+  --badge-grade-a-text: #065f46;
+  --badge-grade-b-bg: #eff6ff;
+  --badge-grade-b-text: #1e40af;
+  --badge-grade-c-bg: #fffbeb;
+  --badge-grade-c-text: #92400e;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-body: #090d16;
+  --bg-surface: #111827;
+  --bg-surface-secondary: #1a2234;
+  --bg-sidebar: #0e1524;
+  --bg-card: #131c2e;
+  --bg-card-hover: #18233a;
+  --bg-input: #172238;
+  --bg-elevated: #1a263e;
+
+  --border-color: #26334d;
+  --border-color-subtle: #1c263c;
+  --border-color-hover: #3b4d70;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+  --text-inverse: #0f172a;
+  --text-primary-brand: #4ade80;
+
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 8px -1px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 20px 30px -5px rgba(0, 0, 0, 0.7);
+
+  --badge-grade-a-bg: rgba(16, 185, 129, 0.15);
+  --badge-grade-a-text: #34d399;
+  --badge-grade-b-bg: rgba(59, 130, 246, 0.15);
+  --badge-grade-b-text: #60a5fa;
+  --badge-grade-c-bg: rgba(245, 158, 11, 0.15);
+  --badge-grade-c-text: #fbbf24;
+}

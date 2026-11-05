@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="page-title">Farmer Login — FarmLink</title>
+  
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
+
+  <style>
+    .auth-page-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-body);
+    }
+    .auth-header {
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      background: var(--bg-surface);
+      backdrop-filter: blur(8px);
+    }
+    .auth-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1rem;
+    }
+    .auth-card-container {
+      width: 100%;
+      max-width: 480px;
+    }
+    .auth-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-xl);
+      padding: 2.25rem 2rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+      position: relative;
+    }
+    .role-segmented-control {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.35rem;
+      background: var(--bg-surface-secondary);
+      padding: 0.35rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      margin-bottom: 1.75rem;
+    }
+    .role-segmented-btn {
+      padding: 0.6rem 0.5rem;
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      transition: all var(--transition-fast);
+    }
+    .role-segmented-btn:hover {
+      color: var(--text-primary);
+    }
+    .role-segmented-btn.active-farmer {
+      background: var(--primary-600);
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(22, 163, 74, 0.3);
+    }
+    .role-segmented-btn.active-dealer {
+      background: #2563eb;
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+    }
+    .role-segmented-btn.active-admin {
+      background: #dc2626;
+      color: #ffffff;
+      box-shadow: 0 2px 6px rgba(220, 38, 38, 0.3);
+    }
+    .auth-tab-bar {
+      display: flex;
+      border-bottom: 2px solid var(--border-color);
+      margin-bottom: 1.5rem;
+      gap: 1rem;
+    }
+    .auth-tab-link {
+      padding: 0.5rem 0.25rem;
+      background: none;
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      position: relative;
+      bottom: -2px;
+      border-bottom: 2px solid transparent;
+      transition: all var(--transition-fast);
+    }
+    .auth-tab-link.active {
+      color: var(--primary-700);
+      border-bottom-color: var(--primary-600);
+    }
+    .input-wrapper {
+      position: relative;
+    }
+    .input-wrapper input {
+      width: 100%;
+      padding-right: 2.75rem;
+    }
+    .password-toggle-btn {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 0.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .password-toggle-btn:hover {
+      color: var(--text-primary);
+    }
+    .cross-role-alert {
+      display: none;
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius-md);
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+      font-size: 0.85rem;
+      margin-bottom: 1.25rem;
+      line-height: 1.4;
+    }
+    @media (max-width: 640px) {
+      .auth-header {
+        padding: 0.75rem 1rem;
+      }
+      .auth-card {
+        padding: 1.75rem 1.25rem;
+      }
+      .role-segmented-btn {
+        font-size: 0.78rem;
+        padding: 0.5rem 0.25rem;
+      }
+    }
+  </style>
+</head>
+<body class="auth-page-wrapper">
+
+  <!-- Production Header -->
+  <header class="auth-header">
+    <a href="index.html" class="nav-brand" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="width: 28px; height: 28px; color: var(--primary-600);">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+      </svg>
+      <span data-i18n="brandName" style="font-size: 1.25rem; font-weight: 800; color: var(--text-primary); letter-spacing: -0.5px;">FarmLink</span>
+    </a>
+
+    <div style="display: flex; gap: 0.75rem; align-items: center;">
+      <button class="lang-toggle-btn" onclick="toggleLanguage()" title="Switch Language">
+        <span>🌐</span>
+        <span class="lang-toggle-text">తెలుగు</span>
+      </button>
+
+      <button class="theme-toggle-btn" onclick="toggleTheme()" title="Switch Theme">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <span class="theme-label">Dark</span>
+      </button>
+
+      <a href="index.html" class="btn btn-secondary btn-sm" data-i18n="navHome">Back to Home</a>
+    </div>
+  </header>
+
+  <!-- Login Card Section -->
+  <main class="auth-main">
+    <div class="auth-card-container">
+
+      <!-- Role Selector Control -->
+      <div class="role-segmented-control" role="tablist" aria-label="Portal Role Selection">
+        <button id="role-tab-farmer" type="button" class="role-segmented-btn active-farmer" onclick="setLoginRole('farmer')">
+          <span>👨‍🌾</span> Farmer
+        </button>
+        <button id="role-tab-dealer" type="button" class="role-segmented-btn" onclick="setLoginRole('dealer')">
+          <span>💼</span> Dealer
+        </button>
+        <button id="role-tab-admin" type="button" class="role-segmented-btn" onclick="setLoginRole('admin')">
+          <span>🛡️</span> Admin
+        </button>
+      </div>
+
+      <!-- Auth Card -->
+      <div class="auth-card">
+
+        <!-- Role Heading & Subtitle -->
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <div id="role-badge" style="display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.25rem 0.85rem; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 700; margin-bottom: 0.65rem; background: var(--primary-100); color: var(--primary-800);">
+            👨‍🌾 Farmer Portal
+          </div>
+          <h2 id="login-title" style="font-size: 1.55rem; font-weight: 800; margin-bottom: 0.35rem; color: var(--text-primary); letter-spacing: -0.3px;">Sign In as Farmer</h2>
+          <p id="login-subtitle" class="text-sm text-muted" style="margin: 0; line-height: 1.45;">Access crop listings, live mandi prices & dealer bids</p>
+        </div>
+
+        <!-- Cross-Role Error Banner -->
+        <div id="role-error-banner" class="cross-role-alert">
+          <div style="font-weight: 700; margin-bottom: 0.2rem;" id="role-error-title">Account Role Mismatch</div>
+          <div id="role-error-text" style="margin-bottom: 0.5rem;"></div>
+          <button type="button" id="role-switch-btn" class="btn btn-sm btn-outline" style="border-color: #dc2626; color: #dc2626; padding: 0.25rem 0.65rem; font-size: 0.75rem;">Switch Portal</button>
+        </div>
+
+        <!-- Auth Method Tabs (Hidden for admin) -->
+        <div id="auth-method-tabs" class="auth-tab-bar">
+          <button id="tab-email" type="button" class="auth-tab-link active" onclick="switchAuthTab('email')">
+            Email & Password
+          </button>
+          <button id="tab-phone" type="button" class="auth-tab-link" onclick="switchAuthTab('phone')">
+            Mobile OTP
+          </button>
+        </div>
+
+        <!-- Email & Password Form -->
+        <form id="form-email-auth" onsubmit="handleEmailLogin(event)">
+          <div class="form-group" style="margin-bottom: 1.15rem;">
+            <label class="form-label" id="label-email" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Email Address</label>
+            <input type="email" id="login-email" class="form-control" placeholder="Enter your registered email" autocomplete="email" required>
+            <div id="help-email" style="display: none;"></div>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1.15rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+              <label class="form-label" style="font-size: 0.85rem; font-weight: 600; margin: 0;">Password</label>
+              <a href="forgot-password.html" class="text-xs text-brand font-medium hover:underline" data-i18n="forgotPassword">Forgot Password?</a>
+            </div>
+            <div class="input-wrapper">
+              <input type="password" id="login-password" class="form-control" placeholder="Enter your password" autocomplete="current-password" required>
+              <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility('login-password')" title="Toggle password visibility">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </button>
+            </div>
+            <div id="help-password" style="display: none;"></div>
+          </div>
+
+          <div id="remember-row" style="display: flex; align-items: center; margin-bottom: 1.25rem;">
+            <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; cursor: pointer; color: var(--text-secondary); user-select: none;">
+              <input type="checkbox" id="remember-me" checked style="accent-color: var(--primary-600); width: 16px; height: 16px;"> Remember my login
+            </label>
+          </div>
+
+          <button type="submit" id="btn-submit-login" class="btn btn-primary" style="width: 100%; padding: 0.75rem; font-size: 0.95rem; font-weight: 700; border-radius: var(--radius-md);">
+            Sign In as Farmer
+          </button>
+        </form>
+
+        <!-- Phone OTP Form -->
+        <form id="form-phone-auth" style="display: none;" onsubmit="handlePhoneLogin(event)">
+          <div class="form-group" style="margin-bottom: 1.15rem;">
+            <label class="form-label" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">Mobile Phone Number</label>
+            <div style="display: flex; gap: 0.5rem;">
+              <span style="display: flex; align-items: center; padding: 0 0.85rem; background: var(--bg-surface-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-md); font-weight: 700; font-size: 0.9rem; color: var(--text-secondary);">+91</span>
+              <input type="tel" id="login-phone" class="form-control" placeholder="10-digit mobile number" pattern="[0-9]{10}" maxlength="10" required>
+            </div>
+            <div class="form-help" style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.35rem;">Enter your registered 10-digit Indian phone number</div>
+          </div>
+
+          <div id="otp-group" class="form-group" style="display: none; margin-bottom: 1.15rem;">
+            <label class="form-label" style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem;">6-Digit Verification Code (OTP)</label>
+            <input type="text" id="login-otp" class="form-control" placeholder="Enter 6-digit code" maxlength="6" pattern="[0-9]{6}">
+            <div class="form-help" style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.35rem;">Enter the verification code sent to your phone</div>
+          </div>
+
+          <div id="phone-btn-container" style="margin-top: 1.25rem;">
+            <button type="button" class="btn btn-primary" style="width: 100%; padding: 0.75rem; font-size: 0.95rem; font-weight: 700;" onclick="requestOtp()">
+              Send Verification Code
+            </button>
+          </div>
+        </form>
+
+        <!-- Register Link Footer -->
+        <div id="register-footer" style="text-align: center; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border-color); font-size: 0.88rem;">
+          <span class="text-muted" id="register-prompt">Don't have a farmer account yet?</span>
+          <a id="register-link" href="register.html?role=farmer" class="text-brand font-semibold" style="margin-left: 0.35rem;" data-i18n="navRegister">Register as Farmer</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Clean Footer -->
+  <footer style="text-align: center; padding: 1.25rem 1rem; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid var(--border-color); background: var(--bg-surface);">
+    &copy; 2026 FarmLink Agricultural Network. APMC Benchmark Compliant Direct Marketplace.
+  </footer>
+
+  <!-- Firebase SDKs (Phase 1 Bridge) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <!-- Core Scripts -->
+  <script src="js/translations.js"></script>
+  <script src="js/theme.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    let activeRole = "farmer";
+
+    function setLoginRole(role) {
+      activeRole = role;
+      const tabFarmer = document.getElementById("role-tab-farmer");
+      const tabDealer = document.getElementById("role-tab-dealer");
+      const tabAdmin = document.getElementById("role-tab-admin");
+      const badge = document.getElementById("role-badge");
+      const title = document.getElementById("login-title");
+      const subtitle = document.getElementById("login-subtitle");
+      const pageTitle = document.getElementById("page-title");
+      const emailInput = document.getElementById("login-email");
+      const submitBtn = document.getElementById("btn-submit-login");
+      const authTabs = document.getElementById("auth-method-tabs");
+      const regFooter = document.getElementById("register-footer");
+      const regPrompt = document.getElementById("register-prompt");
+      const regLink = document.getElementById("register-link");
+      const errorBanner = document.getElementById("role-error-banner");
+
+      if (errorBanner) errorBanner.style.display = "none";
+
+      // Reset segmented button styles
+      tabFarmer.className = "role-segmented-btn";
+      tabDealer.className = "role-segmented-btn";
+      tabAdmin.className = "role-segmented-btn";
+
+      if (role === "farmer") {
+        tabFarmer.className = "role-segmented-btn active-farmer";
+        badge.innerHTML = "👨‍🌾 Farmer Portal";
+        badge.style.background = "var(--primary-100)";
+        badge.style.color = "var(--primary-800)";
+        title.textContent = "Sign In as Farmer";
+        subtitle.textContent = "Access crop listings, live mandi prices & dealer bids";
+        pageTitle.textContent = "Farmer Login — FarmLink";
+        emailInput.placeholder = "Enter your registered email";
+        submitBtn.textContent = "Sign In as Farmer";
+        submitBtn.className = "btn btn-primary";
+        authTabs.style.display = "flex";
+        regFooter.style.display = "block";
+        regPrompt.textContent = "Don't have a farmer account yet?";
+        regLink.href = "register.html?role=farmer";
+        regLink.textContent = "Register as Farmer";
+      } else if (role === "dealer") {
+        tabDealer.className = "role-segmented-btn active-dealer";
+        badge.innerHTML = "💼 Dealer Portal";
+        badge.style.background = "rgba(37, 99, 235, 0.12)";
+        badge.style.color = "#1d4ed8";
+        title.textContent = "Sign In as Dealer";
+        subtitle.textContent = "Procure quality produce, submit bids & negotiate with farmers";
+        pageTitle.textContent = "Dealer Login — FarmLink";
+        emailInput.placeholder = "Enter your registered business email";
+        submitBtn.textContent = "Sign In as Dealer";
+        submitBtn.className = "btn btn-secondary";
+        authTabs.style.display = "flex";
+        regFooter.style.display = "block";
+        regPrompt.textContent = "Don't have a dealer account yet?";
+        regLink.href = "register.html?role=dealer";
+        regLink.textContent = "Register as Dealer";
+      } else if (role === "admin") {
+        tabAdmin.className = "role-segmented-btn active-admin";
+        badge.innerHTML = "🛡️ APMC Admin Center";
+        badge.style.background = "rgba(220, 38, 38, 0.12)";
+        badge.style.color = "#b91c1c";
+        title.textContent = "APMC Admin Login";
+        subtitle.textContent = "Official Agricultural Market Committee Governance Center";
+        pageTitle.textContent = "Admin Login — FarmLink";
+        emailInput.placeholder = "Enter official APMC administrator email";
+        submitBtn.textContent = "Authorize Admin Access";
+        submitBtn.className = "btn btn-primary";
+        submitBtn.style.background = "#dc2626";
+        submitBtn.style.borderColor = "#dc2626";
+        
+        switchAuthTab("email");
+        authTabs.style.display = "none";
+        regFooter.style.display = "none";
+      }
+    }
+
+    function switchAuthTab(type) {
+      const tabEmail = document.getElementById("tab-email");
+      const tabPhone = document.getElementById("tab-phone");
+      const formEmail = document.getElementById("form-email-auth");
+      const formPhone = document.getElementById("form-phone-auth");
+
+      if (type === "email") {
+        tabEmail.classList.add("active");
+        tabPhone.classList.remove("active");
+        formEmail.style.display = "block";
+        formPhone.style.display = "none";
+      } else {
+        tabPhone.classList.add("active");
+        tabEmail.classList.remove("active");
+        formEmail.style.display = "none";
+        formPhone.style.display = "block";
+      }
+    }
+
+    function togglePasswordVisibility(fieldId) {
+      const input = document.getElementById(fieldId);
+      if (!input) return;
+      if (input.type === "password") {
+        input.type = "text";
+      } else {
+        input.type = "password";
+      }
+    }
+
+    async function handleEmailLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById("login-email").value.trim();
+      const pass = document.getElementById("login-password").value;
+      const errorBanner = document.getElementById("role-error-banner");
+      const submitBtn = document.getElementById("btn-submit-login");
+
+      if (errorBanner) errorBanner.style.display = "none";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Signing In...";
+      }
+
+      try {
+        const res = await window.Auth.login(email, pass, activeRole);
+        if (res.success) {
+          window.App.showToast("Login successful! Loading dashboard...", "success");
+          setTimeout(() => {
+            window.Auth.redirectByRole(res.user.role);
+          }, 400);
+        } else {
+          window.App.showToast(res.message, "error");
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = (activeRole === "admin") ? "Authorize Admin Access" : `Sign In as ${activeRole.charAt(0).toUpperCase() + activeRole.slice(1)}`;
+          }
+
+          // Display smooth cross-role switch banner if account role differs
+          if (res.message && (res.message.includes("registered as a") || res.message.includes("Login portal") || res.message.includes("Login."))) {
+            if (errorBanner) {
+              errorBanner.style.display = "block";
+              document.getElementById("role-error-text").textContent = res.message;
+              const targetRole = res.message.includes("Dealer") ? "dealer" : 
+                                 (res.message.includes("Farmer") ? "farmer" : "admin");
+              const btn = document.getElementById("role-switch-btn");
+              btn.textContent = `Switch to ${targetRole.charAt(0).toUpperCase() + targetRole.slice(1)} Portal`;
+              btn.onclick = () => setLoginRole(targetRole);
+            }
+          }
+        }
+      } catch (err) {
+        window.App.showToast("An unexpected error occurred during login.", "error");
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = (activeRole === "admin") ? "Authorize Admin Access" : `Sign In as ${activeRole.charAt(0).toUpperCase() + activeRole.slice(1)}`;
+        }
+      }
+    }
+
+    function requestOtp() {
+      const phone = document.getElementById("login-phone").value.trim();
+      if (!phone || phone.length < 10) {
+        window.App.showToast("Please enter a valid 10-digit mobile number.", "warning");
+        return;
+      }
+
+      document.getElementById("otp-group").style.display = "block";
+      document.getElementById("phone-btn-container").innerHTML = `
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.75rem; font-size: 0.95rem; font-weight: 700;">
+          Verify Code & Sign In
+        </button>
+      `;
+      window.App.showToast("Verification code sent to " + phone, "info");
+      document.getElementById("login-otp").focus();
+    }
+
+    function handlePhoneLogin(e) {
+      e.preventDefault();
+      const phone = document.getElementById("login-phone").value.trim();
+      const otp = document.getElementById("login-otp").value.trim();
+
+      const res = window.Auth.loginWithOtp(phone, otp, activeRole);
+      if (res.success) {
+        window.App.showToast("Phone authenticated successfully!", "success");
+        setTimeout(() => {
+          window.Auth.redirectByRole(res.user.role);
+        }, 400);
+      } else {
+        window.App.showToast(res.message, "error");
+      }
+    }
+
+    // Role handling via URL parameters without automatic demo override
+    document.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const requestedRole = urlParams.get("role") || urlParams.get("portal");
+      if (requestedRole === "dealer") {
+        setLoginRole("dealer");
+      } else if (requestedRole === "admin") {
+        setLoginRole("admin");
+      } else {
+        setLoginRole("farmer");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+rules_version = '2';
+/**
+ * FarmLink - Production Firebase Storage Security Rules
+ * Target Project: farmlink-production-bf431
+ * 
+ * STATUS: PROPOSED / NOT DEPLOYED - AWAITING USER APPROVAL
+ * Default Deny Posture:
+ * The original FarmLink platform operates on a decoupled client architecture
+ * that does not currently store or serve produce photographs via Cloud Storage
+ * (all images utilize verified CDN links and inline SVG assets).
+ * 
+ * Default deny prevents unauthorized asset storage and billing exposure.
+ */
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Default Deny for all storage paths
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

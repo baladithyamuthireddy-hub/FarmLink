@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dealer Offers & Negotiations — FarmLink</title>
+  
+  <link rel="stylesheet" href="../css/themes.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+          </svg>
+          <span data-i18n="brandName">FarmLink</span>
+        </a>
+        <span class="sidebar-role-badge" data-i18n="roleFarmer">Farmer</span>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li class="nav-item-header" data-i18n="fNavOverview">Main Menu</li>
+        <li>
+          <a href="dashboard.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span data-i18n="fNavOverview">Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="crops.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span data-i18n="fNavMyCrops">My Listed Crops</span>
+          </a>
+        </li>
+        <li>
+          <a href="add-crop.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <span data-i18n="fNavAddCrop">Add New Crop</span>
+          </a>
+        </li>
+        <li>
+          <a href="offers.html" class="sidebar-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span data-i18n="fNavOffers">Dealer Offers</span>
+            <span id="offers-count-badge" class="sidebar-badge">2</span>
+          </a>
+        </li>
+        <li>
+          <a href="messages.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span data-i18n="fNavMessages">Messages</span>
+          </a>
+        </li>
+        <li>
+          <a href="notifications.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span data-i18n="notificationsTitle">Notifications</span>
+          </a>
+        </li>
+
+        <li class="nav-item-header" data-i18n="whyTitle">Insights & Tools</li>
+        <li>
+          <a href="market-prices.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span data-i18n="fNavMarket">Market Prices</span>
+          </a>
+        </li>
+        <li>
+          <a href="weather.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            <span data-i18n="fNavWeather">Weather & Advisories</span>
+          </a>
+        </li>
+        <li>
+          <a href="profit-calculator.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"/></svg>
+            <span data-i18n="fNavCalculator">Profit Calculator</span>
+          </a>
+        </li>
+        <li>
+          <a href="transactions.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <span data-i18n="fNavTransactions">Sales History</span>
+          </a>
+        </li>
+        <li>
+          <a href="profile.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="fNavProfile">Farmer Profile</span>
+          </a>
+        </li>
+        <li>
+          <a href="settings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-i18n="fNavSettings">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="logoutUser()" class="sidebar-link" style="color: var(--danger-600);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span data-i18n="logout">Logout</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-profile">
+          <div class="user-avatar user-avatar-display">FL</div>
+          <div class="user-info">
+            <span class="user-name user-name-display">Farmer</span>
+            <span class="user-role user-role-display">FARMER</span>
+          </div>
+        </div>
+        <button class="btn-icon" onclick="logoutUser()" title="Logout"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></button>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="topbar-title" data-i18n="fNavOffers">Dealer Offers & Negotiations</h1>
+        </div>
+        <div class="topbar-right">
+          <button class="lang-toggle-btn" onclick="toggleLanguage()"><span>🌐</span><span class="lang-toggle-text">తెలుగు</span></button>
+          <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span class="theme-label">Dark</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="content-container" style="max-width: 960px;">
+        
+        <!-- Status Filter Tabs -->
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">
+          <button class="btn btn-sm btn-primary filter-tab" onclick="filterOffers('active')">Active Negotiations</button>
+          <button class="btn btn-sm btn-secondary filter-tab" onclick="filterOffers('all')">All Offers</button>
+          <button class="btn btn-sm btn-secondary filter-tab" onclick="filterOffers('accepted')">Accepted Deals</button>
+        </div>
+
+        <!-- Offers Container -->
+        <div id="offers-list-container">
+          <!-- Populated dynamically -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Counter Offer Modal -->
+  <div id="modal-counter" class="modal-backdrop">
+    <div class="modal" style="max-width: 500px;">
+      <div class="modal-header">
+        <h3 class="modal-title" data-i18n="btnCounter">Submit Counter-Offer</h3>
+        <button class="modal-close" onclick="window.App.closeModal('modal-counter')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="modal-counter-offer-id">
+        <div id="modal-counter-crop-info" style="margin-bottom: 1rem; padding: 0.75rem; background: var(--bg-surface-secondary); border-radius: var(--radius-md); font-size: 0.9rem;"></div>
+        <div class="form-group">
+          <label class="form-label">Your Counter Price (₹ per unit)</label>
+          <input type="number" id="modal-counter-price" class="form-control" step="0.5" required oninput="evaluateCounterFairness()">
+          <div id="modal-counter-fair-hint" style="margin-top: 0.5rem;"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Pricing Rationale / Terms for Dealer</label>
+          <textarea id="modal-counter-note" class="form-control" rows="3" placeholder="e.g. Produce is Grade A sorted and stored in aerated crates; ₹98/kg is firm."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="window.App.closeModal('modal-counter')" data-i18n="btnCancel">Cancel</button>
+        <button class="btn btn-primary" onclick="submitCounterOfferAction()" data-i18n="btnSubmit">Submit Counter</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs (Phase 1 Bridge) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/market.js"></script>
+  <script src="../js/offers.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+    if (window.Auth && !window.Auth.requireAuth("farmer")) {}
+
+    let farmerOffers = [];
+    let currentFilter = "active";
+    let activeCounterOffer = null;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadOffers();
+      if (window.Storage && typeof window.Storage.initOffersSync === "function") {
+        window.Storage.initOffersSync((syncedOffers) => {
+          if (Array.isArray(syncedOffers)) {
+            const user = window.Auth.getCurrentUser();
+            if (user) {
+              farmerOffers = syncedOffers.filter(o => o.farmerId === user.id || (user.uid && (o.farmerId === user.uid || o.farmerUid === user.uid)));
+              renderFilteredOffers();
+            }
+          } else {
+            loadOffers();
+          }
+        }, "farmer");
+      }
+    });
+
+    async function loadOffers() {
+      const user = window.Auth.getCurrentUser();
+      if (!user) return;
+
+      const container = document.getElementById("offers-list-container");
+      const existingOffers = window.Storage.getOffers().filter(o => o.farmerId === user.id || (user.uid && (o.farmerId === user.uid || o.farmerUid === user.uid)));
+      if (existingOffers.length === 0 && container) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 3rem 1.5rem; color: var(--text-muted);">
+            <div class="spinner" style="margin: 0 auto 1rem auto; width: 32px; height: 32px; border: 3px solid var(--border-color); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite;"></div>
+            <p>Syncing cloud offers...</p>
+          </div>
+        `;
+      }
+
+      try {
+        if (window.Storage && typeof window.Storage.syncOffersFromFirestore === "function") {
+          await window.Storage.syncOffersFromFirestore("farmer");
+        }
+      } catch (err) {
+        console.warn("[FarmLink Offers] Sync note:", err);
+      }
+
+      const allOffers = window.Storage.getOffers();
+      farmerOffers = allOffers.filter(o => o.farmerId === user.id || (user.uid && (o.farmerId === user.uid || o.farmerUid === user.uid)));
+      renderFilteredOffers();
+    }
+
+    function filterOffers(type) {
+      currentFilter = type;
+      document.querySelectorAll(".filter-tab").forEach(tab => {
+        tab.className = "btn btn-sm btn-secondary filter-tab";
+      });
+      if (event && event.target) {
+        event.target.className = "btn btn-sm btn-primary filter-tab";
+      }
+      renderFilteredOffers();
+    }
+
+    function renderFilteredOffers() {
+      const container = document.getElementById("offers-list-container");
+      let list = farmerOffers;
+
+      if (currentFilter === "active") {
+        list = farmerOffers.filter(o => {
+          const s = (o.status || "").toLowerCase();
+          return s === "pending" || s === "countered";
+        });
+      } else if (currentFilter === "accepted") {
+        list = farmerOffers.filter(o => (o.status || "").toLowerCase() === "accepted");
+      }
+
+      // Dynamic sidebar badge update
+      const badgeEl = document.getElementById("offers-count-badge");
+      if (badgeEl) {
+        const activeCount = farmerOffers.filter(o => {
+          const s = (o.status || "").toLowerCase();
+          return s === "pending" || s === "countered";
+        }).length;
+        badgeEl.textContent = activeCount;
+        badgeEl.style.display = activeCount > 0 ? "inline-block" : "none";
+      }
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state" style="text-align: center; padding: 3rem 1.5rem; background: var(--bg-surface); border-radius: var(--radius-lg); border: 1px dashed var(--border-color);">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🤝</div>
+            <div class="empty-state-title" style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">No offers found in this view</div>
+            <p class="empty-state-desc" style="color: var(--text-muted); margin-bottom: 1.25rem;">When wholesale dealers submit or revise bids on your crop listings, they will show up here.</p>
+            ${currentFilter !== "all" ? `<button class="btn btn-outline btn-sm" onclick="filterOffers('all')">View All Offers</button>` : `<a href="crops.html" class="btn btn-primary btn-sm">View My Listed Crops</a>`}
+          </div>
+        `;
+      } else {
+        container.innerHTML = list.map(o => window.Offers.renderOfferCard(o, "farmer")).join("");
+      }
+      if (window.I18n && typeof window.I18n.applyTranslations === "function") window.I18n.applyTranslations();
+    }
+
+    function openCounterModal(offerId, currentPrice) {
+      activeCounterOffer = farmerOffers.find(o => o.id === offerId) || window.Storage.getOffers().find(o => o.id === offerId);
+
+      document.getElementById("modal-counter-offer-id").value = offerId;
+      document.getElementById("modal-counter-note").value = "";
+
+      if (activeCounterOffer) {
+        const crop = window.Storage ? window.Storage.getCropById(activeCounterOffer.cropId) : null;
+        const asking = Number(activeCounterOffer.farmerExpectedPrice || (crop ? crop.expectedPrice : 0));
+        const dealerSteps = (activeCounterOffer.history || []).filter(h => h.sender === "dealer");
+        const dealerBid = dealerSteps.length > 0
+          ? Number(dealerSteps[dealerSteps.length - 1].price)
+          : Number(activeCounterOffer.dealerOfferPrice || activeCounterOffer.currentOfferPrice || currentPrice);
+
+        document.getElementById("modal-counter-crop-info").innerHTML = `
+          <strong>${activeCounterOffer.cropTitle || activeCounterOffer.cropName}</strong> — Lot: ${activeCounterOffer.quantity || activeCounterOffer.requestedQuantity} ${activeCounterOffer.unit || 'kg'}
+          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">
+            Your Expected Price: <strong style="color: var(--text-primary);">₹${asking}/${activeCounterOffer.unit || 'kg'}</strong> • Dealer's Offer: <strong style="color: var(--primary-700);">₹${dealerBid}/${activeCounterOffer.unit || 'kg'}</strong> (${activeCounterOffer.dealerName})
+          </div>
+        `;
+        document.getElementById("modal-counter-price").value = activeCounterOffer.farmerCounterPrice || asking || currentPrice;
+      } else {
+        document.getElementById("modal-counter-price").value = currentPrice;
+      }
+      evaluateCounterFairness();
+      window.App.openModal("modal-counter");
+    }
+
+    function evaluateCounterFairness() {
+      const price = Number(document.getElementById("modal-counter-price").value) || 0;
+      const hint = document.getElementById("modal-counter-fair-hint");
+      if (activeCounterOffer && price > 0 && window.Market) {
+        const cropName = activeCounterOffer.cropTitle || activeCounterOffer.cropName;
+        hint.innerHTML = window.Market.renderPriceBenchmarkBadge(cropName, price);
+      } else {
+        hint.innerHTML = "";
+      }
+    }
+
+    async function submitCounterOfferAction() {
+      const offerId = document.getElementById("modal-counter-offer-id").value;
+      const counterPrice = Number(document.getElementById("modal-counter-price").value);
+      const note = document.getElementById("modal-counter-note").value.trim();
+
+      if (!counterPrice || counterPrice <= 0) {
+        window.App.showToast("Please enter a valid positive counter price.", "warning");
+        return;
+      }
+
+      const submitBtn = document.querySelector("#modal-counter .btn-primary");
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Submitting...";
+      }
+
+      try {
+        const res = await window.Offers.counterOffer(offerId, counterPrice, note, "farmer");
+        if (res.success) {
+          window.App.closeModal("modal-counter");
+          window.App.showToast("Counter-offer submitted to dealer! Awaiting response.", "success");
+          await loadOffers();
+        } else {
+          window.App.showToast(res.message || "Failed to submit counter offer.", "error");
+        }
+      } catch (err) {
+        window.App.showToast(err.message || "Failed to submit counter offer.", "error");
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Submit Counter";
+        }
+      }
+    }
+
+    async function handleAcceptOffer(offerId) {
+      if (confirm("Accept this offer and close the deal?")) {
+        try {
+          const res = await window.Offers.acceptOffer(offerId, "farmer");
+          if (res.success) {
+            window.App.showToast("Offer accepted! Deal finalized.", "success");
+            await loadOffers();
+          } else {
+            window.App.showToast(res.message || "Could not accept offer.", "error");
+          }
+        } catch (err) {
+          window.App.showToast(err.message || "Could not accept offer.", "error");
+        }
+      }
+    }
+
+    async function handleRejectOffer(offerId) {
+      if (confirm("Reject this offer? This will close the negotiation.")) {
+        try {
+          const res = await window.Offers.rejectOffer(offerId, "farmer");
+          if (res.success) {
+            window.App.showToast("Offer rejected and closed.", "info");
+            await loadOffers();
+          } else {
+            window.App.showToast(res.message || "Could not reject offer.", "error");
+          }
+        } catch (err) {
+          window.App.showToast(err.message || "Could not reject offer.", "error");
+        }
+      }
+    }
+  </script>
+</body>
+</html>

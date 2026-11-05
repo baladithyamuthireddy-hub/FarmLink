@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Alerts & Notifications — FarmLink Admin</title>
+  
+  <link rel="stylesheet" href="../css/themes.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2316a34a'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E">
+</head>
+<body>
+
+  <div class="app-wrapper">
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <a href="../index.html" class="sidebar-brand">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+          </svg>
+          <span data-i18n="brandName">FarmLink</span>
+        </a>
+        <span class="sidebar-role-badge" style="background: rgba(239, 68, 68, 0.15); color: #dc2626;" data-i18n="roleAdmin">Admin</span>
+      </div>
+
+      <ul class="sidebar-nav">
+        <li class="nav-item-header">Platform Governance</li>
+        <li>
+          <a href="dashboard.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span data-i18n="aNavOverview">Overview</span>
+          </a>
+        </li>
+        <li>
+          <a href="farmers.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            <span data-i18n="aNavFarmers">Farmers</span>
+          </a>
+        </li>
+        <li>
+          <a href="dealers.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-i18n="aNavDealers">Dealers</span>
+          </a>
+        </li>
+        <li>
+          <a href="listings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <span data-i18n="aNavListings">Crop Listings</span>
+          </a>
+        </li>
+        <li>
+          <a href="market-prices.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span data-i18n="aNavPrices">Market Prices</span>
+          </a>
+        </li>
+        <li>
+          <a href="transactions.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <span data-i18n="aNavTransactions">Transactions</span>
+          </a>
+        </li>
+        <li>
+          <a href="notifications.html" class="sidebar-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+            <span data-i18n="notificationsTitle">Notifications</span>
+          </a>
+        </li>
+        <li>
+          <a href="weather-suggestions.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+            <span data-i18n="aNavWeatherSuggestions">Weather Suggestions</span>
+          </a>
+        </li>
+        <li>
+          <a href="reports.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            <span data-i18n="aNavReports">Reports</span>
+          </a>
+        </li>
+        <li>
+          <a href="settings.html" class="sidebar-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-i18n="aNavSettings">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" onclick="logoutUser()" class="sidebar-link" style="color: var(--danger-600);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span data-i18n="logout">Logout</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <div class="user-mini-profile">
+          <div class="user-avatar user-avatar-display" style="background: linear-gradient(135deg, #dc2626, #ef4444);">AD</div>
+          <div class="user-info">
+            <span class="user-name user-name-display">Admin Officer</span>
+            <span class="user-role user-role-display">APMC ADMIN</span>
+          </div>
+        </div>
+        <button class="btn-icon" onclick="logoutUser()" title="Logout"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg></button>
+      </div>
+    </aside>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-toggle">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <h1 class="topbar-title" data-i18n="notificationsTitle">System Notifications & Governance Alerts</h1>
+        </div>
+        <div class="topbar-right">
+          <button class="lang-toggle-btn" onclick="toggleLanguage()"><span>🌐</span><span class="lang-toggle-text">తెలుగు</span></button>
+          <button class="theme-toggle-btn" onclick="toggleTheme()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span class="theme-label">Dark</span>
+          </button>
+          <button class="btn btn-secondary btn-sm" onclick="markAllRead()" data-i18n="markAllRead">Mark All as Read</button>
+        </div>
+      </header>
+
+      <div class="content-container">
+        
+        <!-- Controls Bar -->
+        <div class="card" style="margin-bottom: 1.5rem; padding: 1rem 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+          <div style="display: flex; gap: 0.5rem;">
+            <button id="tab-all" class="btn btn-sm btn-primary" onclick="switchTab('all')" data-i18n="notificationsAll">All Notifications</button>
+            <button id="tab-unread" class="btn btn-sm btn-secondary" onclick="switchTab('unread')" data-i18n="notificationsUnread">Unread Only</button>
+          </div>
+          <div class="text-sm text-muted" id="notif-count-summary">Loading alerts...</div>
+        </div>
+
+        <!-- Notifications Container -->
+        <div id="notifications-container" style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <!-- Rendered dynamically -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs (Phase 1 Bridge) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/translations.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/storage.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+    if (window.Auth && !window.Auth.requireAuth("admin")) {}
+
+    let currentTab = "all";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadNotifications();
+    });
+
+    function switchTab(tab) {
+      currentTab = tab;
+      document.getElementById("tab-all").className = tab === "all" ? "btn btn-sm btn-primary" : "btn btn-sm btn-secondary";
+      document.getElementById("tab-unread").className = tab === "unread" ? "btn btn-sm btn-primary" : "btn btn-sm btn-secondary";
+      loadNotifications();
+    }
+
+    function getNotificationIcon(type) {
+      switch (type) {
+        case "user_registration": return "👤";
+        case "crop_listing": return "🌱";
+        case "transaction": return "💰";
+        case "review": return "⭐";
+        default: return "🛡️";
+      }
+    }
+
+    function loadNotifications() {
+      const user = window.Auth ? window.Auth.getCurrentUser() : null;
+      let notifs = window.Storage.getNotifications(user ? user.id : null, "admin");
+      const unreadCount = notifs.filter(n => !(n.isRead || n.read)).length;
+
+      const countEl = document.getElementById("notif-count-summary");
+      const isTe = window.I18n && window.I18n.currentLang === "te";
+      if (countEl) {
+        countEl.textContent = isTe
+          ? `మొత్తం: ${notifs.length} | చదవనివి: ${unreadCount}`
+          : `Total: ${notifs.length} | Unread: ${unreadCount}`;
+      }
+
+      if (currentTab === "unread") {
+        notifs = notifs.filter(n => !(n.isRead || n.read));
+      }
+
+      const container = document.getElementById("notifications-container");
+      if (!container) return;
+
+      if (notifs.length === 0) {
+        container.innerHTML = `
+          <div class="card" style="padding: 3rem 1.5rem; text-align: center; color: var(--text-muted);">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔔</div>
+            <h4 style="margin-bottom: 0.25rem;" data-i18n="noNotifications">No notifications found</h4>
+            <p style="font-size: 0.85rem;" data-i18n="allCaughtUp">You are all caught up!</p>
+          </div>
+        `;
+        if (window.I18n && typeof window.I18n.applyTranslations === "function") window.I18n.applyTranslations();
+        return;
+      }
+
+      container.innerHTML = notifs.map(n => {
+        const isRead = !!(n.isRead || n.read);
+        const title = (isTe && n.titleTe) ? n.titleTe : n.title;
+        const msg = (isTe && n.messageTe) ? n.messageTe : n.message;
+        const timeStr = window.App ? window.App.formatRelativeTime(n.timestamp || n.createdAt) : "";
+        const icon = getNotificationIcon(n.type);
+
+        return `
+          <div class="card" style="padding: 1.1rem 1.25rem; display: flex; gap: 1rem; align-items: flex-start; justify-content: space-between; border-left: 4px solid ${isRead ? 'transparent' : 'var(--red-500)'}; background: ${isRead ? 'var(--bg-surface)' : 'rgba(239, 68, 68, 0.05)'}; transition: background 0.15s ease;">
+            <div style="display: flex; gap: 1rem; align-items: flex-start; flex: 1; cursor: pointer;" onclick="handleClickNotif('${n.id}', '${n.link || ''}')">
+              <div style="font-size: 1.5rem; width: 40px; height: 40px; border-radius: var(--radius-full); background: var(--bg-surface-secondary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                ${icon}
+              </div>
+              <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                  <h4 style="font-size: 0.95rem; font-weight: ${isRead ? '600' : '700'}; margin: 0; color: var(--text-primary);">${title}</h4>
+                  ${!isRead ? '<span class="badge badge-danger" style="font-size: 0.65rem; padding: 0.15rem 0.45rem;">NEW</span>' : ''}
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0 0 0.35rem 0; line-height: 1.4;">${msg}</p>
+                <span style="font-size: 0.72rem; color: var(--text-muted);">${timeStr}</span>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 0.35rem; align-items: center; flex-shrink: 0;">
+              ${!isRead ? `
+                <button class="btn btn-outline btn-sm" onclick="markSingleRead('${n.id}')" title="Mark Read" data-i18n="markAsRead">Mark Read</button>
+              ` : ''}
+              <button class="btn btn-danger btn-sm" onclick="deleteNotif('${n.id}')" title="Delete" style="padding: 0.35rem 0.6rem;">&times;</button>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      if (window.I18n && typeof window.I18n.applyTranslations === "function") window.I18n.applyTranslations();
+    }
+
+    function handleClickNotif(id, link) {
+      if (window.Storage) {
+        window.Storage.markNotificationAsRead(id);
+        if (window.App) window.App.updateNotificationBadge();
+      }
+      if (link) {
+        window.location.href = link;
+      } else {
+        loadNotifications();
+      }
+    }
+
+    function markSingleRead(id) {
+      if (window.Storage) {
+        window.Storage.markNotificationAsRead(id);
+        if (window.App) window.App.updateNotificationBadge();
+        loadNotifications();
+      }
+    }
+
+    function markAllRead() {
+      const user = window.Auth ? window.Auth.getCurrentUser() : null;
+      if (window.Storage) {
+        window.Storage.markAllNotificationsAsRead(user ? user.id : null, "admin");
+        if (window.App) {
+          window.App.updateNotificationBadge();
+          window.App.showToast("All notifications marked as read.", "success");
+        }
+        loadNotifications();
+      }
+    }
+
+    function deleteNotif(id) {
+      if (window.Storage) {
+        window.Storage.deleteNotification(id);
+        if (window.App) {
+          window.App.updateNotificationBadge();
+          window.App.showToast("Notification deleted.", "info");
+        }
+        loadNotifications();
+      }
+    }
+  </script>
+</body>
+</html>
