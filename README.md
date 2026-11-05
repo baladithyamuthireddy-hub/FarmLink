@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/license/baladithyamuthireddy-hub/FarmLink?style=for-the-badge" alt="MIT License">
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="MIT License">
   <img src="https://img.shields.io/github/last-commit/baladithyamuthireddy-hub/FarmLink?style=for-the-badge" alt="Last Commit">
   <img src="https://img.shields.io/github/issues/baladithyamuthireddy-hub/FarmLink?style=for-the-badge" alt="GitHub Issues">
   <img src="https://img.shields.io/badge/Deployment-Vercel-black?style=for-the-badge&logo=vercel" alt="Vercel">
